@@ -9,8 +9,12 @@
 # from selenium import  webdriver
 
 from Getgoods import getgoods
+from login import loginCook
 
 if __name__ == '__main__':
-    allgoods = getgoods()
-    allgoods.index()
+    # allgoods = getgoods()
+    # allgoods.index()
+    logintest = loginCook()
+    thecookies = logintest.getCookies()
+    # print(thecookies)
     # allgoods.setRedis('测试数据')

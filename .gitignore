@@ -4,3 +4,5 @@
 *todo.md
 *pyvenv.cfg
 *.idea/
+*cookies.txt
+*__pycache__/
