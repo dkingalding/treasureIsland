@@ -32,9 +32,6 @@ class loginCook(object):
         brower.close()
 
 
-
-
-
     def getCookies(self):
 
         theCookies = ''
