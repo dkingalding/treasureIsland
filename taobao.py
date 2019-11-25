@@ -10,7 +10,7 @@ Agent = [
 class duobao(object):
 
     def onegoods(self):
-        #获取已经存储的信息、包括
+        #获取已经存储的信息
 
         pass
 
@@ -33,7 +33,7 @@ class duobao(object):
             print("查询商品价格超过1s")
 
 
-    def sendPrice(self,youcookie):
+    def sendPrice(self,youcookie,auctionId,price):
         #出价
         buy_url = 'https://used-api.jd.com/auctionRecord/offerPrice'
         data = {
@@ -45,8 +45,8 @@ class duobao(object):
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.62 Safari/537.36',
             'Cookie': youcookie
         }
-        data['price'] = str(int(20))
-        data['auctionId'] = str(120846686)
+        data['price'] = str(int(price))
+        data['auctionId'] = str(auctionId)
         # print(data)
         resp = requests.post(buy_url, headers=HEADERS, data=data)
         print(resp.json())

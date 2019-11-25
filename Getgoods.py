@@ -1,6 +1,7 @@
 import requests,json,time
 import re
 import pymysql
+import redis
 
 class getgoods(object):
 
@@ -37,6 +38,7 @@ class getgoods(object):
         self.myqllink = pymysql.connect(host= '127.0.0.1',user = 'root', passwd='ding123',db= 'duobaodao')
         self.cursor = self.myqllink.cursor()
         self.errordata = {'geterror':[],'setsqlerror':[]}
+        self.redislink = redis.Redis(host='127.0.0.1',port=6379)
 
     def index(self):
         #开始获取页面中的产品信息
@@ -77,21 +79,44 @@ class getgoods(object):
 
 
 
-    # def test(self):
-    #     url = "https://used-api.paipai.com/auction/list?pageNo=15&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000005&callback=__jp35"
-    #     thedata = self.getGoods(url)
-    #     print(thedata)
-    #     if thedata[1] == None:
-    #         bb = False
-    #         print("已经完成采集")
-    #     else:
-    #         # 将数据存入数据库
-    #         print('dddd')
-    #         if isinstance(thedata[1], list):
-    #             print("list")
-    #             for data in thedata[1]:
-    #                 self.setdata(data)
-    #                 time.sleep(1)
+    def test(self):
+        url = "https://used-api.paipai.com/auction/list?pageNo=15&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000005&callback=__jp35"
+        thedata = self.getGoods(url)
+        print(thedata)
+        if thedata[1] == None:
+            bb = False
+            print("已经完成采集")
+        else:
+            # 将数据存入数据库
+            print('dddd')
+            if isinstance(thedata[1], list):
+                print("list")
+                for data in thedata[1]:
+                    self.setdata(data)
+                    time.sleep(1)
+
+    def clearRedis(self):
+        keys = self.redislink.keys()
+        for key in keys:
+            print(key)
+            type = self.redislink.type(key)
+            if type == b'string':
+                vals = self.redislink.get(key)
+            elif type == b'list':
+                vals = self.redislink.lrange(key, 0, -1)
+                # print(vals)
+            elif type == b'set':
+                vals = self.redislink.smembers(key);
+            elif type == b'zset':
+                vals = self.redislink.zrange(key, 0, -1)
+            elif type == b"hash":
+                vals = self.redislink.hgetall(key)
+            else:
+                print(type, key)
+            print(vals)
+            self.redislink.delete(key)
+
+
 
     def getGoods(self,url):
         #获取每一个分页商品信息
@@ -125,31 +150,94 @@ class getgoods(object):
 
 
     def setdata(self,data):
+        #将数据表根据数据特性进行修改
         keydata = ''
         valuedata = ''
+
         if isinstance(data,dict):
+            #先查商品是否已经录入，可以使用redis集合
+            # 如果商品没有录入就将商品存入到数据库和redis
             for key in data.keys():
-                keydata = keydata + key+","
-                # keydata =(keydata + '%s' + key + ',')%(key)
-                valuedata = (valuedata +"'{0}'" +",").format(data[key])
-            keydata = keydata.strip(',')
-            valuedata = valuedata.strip(',')
-            sql = "INSERT INTO goodslist ({0}) VALUES ({1})".format(keydata, valuedata)
+                if data[key] == None:
+                    data[key] = 0
+            if self.redislink.sismember('usedName', data['usedNo'])== False:
+                keydata = 'usedNo, productName, primaryPic, quality, shopId, size, brandId, shortProductName'
+                valuedata = ("'{0}'" +","+"'{1}'" +","+"'{2}'" +","+"'{3}'" +","+"'{4}'" +","+"'{5}'" +","+"'{6}'" +","+"'{7}'" )\
+                    .format(data['usedNo'],data['productName'],data['primaryPic'],data['quality'],data['shopId'],data['size'],data['brandId'],data['shortProductName'])
+                sql = "INSERT INTO usedName ({0}) VALUES ({1})".format(keydata,valuedata)
+                try:
+                    self.cursor.execute(sql)
+                    # 执行sql语句
+                    self.myqllink.commit()
+                    self.redislink.sadd('usedName', data['usedNo'])
+                except:
+                    # 发生错误时回滚
+
+                    self.errordata['setsqlerror'].append(data)
+                    print("usedno cuowu")
+                    self.myqllink.rollback()
+                    self.redislink.srem('usedName', data['usedNo'])
+
+            #查商店是否已经录入，没有如入的化将商店存入数据库
+            if self.redislink.sismember('shop', data['shopId'])==False:
+                keydata = 'shopId,shopName'
+                valuedata = ("'{0}'" +","+"'{1}'"  )\
+                    .format(data['shopId'],data['shopName'])
+                sql = "INSERT INTO shop ({0}) VALUES ({1})".format(keydata,valuedata)
+                try:
+                    self.cursor.execute(sql)
+                    # 执行sql语句
+                    self.myqllink.commit()
+                    self.redislink.sadd('shop', data['shopId'])
+                except:
+                    # 发生错误时回滚
+
+                    self.errordata['setsqlerror'].append(data)
+                    print("shop cuowu")
+                    self.myqllink.rollback()
+                    self.redislink.srem('shop', data['shopId'])
+            #查商品号是否录入
+            #如果没有如入就将商品写入数据库
+            if self.redislink.sismember('goodslist', data['id'])==False:
+                keydata = 'id, usedNo, startTime, endTime, cappedPrice, status, quality'
+                valuedata = ("'{0}'" +","+"'{1}'" +","+"'{2}'" +","+"'{3}'" +","+"'{4}'" +","+"'{5}'" +","+"'{6}'")\
+                    .format(data['id'],data['usedNo'],data['startTime'],data['endTime'],data['cappedPrice'],data['status'],data['quality'])
+                sql = "INSERT INTO goods ({0}) VALUES ({1})".format(keydata,valuedata)
+                try:
+                    self.cursor.execute(sql)
+                    # 执行sql语句
+                    self.myqllink.commit()
+                    self.redislink.sadd('goodslist', data['id'])
+                except:
+                    # 发生错误时回滚
+
+                    self.errordata['setsqlerror'].append(data)
+                    print("goodslist cuowu")
+                    self.myqllink.rollback()
+                    self.redislink.srem('goodslist', data['id'])
+
+            # for key in data.keys():
+            #     keydata = keydata + key+","
+            #     # keydata =(keydata + '%s' + key + ',')%(key)
+            #     valuedata = (valuedata +"'{0}'" +",").format(data[key])
+            # keydata = keydata.strip(',')
+            # valuedata = valuedata.strip(',')
+            # sql = "INSERT INTO goodslist ({0}) VALUES ({1})".format(keydata, valuedata)
             # self.cursor.execute(sql)
             #     # 执行sql语句
             # self.myqllink.commit()
 
-            try:
-                self.cursor.execute(sql)
-                # 执行sql语句
-                self.myqllink.commit()
-
-            except:
-                # 发生错误时回滚
-
-                self.errordata['setsqlerror'].append(data)
-                print("sql cuowu")
-                self.myqllink.rollback()
+            # try:
+            #     self.cursor.execute(sql)
+            #     # 执行sql语句
+            #     self.myqllink.commit()
+            #
+            # except:
+            #     # 发生错误时回滚
+            #
+            #     self.errordata['setsqlerror'].append(data)
+            #     print("sql cuowu")
+            #     self.myqllink.rollback()
 
         else:
             #返回数据，并对数据不做处理
@@ -168,5 +256,7 @@ class getgoods(object):
 
     def __del__(self):
         print(self.errordata)
+
+
 
 
