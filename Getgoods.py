@@ -5,7 +5,6 @@ import redis
 
 class getgoods(object):
 
-
     def __init__(self):
         #全部商品  "https://sell.paipai.com/auction-list?groupId=-1&entryid=p0120003dbdlogo"
         #https://used-api.jd.com/auction/list?pageNo=2&pageSize=50&category1=&status=&orderDirection=1&auctionType=1&orderType=1&callback=__jp116
@@ -40,14 +39,13 @@ class getgoods(object):
         self.errordata = {'geterror':[],'setsqlerror':[]}
         self.redislink = redis.Redis(host='127.0.0.1',port=6379)
 
-    def index(self):
+    def getAllGoods(self):
+        #对外暴露方法
         #开始获取页面中的产品信息
         #对产品进行分类
         #页面中的分类
         #返回的数据格式
-
         #开始循环采集每个分类的数据
-
         for groupId in self.list:
             #开始采集每个分页中商品信息，判断是否成功的依据1、code 是否为200 和采集返回的数据中auctionInfos是否为空
             pageNo = 0
@@ -56,7 +54,7 @@ class getgoods(object):
                 pageNo = pageNo + 1
                 url = "https://used-api.paipai.com/auction/list?pageNo=%d&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=%s&callback=__jp35" % (
                 pageNo, groupId)
-                thedata = self.getGoods(url)
+                thedata = self.__getGoods(url)
                 print(groupId, pageNo)
                 if thedata[0] == 444:
                     print("采集出现错误")
@@ -73,15 +71,20 @@ class getgoods(object):
                         # print("list")
                         for data1 in thedata[1]:
                             # print(data1)
-                            self.setdata(data1)
-                time.sleep(5)
+                            self.__setdata(data1)
+                        time.sleep(4)
+                time.sleep(1)
+                if pageNo >= 200:
+                    pageNo = 0
+                    bb = False
+                    print("已经完成采集")
         self.myqllink.close()
 
-
-
     def test(self):
-        url = "https://used-api.paipai.com/auction/list?pageNo=15&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000005&callback=__jp35"
-        thedata = self.getGoods(url)
+        #对外暴露方法
+        #测试使用
+        url = "https://used-api.paipai.com/auction/list?pageNo=1&pageSize=100&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000005&callback=__jp35"
+        thedata = self.__getGoods(url)
         print(thedata)
         if thedata[1] == None:
             bb = False
@@ -92,10 +95,12 @@ class getgoods(object):
             if isinstance(thedata[1], list):
                 print("list")
                 for data in thedata[1]:
-                    self.setdata(data)
+                    self.__setdata(data)
                     time.sleep(1)
 
     def clearRedis(self):
+        #清楚redis
+        #方法需要重写
         keys = self.redislink.keys()
         for key in keys:
             print(key)
@@ -114,11 +119,76 @@ class getgoods(object):
             else:
                 print(type, key)
             print(vals)
-            self.redislink.delete(key)
+            # self.redislink.delete(key)
 
 
 
-    def getGoods(self,url):
+    def gethistory(self,auction):
+        #https://used-api.paipai.com/auction/detail?callback=jQuery32108877681006626417_1574400875551&auctionId=120934440&p=2
+        url = (
+            "https://used-api.paipai.com/auction/detail?callback=jQuery32108877681006626417_1574400875551&auctionId={0}&p=2").format(
+            auction)
+        # print(url)
+        r = requests.get(url)
+        result_json = re.search(r'{.*}', r.text)
+        result_dict = json.loads(result_json.group())
+        # print(result_dict)
+        pricelist = result_dict['data']['historyRecord']
+        # print(pricelist)
+        for nb in pricelist:
+            print(nb['offerPrice'])
+        # try:
+        #     url = ("https://used-api.paipai.com/auction/detail?callback=jQuery32108877681006626417_1574400875551&auctionId={0}&p=2").format(auction)
+        #     # print(url)
+        #     r = requests.get(url)
+        #     result_json = re.search(r'{.*}', r.text)
+        #     result_dict = json.loads(result_json.group())
+        #     # print(result_dict)
+        #     pricelist = result_dict['data']['historyRecord']
+        #     # print(pricelist)
+        #     for nb in pricelist.keys():
+        #         print(pricelist[nb]['offerPrice'])
+        # except:
+        #     print("采集历史成交价格出错")
+
+    def getGoodsid(self, usedNo):
+        #根据提供的usedNo获取拍卖品id
+        #在获取历史成交价格和拍卖时选着使用
+        sql = "SELECT id FROM goods WHERE usedNo ={0} ".format(usedNo)
+        try:
+            self.cursor.execute(sql)
+            # 执行sql语句
+            self.myqllink.commit()
+            results = self.cursor.fetchall()
+            return results
+        except:
+            # 发生错误时回滚
+            print("查询商品拍卖id {0} 出错".format(usedNo))
+
+    def getUsedNo(self, condition, usedNo = ''):
+        #根据条件获取商品的usedNo 可以考虑将新旧程度也加上去
+        #条件基本时允许商品名或者usedNo
+        sql = "SELECT usedNo, quality, shopId FROM usedname WHERE productName LIKE '%{0}%'".format(condition)
+
+        try:
+            self.cursor.execute(sql)
+            # 执行sql语句
+            self.myqllink.commit()
+            results = self.cursor.fetchall()
+            return results
+        except:
+            # 发生错误时回滚
+            print("查询商品 usedNo {0} 出错".format(condition))
+
+    def printtest(self):
+        print("printt")
+        pass
+
+    def seachGoods(self):
+        #获取产品资料
+        print("ss")
+
+    def __getGoods(self,url):
         #获取每一个分页商品信息
         try:
             r = requests.get(url,headers = self.headers)
@@ -148,12 +218,10 @@ class getgoods(object):
         # print(tt["data"][])
         # print(tt["data"]["auctionInfos"][0])
 
+    def __setdata(self,data):
 
-    def setdata(self,data):
-        #将数据表根据数据特性进行修改
         keydata = ''
         valuedata = ''
-
         if isinstance(data,dict):
             #先查商品是否已经录入，可以使用redis集合
             # 如果商品没有录入就将商品存入到数据库和redis
@@ -165,6 +233,7 @@ class getgoods(object):
                 valuedata = ("'{0}'" +","+"'{1}'" +","+"'{2}'" +","+"'{3}'" +","+"'{4}'" +","+"'{5}'" +","+"'{6}'" +","+"'{7}'" )\
                     .format(data['usedNo'],data['productName'],data['primaryPic'],data['quality'],data['shopId'],data['size'],data['brandId'],data['shortProductName'])
                 sql = "INSERT INTO usedName ({0}) VALUES ({1})".format(keydata,valuedata)
+
                 try:
                     self.cursor.execute(sql)
                     # 执行sql语句
@@ -215,7 +284,6 @@ class getgoods(object):
                     print("goodslist cuowu")
                     self.myqllink.rollback()
                     self.redislink.srem('goodslist', data['id'])
-
             # for key in data.keys():
             #     keydata = keydata + key+","
             #     # keydata =(keydata + '%s' + key + ',')%(key)
@@ -238,21 +306,9 @@ class getgoods(object):
             #     self.errordata['setsqlerror'].append(data)
             #     print("sql cuowu")
             #     self.myqllink.rollback()
-
         else:
             #返回数据，并对数据不做处理
-            pass
-
-
-
-    def gethistory(self,auction):
-        #https://used-api.paipai.com/auction/detail?callback=jQuery32108877681006626417_1574400875551&auctionId=120934440&p=2
-        url = ("https://used-api.paipai.com/auction/detail?callback=jQuery32108877681006626417_1574400875551&auctionId=%s&p=2").format(auction)
-        r = requests.get(url)
-        result_json = re.search(r'{.*}', r.text)
-        result_dict = json.loads(result_json.group())
-        pricelist = result_dict['data']['historyRecord']
-
+            print('数据格式错误不是dict')
 
     def __del__(self):
         print(self.errordata)

@@ -11,7 +11,6 @@ class duobao(object):
 
     def onegoods(self):
         #获取已经存储的信息
-
         pass
 
     def goodsinfo(self, paimaiid):
@@ -31,7 +30,6 @@ class duobao(object):
             return result_dict
         except:
             print("查询商品价格超过1s")
-
 
     def sendPrice(self,youcookie,auctionId,price):
         #出价

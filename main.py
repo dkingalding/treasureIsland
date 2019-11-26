@@ -7,12 +7,34 @@ from taobao import duobao
 
 if __name__ == '__main__':
     allgoods = getgoods()
-    #allgoods.clearRedis()
-    allgoods.index()
-    # myqllink = pymysql.connect(host='127.0.0.1', user='root', passwd='ding123', db='duobaodao')
+    # allgoods.getUsedNo("米家(MIJIA)小米米家行车记录仪1S")
+    # # allgoods.test()
+    # # allgoods.clearRedis()
+    # allgoods.index()
+    # allgoods.gethistory(121175658)
+
     # logintest = loginCook()
     # thecookies = logintest.getCookies()
     # # print(thecookies)
     # current = duobao()
     # print(current.sendPrice(thecookies))
 
+    while True:
+        #根据输入选着执行什么操作
+        theinput = input()
+        #需要对输入进行处理
+
+        if theinput == "seachGoods":
+            # allgoods = getgoods()
+            # allgoods.seachGoods()
+            # allgoods.gethistory(121175658)
+            print(allgoods.getUsedNo("k380"))
+            print(allgoods.getGoodsid("1000033031280901"))
+            print(allgoods.gethistory("121262553"))
+        elif theinput == "printtest":
+            # allgoods = getgoods()
+            allgoods.printtest()
+        elif theinput == "getAllGoods":
+            allgoods.getAllGoods()
+        elif theinput == "exit":
+            break

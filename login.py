@@ -12,8 +12,6 @@ class loginCook(object):
         self.loginUrl = "https://passport.jd.com/new/login.aspx?sso=1&ReturnUrl=https://sso.paipai.com/sso/redirect"
         # self.brower = webdriver.Chrome()
 
-
-
     def longduomingdao(self):
         #登录并保存cookies
         # print("ddd")
@@ -30,7 +28,6 @@ class loginCook(object):
         else:
             print("登录出现错误")
         brower.close()
-
 
     def getCookies(self):
 
