@@ -1,12 +1,13 @@
-import requests
-import json
 from Getgoods import getgoods
 from login import loginCook
 from taobao import duobao
+from inCode import inCode
+import time
 
 
 if __name__ == '__main__':
     allgoods = getgoods()
+    thecode = inCode(allgoods)
     # allgoods.getUsedNo("米家(MIJIA)小米米家行车记录仪1S")
     # # allgoods.test()
     # # allgoods.clearRedis()
@@ -21,20 +22,35 @@ if __name__ == '__main__':
 
     while True:
         #根据输入选着执行什么操作
+        print("""
+        根据需要选择操作符：
+        1、采集第二天可以买的所以商品
+        2、查询商品
+        3、拍卖
+        4、返回上级          
+        """)
         theinput = input()
         #需要对输入进行处理
 
-        if theinput == "seachGoods":
-            # allgoods = getgoods()
+        if theinput == str(1):
+            # 采集第二天可以买的所以商品
             # allgoods.seachGoods()
             # allgoods.gethistory(121175658)
-            print(allgoods.getUsedNo("k380"))
-            print(allgoods.getGoodsid("1000033031280901"))
-            print(allgoods.gethistory("121262553"))
-        elif theinput == "printtest":
-            # allgoods = getgoods()
-            allgoods.printtest()
-        elif theinput == "getAllGoods":
+            # print(allgoods.getUsedNo("k380"))
+            # print(allgoods.getGoodsid("1000033031280901"))
+            # print(allgoods.gethistory("121262553"))
             allgoods.getAllGoods()
+        elif theinput == str(2):
+            thecode.seachgoods()
+            pass
+        elif theinput == "3":
+            #拍卖
+            pass
+        elif theinput == "4":
+            continue
+            pass
         elif theinput == "exit":
+            #退出输入
             break
+        else:
+            continue

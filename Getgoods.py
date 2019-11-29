@@ -2,6 +2,9 @@ import requests,json,time
 import re
 import pymysql
 import redis
+from config import Agent
+from config import mymysql
+from config import myredis
 
 class getgoods(object):
 
@@ -34,10 +37,10 @@ class getgoods(object):
             # "Connection": "close",
             "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36",
         }
-        self.myqllink = pymysql.connect(host= '127.0.0.1',user = 'root', passwd='ding123',db= 'duobaodao')
+        self.myqllink = pymysql.connect(host= mymysql['host'],user = mymysql['user'], passwd= mymysql['passwd'],db= mymysql['db'])
         self.cursor = self.myqllink.cursor()
         self.errordata = {'geterror':[],'setsqlerror':[]}
-        self.redislink = redis.Redis(host='127.0.0.1',port=6379)
+        self.redislink = redis.Redis(host= myredis['host'],port= myredis['port'])
 
     def getAllGoods(self):
         #对外暴露方法
@@ -135,8 +138,12 @@ class getgoods(object):
         # print(result_dict)
         pricelist = result_dict['data']['historyRecord']
         # print(pricelist)
+        historyPrice = ''
         for nb in pricelist:
-            print(nb['offerPrice'])
+            # print(nb['offerPrice'])
+            historyPrice = nb['offerPrice']
+
+        return historyPrice
         # try:
         #     url = ("https://used-api.paipai.com/auction/detail?callback=jQuery32108877681006626417_1574400875551&auctionId={0}&p=2").format(auction)
         #     # print(url)
@@ -154,7 +161,8 @@ class getgoods(object):
     def getGoodsid(self, usedNo):
         #根据提供的usedNo获取拍卖品id
         #在获取历史成交价格和拍卖时选着使用
-        sql = "SELECT id FROM goods WHERE usedNo ={0} ".format(usedNo)
+        auconttime = int(time.time()) + 60
+        sql = "SELECT id FROM goods WHERE usedNo ={0} AND endTime <= {1}".format(usedNo,auconttime)
         try:
             self.cursor.execute(sql)
             # 执行sql语句
@@ -168,8 +176,9 @@ class getgoods(object):
     def getUsedNo(self, condition, usedNo = ''):
         #根据条件获取商品的usedNo 可以考虑将新旧程度也加上去
         #条件基本时允许商品名或者usedNo
-        sql = "SELECT usedNo, quality, shopId FROM usedname WHERE productName LIKE '%{0}%'".format(condition)
-
+        # sql = "SELECT usedNo, quality, shopId, productName FROM usedname WHERE productName LIKE '%{0}%'".format(condition)
+        sql = "SELECT usedNo, quality, shopId, productName FROM usedname WHERE productName LIKE '%{0}%'".format(
+            condition)
         try:
             self.cursor.execute(sql)
             # 执行sql语句
@@ -184,9 +193,9 @@ class getgoods(object):
         print("printt")
         pass
 
-    def seachGoods(self):
-        #获取产品资料
-        print("ss")
+    # def seachGoods(self):
+    #     #获取产品资料
+    #     print("ss")
 
     def __getGoods(self,url):
         #获取每一个分页商品信息

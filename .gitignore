@@ -6,3 +6,4 @@
 *.idea/
 *cookies.txt
 *__pycache__/
+*config.py
