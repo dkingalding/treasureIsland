@@ -32,13 +32,27 @@ if __name__ == '__main__':
         theinput = input()
         #需要对输入进行处理
 
+<<<<<<< HEAD
         if theinput == str(1):
             # 采集第二天可以买的所以商品
+=======
+        if theinput == "getAllGoods":
+            allgoods.clearRedis()
+            allgoods.getAllGoods()
+            # allgoods = getgoods()
+>>>>>>> f4d0929c4a8f6e08ccd53a51ae0d7918b2f799dd
             # allgoods.seachGoods()
             # allgoods.gethistory(121175658)
             # print(allgoods.getUsedNo("k380"))
             # print(allgoods.getGoodsid("1000033031280901"))
             # print(allgoods.gethistory("121262553"))
+<<<<<<< HEAD
+=======
+        elif theinput == "getUsedNo":
+            # allgoods = getgoods()
+            print(allgoods.getUsedNo("发泥"))
+        elif theinput == "getAllGoods":
+>>>>>>> f4d0929c4a8f6e08ccd53a51ae0d7918b2f799dd
             allgoods.getAllGoods()
         elif theinput == str(2):
             thecode.seachgoods()

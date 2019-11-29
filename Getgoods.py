@@ -75,7 +75,7 @@ class getgoods(object):
                         for data1 in thedata[1]:
                             # print(data1)
                             self.__setdata(data1)
-                        time.sleep(4)
+                        time.sleep(2)
                 time.sleep(1)
                 if pageNo >= 200:
                     pageNo = 0
@@ -122,7 +122,11 @@ class getgoods(object):
             else:
                 print(type, key)
             print(vals)
-            # self.redislink.delete(key)
+        self.redislink.delete("goodslist")
+        sql = "TRUNCATE  goods"
+        self.cursor.execute(sql)
+        # 执行sql语句
+        self.myqllink.commit()
 
 
 
@@ -176,9 +180,11 @@ class getgoods(object):
     def getUsedNo(self, condition, usedNo = ''):
         #根据条件获取商品的usedNo 可以考虑将新旧程度也加上去
         #条件基本时允许商品名或者usedNo
+
         # sql = "SELECT usedNo, quality, shopId, productName FROM usedname WHERE productName LIKE '%{0}%'".format(condition)
         sql = "SELECT usedNo, quality, shopId, productName FROM usedname WHERE productName LIKE '%{0}%'".format(
             condition)
+
         try:
             self.cursor.execute(sql)
             # 执行sql语句
@@ -189,13 +195,12 @@ class getgoods(object):
             # 发生错误时回滚
             print("查询商品 usedNo {0} 出错".format(condition))
 
-    def printtest(self):
-        print("printt")
+
+
+    def seachGoods(self):
+        #获取产品资料
         pass
 
-    # def seachGoods(self):
-    #     #获取产品资料
-    #     print("ss")
 
     def __getGoods(self,url):
         #获取每一个分页商品信息
