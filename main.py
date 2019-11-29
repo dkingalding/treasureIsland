@@ -24,16 +24,18 @@ if __name__ == '__main__':
         theinput = input()
         #需要对输入进行处理
 
-        if theinput == "seachGoods":
+        if theinput == "getAllGoods":
+            allgoods.clearRedis()
+            allgoods.getAllGoods()
             # allgoods = getgoods()
             # allgoods.seachGoods()
             # allgoods.gethistory(121175658)
-            print(allgoods.getUsedNo("k380"))
-            print(allgoods.getGoodsid("1000033031280901"))
-            print(allgoods.gethistory("121262553"))
-        elif theinput == "printtest":
+            # print(allgoods.getUsedNo("k380"))
+            # print(allgoods.getGoodsid("1000033031280901"))
+            # print(allgoods.gethistory("121262553"))
+        elif theinput == "getUsedNo":
             # allgoods = getgoods()
-            allgoods.printtest()
+            print(allgoods.getUsedNo("发泥"))
         elif theinput == "getAllGoods":
             allgoods.getAllGoods()
         elif theinput == "exit":
