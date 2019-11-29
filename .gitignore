@@ -1,9 +1,10 @@
-*Include/
-*Lib/
-*Scripts/
-*todo.md
-*pyvenv.cfg
+Include/
+config.py
+Lib/
+Scripts/
+todo.md
+pyvenv.cfg
 *.idea/
-*cookies.txt
+cookies.txt
 *__pycache__/
-*config.py
+
