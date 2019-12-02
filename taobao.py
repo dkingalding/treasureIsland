@@ -45,6 +45,10 @@ class duobao(object):
         resp = requests.post(buy_url, headers=HEADERS, data=data)
         print(resp.json())
 
+    def priceIsok(self):
+        #确保价格是否有效
+        pass
+
     def offerOrNot(self):
         #判断是否出价和出多高的价格
         pass

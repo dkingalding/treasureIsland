@@ -165,8 +165,8 @@ class getgoods(object):
     def getGoodsid(self, usedNo):
         #根据提供的usedNo获取拍卖品id
         #在获取历史成交价格和拍卖时选着使用
-        auconttime = int(time.time()) + 60
-        sql = "SELECT id FROM goods WHERE usedNo ={0} AND endTime <= {1}".format(usedNo,auconttime)
+        auconttime = (int(time.time()) + 60)*1000
+        sql = "SELECT id FROM goods WHERE usedNo ={0} AND endTime >= {1}".format(usedNo,auconttime)
         try:
             self.cursor.execute(sql)
             # 执行sql语句
@@ -177,14 +177,23 @@ class getgoods(object):
             # 发生错误时回滚
             print("查询商品拍卖id {0} 出错".format(usedNo))
 
-    def getUsedNo(self, condition, usedNo = ''):
+    def getUsedNo(self, condition, shop = 0):
         #根据条件获取商品的usedNo 可以考虑将新旧程度也加上去
         #条件基本时允许商品名或者usedNo
-
-        # sql = "SELECT usedNo, quality, shopId, productName FROM usedname WHERE productName LIKE '%{0}%'".format(condition)
-        sql = "SELECT usedNo, quality, shopId, productName FROM usedname WHERE productName LIKE '%{0}%'".format(
-            condition)
-
+        if shop !=0:
+            shopcondition = ""
+        else:
+            shopcondition = "AND ss.shopId = 0"
+        auconttime = (int(time.time()) + 60)*1000
+        #sql = "SELECT usedNo, quality, shopId, productName FROM usedname WHERE productName LIKE '%{0}%'".format(condition)
+        sql = "SELECT ss.usedNo, ss.quality, ss.shopId, ss.productName,COUNT(*) num FROM usedname ss INNER JOIN " \
+              " goods gg  ON ss.usedNo = gg.usedNo WHERE ss.productName LIKE '%{0}%' AND gg.endTime >= {1} {2} GROUP BY ss.usedNo".format(
+            condition, auconttime, shopcondition)
+        # self.cursor.execute(sql)
+        # # 执行sql语句
+        # self.myqllink.commit()
+        # results = self.cursor.fetchall()
+        # return results
         try:
             self.cursor.execute(sql)
             # 执行sql语句
