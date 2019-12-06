@@ -3,27 +3,30 @@ from login import loginCook
 from taobao import duobao
 from inCode import inCode
 import time
+import re,json
 
 
 if __name__ == '__main__':
     allgoods = getgoods()
-    thecode = inCode(allgoods)
-    # chujia = duobao()
+    chujia = duobao()
+    thecode = inCode(allgoods, chujia)
+
+
     # allgoods.getUsedNo("米家(MIJIA)小米米家行车记录仪1S")
     # # allgoods.test()
     # # allgoods.clearRedis()
     # allgoods.index()
-    # allgoods.gethistory(121175658)
-
+    # print(allgoods.gethistory(121973386))
+    #
     # logintest = loginCook()
+    # # logintest.longduomingdao()
     # thecookies = logintest.getCookies()
-    # # print(thecookies)
-    # current = duobao()
-    # print(current.sendPrice(thecookies))
-    # chujia.sendPrice(121640412)
-    #1575268791000
-    #1575283767
-    #1575296160000
+    #
+    # # print(current.sendPrice(thecookies))
+    # chujia.sendPrice(thecookies, 121953003, 1002)
+    # print(chujia.goodsinfo(121973386))
+
+
     while True:
         #根据输入选着执行什么操作
         print("""
@@ -33,8 +36,8 @@ if __name__ == '__main__':
         3、拍卖
         4、返回上级
         """)
-        # auconttime = int(time.time()) + 60
-        # print(auconttime)
+        auconttime = int(time.time()) + 60
+        print(auconttime)
         theinput = input()
         #需要对输入进行处理
 

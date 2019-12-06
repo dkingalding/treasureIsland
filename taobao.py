@@ -5,6 +5,9 @@ from config import Agent
 
 class duobao(object):
 
+    # def __init__(self, allgoods):
+    #     pass
+
     def onegoods(self):
         #获取已经存储的信息
         pass
@@ -18,12 +21,27 @@ class duobao(object):
         }
         query_url = 'https://used-api.paipai.com/auctionRecord/batchCurrentInfo?auctionId={0}&callback=__jp5' \
             .format(paimaiid)
+        r = s.get(query_url, headers=headers, timeout=1)
+        # print(r.text)
+        result_json = re.search(r'{.*}', r.text)
+        result_dict = json.loads(result_json.group())
+        thedata = result_dict['data']
+        print(result_dict)
+        iddata = ''
+        for key in thedata:
+            if key == paimaiid:
+                iddata = thedata[key]
+        return iddata
         try:
             r = s.get(query_url, headers=headers, timeout=1)
             # print(r.text)
             result_json = re.search(r'{.*}', r.text)
             result_dict = json.loads(result_json.group())
-            return result_dict
+            thedata = result_dict['data']
+            for key in thedata:
+                if key == paimaiid:
+                    iddata = thedata[key]
+            return iddata
         except:
             print("查询商品价格超过1s")
 
@@ -45,11 +63,5 @@ class duobao(object):
         resp = requests.post(buy_url, headers=HEADERS, data=data)
         print(resp.json())
 
-    def priceIsok(self):
-        #确保价格是否有效
-        pass
 
-    def offerOrNot(self):
-        #判断是否出价和出多高的价格
-        pass
 

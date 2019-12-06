@@ -131,36 +131,26 @@ class getgoods(object):
 
 
     def gethistory(self,auction):
-        #https://used-api.paipai.com/auction/detail?callback=jQuery32108877681006626417_1574400875551&auctionId=120934440&p=2
-        url = (
-            "https://used-api.paipai.com/auction/detail?callback=jQuery32108877681006626417_1574400875551&auctionId={0}&p=2").format(
-            auction)
-        # print(url)
-        r = requests.get(url)
-        result_json = re.search(r'{.*}', r.text)
-        result_dict = json.loads(result_json.group())
-        # print(result_dict)
-        pricelist = result_dict['data']['historyRecord']
-        # print(pricelist)
         historyPrice = ''
-        for nb in pricelist:
-            # print(nb['offerPrice'])
-            historyPrice = nb['offerPrice']
-
+        try:
+            #https://used-api.paipai.com/auction/detail?callback=jQuery32108877681006626417_1574400875551&auctionId=120934440&p=2
+            url = (
+                "https://used-api.paipai.com/auction/detail?callback=jQuery32108877681006626417_1574400875551&auctionId={0}&p=2").format(
+                auction)
+            # print(url)
+            r = requests.get(url)
+            result_json = re.search(r'{.*}', r.text)
+            result_dict = json.loads(result_json.group())
+            # print(result_dict)
+            pricelist = result_dict['data']['historyRecord']
+            # print(pricelist)
+            for nb in pricelist:
+                # print(nb['offerPrice'])
+                historyPrice =historyPrice + '/'+str(nb['offerPrice'])
+        except:
+            historyPrice = '没有采集到数据'
         return historyPrice
-        # try:
-        #     url = ("https://used-api.paipai.com/auction/detail?callback=jQuery32108877681006626417_1574400875551&auctionId={0}&p=2").format(auction)
-        #     # print(url)
-        #     r = requests.get(url)
-        #     result_json = re.search(r'{.*}', r.text)
-        #     result_dict = json.loads(result_json.group())
-        #     # print(result_dict)
-        #     pricelist = result_dict['data']['historyRecord']
-        #     # print(pricelist)
-        #     for nb in pricelist.keys():
-        #         print(pricelist[nb]['offerPrice'])
-        # except:
-        #     print("采集历史成交价格出错")
+
 
     def getGoodsid(self, usedNo):
         #根据提供的usedNo获取拍卖品id
@@ -185,7 +175,7 @@ class getgoods(object):
         else:
             shopcondition = "AND ss.shopId = 0"
         auconttime = (int(time.time()) + 60)*1000
-        #sql = "SELECT usedNo, quality, shopId, productName FROM usedname WHERE productName LIKE '%{0}%'".format(condition)
+        # sql = "SELECT usedNo, quality, shopId, productName FROM usedname WHERE productName LIKE '%{0}%'".format(condition)
         sql = "SELECT ss.usedNo, ss.quality, ss.shopId, ss.productName,COUNT(*) num FROM usedname ss INNER JOIN " \
               " goods gg  ON ss.usedNo = gg.usedNo WHERE ss.productName LIKE '%{0}%' AND gg.endTime >= {1} {2} GROUP BY ss.usedNo".format(
             condition, auconttime, shopcondition)
@@ -255,8 +245,14 @@ class getgoods(object):
                 keydata = 'usedNo, productName, primaryPic, quality, shopId, size, brandId, shortProductName'
                 valuedata = ("'{0}'" +","+"'{1}'" +","+"'{2}'" +","+"'{3}'" +","+"'{4}'" +","+"'{5}'" +","+"'{6}'" +","+"'{7}'" )\
                     .format(data['usedNo'],data['productName'],data['primaryPic'],data['quality'],data['shopId'],data['size'],data['brandId'],data['shortProductName'])
+                # keydata = pymysql.escape_string(keydata)
+                # valuedata = pymysql.escape_string(valuedata)
                 sql = "INSERT INTO usedName ({0}) VALUES ({1})".format(keydata,valuedata)
-
+                # print(sql)
+                # self.cursor.execute(sql)
+                # # 执行sql语句
+                # self.myqllink.commit()
+                # self.redislink.sadd('usedName', data['usedNo'])
                 try:
                     self.cursor.execute(sql)
                     # 执行sql语句
@@ -264,7 +260,6 @@ class getgoods(object):
                     self.redislink.sadd('usedName', data['usedNo'])
                 except:
                     # 发生错误时回滚
-
                     self.errordata['setsqlerror'].append(data)
                     print("usedno cuowu")
                     self.myqllink.rollback()
