@@ -7,4 +7,6 @@ pyvenv.cfg
 *.idea/
 cookies.txt
 *__pycache__/
+taobao_test.py
+
 
