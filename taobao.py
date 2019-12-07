@@ -36,7 +36,7 @@ class duobao(object):
         }
         HEADERS = {
             'Referer': 'https://paipai.jd.com/auction-detail',
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.62 Safari/537.36',
+            'User-Agent':Agent[randint(0, 3)]['User-Agent'],
             'Cookie': youcookie
         }
         data['price'] = str(int(price))
@@ -44,12 +44,4 @@ class duobao(object):
         # print(data)
         resp = requests.post(buy_url, headers=HEADERS, data=data)
         print(resp.json())
-
-    def priceIsok(self):
-        #确保价格是否有效
-        pass
-
-    def offerOrNot(self):
-        #判断是否出价和出多高的价格
-        pass
 

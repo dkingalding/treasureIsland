@@ -1,3 +1,4 @@
+import time
 class inCode(object):
     #接受指令，并在本类中完成对其他基本类的调用，完成所有功能
     def __init__(self, allgoods, duobaoClass, loginClass):
@@ -9,15 +10,38 @@ class inCode(object):
 
 
     def startWork(self):
-        print(
-            """
-                #     根据需要选择操作符：
-                #     1、采集第二天可以买的所以商品
-                #     2、查询商品
-                #     3、拍卖
-                #     4、返回上级
-                #     """
-        )
+        #记录输入的操作和产生的关键数字
+        #根据操作提示不同的信息
+        while True:
+            print(
+                """
+                    #     根据需要选择操作符：
+                    #     1、采集第二天可以买的所以商品
+                    #     2、查询商品
+                    #     3、拍卖
+                    #     4、返回上级
+                    #     """
+            )
+            codetime = int(time.time())
+            print(codetime)
+            usecode =input()
+            if usecode == str(1):
+                # 采集第二天可以买的所以商品
+                self.allgoods.clearRedis()
+                self.allgoods.getAllGoods()
+            elif usecode == str(2):
+                self.seachgoods()
+            elif usecode == "3":
+                #拍卖
+                pass
+            elif usecode == "4":
+                continue
+                pass
+            elif usecode == "exit":
+                #退出输入
+                break
+            else:
+                continue
 
 
 
@@ -32,7 +56,7 @@ class inCode(object):
                  """)
             inUsedNo = input()
             goodsinfo = self.allgoods.getUsedNo(inUsedNo,1)
-            if goodsinfo != None:
+            if goodsinfo :
                 for value in goodsinfo:
                     print(value)
             else:
