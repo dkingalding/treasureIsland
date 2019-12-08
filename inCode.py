@@ -58,7 +58,13 @@ class inCode(object):
             goodsinfo = self.allgoods.getUsedNo(inUsedNo,1)
             if goodsinfo :
                 for value in goodsinfo:
-                    print(value)
+                    goodslist = self.allgoods.getGoodsid(value[0])
+                    # print(value)
+                    # print(goodslist)
+                    if goodslist:
+                        hisprice = self.allgoods.gethistory(goodslist[0][0])
+                        value = value + hisprice
+                     print(value)
             else:
                 print("没有相关商品")
             # if inUsedNo == str(""):
@@ -70,4 +76,3 @@ class inCode(object):
             #     pass
             # else:
             #     pass
-

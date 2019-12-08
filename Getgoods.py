@@ -171,18 +171,22 @@ class getgoods(object):
     def getGoodsid(self, usedNo):
         #根据提供的usedNo获取拍卖品id
         #在获取历史成交价格和拍卖时选着使用
-        auconttime = (int(time.time()) + 60)*1000
+        auconttime = (int(time.time()))*1000
         sql = "SELECT id FROM goods WHERE usedNo ={0} AND endTime >= {1}".format(usedNo,auconttime)
         try:
             self.cursor.execute(sql)
             # 执行sql语句
             self.myqllink.commit()
             results = self.cursor.fetchall()
-            return results
+
         except:
             #将错误信息计入，并输出错误信息
             logging.error(traceback.format_exc())
             print("查询商品拍卖id {0} 出错".format(usedNo))
+            results = ()
+        finally:
+            return results
+
 
     def getUsedNo(self, condition, shop = 0):
         #根据条件获取商品的usedNo 可以考虑将新旧程度也加上去
