@@ -83,7 +83,7 @@ class getgoods(object):
                     pageNo = 0
                     bb = False
                     print("已经完成采集")
-        self.myqllink.close()
+        # self.myqllink.close()
 
     def test(self):
         #对外暴露方法
@@ -196,11 +196,6 @@ class getgoods(object):
         sql = "SELECT ss.usedNo, ss.quality, ss.shopId, ss.productName,COUNT(*) num FROM usedname ss INNER JOIN " \
               " goods gg  ON ss.usedNo = gg.usedNo WHERE ss.productName LIKE '%{0}%' AND gg.endTime >= {1} {2} GROUP BY ss.usedNo".format(
             condition, auconttime, shopcondition)
-        # self.cursor.execute(sql)
-        # # 执行sql语句
-        # self.myqllink.commit()
-        # results = self.cursor.fetchall()
-        # return results
         try:
             self.cursor.execute(sql)
             # 执行sql语句

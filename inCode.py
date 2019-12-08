@@ -16,20 +16,20 @@ class inCode(object):
             print(
                 """
                     #     根据需要选择操作符：
-                    #     1、采集第二天可以买的所以商品
-                    #     2、查询商品
-                    #     3、拍卖
-                    #     4、返回上级
+                    #     getgoods、采集第二天可以买的所以商品
+                    #     seach、查询商品
+                    #     paimai、拍卖
+                    #     exit、返回上级
                     #     """
             )
             codetime = int(time.time())
             print(codetime)
             usecode =input()
-            if usecode == str(1):
+            if usecode == str("getgoods"):
                 # 采集第二天可以买的所以商品
                 self.allgoods.clearRedis()
                 self.allgoods.getAllGoods()
-            elif usecode == str(2):
+            elif usecode == str("seach"):
                 self.seachgoods()
             elif usecode == "3":
                 #拍卖
