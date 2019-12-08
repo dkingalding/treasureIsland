@@ -150,7 +150,7 @@ class getgoods(object):
         historyPrice = ''
         for nb in pricelist:
             # print(nb['offerPrice'])
-            historyPrice = nb['offerPrice']
+            historyPrice = historyPrice + "/" +nb['offerPrice']
 
         return historyPrice
         # try:

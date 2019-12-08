@@ -63,8 +63,8 @@ class inCode(object):
                     # print(goodslist)
                     if goodslist:
                         hisprice = self.allgoods.gethistory(goodslist[0][0])
-                        value = value + hisprice
-                     print(value)
+                        value = value + (hisprice, )
+                    print(value)
             else:
                 print("没有相关商品")
             # if inUsedNo == str(""):
