@@ -161,7 +161,7 @@ class getgoods(object):
         #根据提供的usedNo获取拍卖品id
         #在获取历史成交价格和拍卖时选着使用
         auconttime = (int(time.time()))*1000
-        sql = "SELECT id FROM goods WHERE usedNo ={0} AND endTime >= {1} ORDER BY endTime".format(usedNo,auconttime)
+        sql = "SELECT id, startTime, endTime FROM goods WHERE usedNo ={0} AND endTime >= {1} ORDER BY endTime".format(usedNo,auconttime)
         try:
             self.cursor.execute(sql)
             # 执行sql语句
@@ -184,7 +184,7 @@ class getgoods(object):
             shopcondition = ""
         else:
             shopcondition = "AND ss.shopId = 0"
-        auconttime = (int(time.time()) + 60)*1000
+        auconttime = int(time.time())*1000
         #sql = "SELECT usedNo, quality, shopId, productName FROM usedname WHERE productName LIKE '%{0}%'".format(condition)
         sql = "SELECT ss.usedNo, ss.quality, ss.shopId, ss.productName,COUNT(*) num FROM usedname ss INNER JOIN " \
               " goods gg  ON ss.usedNo = gg.usedNo WHERE ss.productName LIKE '%{0}%' AND gg.endTime >= {1} {2} GROUP BY ss.usedNo".format(

@@ -25,18 +25,13 @@ class inCode(object):
             codetime = int(time.time())
             print(codetime)
             usecode =input()
+            usecode = usecode.replace(' ','')
             if usecode == str("getgoods"):
                 # 采集第二天可以买的所以商品
                 self.allgoods.clearRedis()
                 self.allgoods.getAllGoods()
             elif usecode == str("seach"):
                 self.seachgoods()
-            elif usecode == "3":
-                #拍卖
-                pass
-            elif usecode == "4":
-                continue
-                pass
             elif usecode == "exit":
                 #退出输入
                 break
@@ -61,7 +56,10 @@ class inCode(object):
             3、退出
              """)
         inUsedNo = input()
+        inUsedNo = inUsedNo.replace(' ', '')
         coodusedNo = inUsedNo.split('*')
+        if len(coodusedNo)==1:
+            coodusedNo.append(0)
         goodsinfo = self.allgoods.getUsedNo(coodusedNo[0],coodusedNo[1])
         if goodsinfo :
             for value in goodsinfo:
@@ -94,12 +92,15 @@ class inCode(object):
         #查询最近时间商品的价格，如果高于规定价格就拍卖
         #查询自己出的价格是否有效，是否超过了自己定的价格
         #如果没有超过自己的定价就继续出价
-        print("paimai")
+        # print("paimai")
         goodlist = self.allgoods.getGoodsid(usedNo)
+        print(goodlist)
         goodsinfo = self.duobaoClass.goodsinfo(goodlist[0][0])
+
         currentPrice = goodsinfo['data'][str(goodlist[0][0])]['currentPrice']
         print(currentPrice)
         myprice = 1
+
         if currentPrice >= float(price):
             print("已经超过限定价格")
             return
@@ -109,6 +110,8 @@ class inCode(object):
         else:
             youcookies = self.loginClass.getCookies()
             myprice = currentPrice + 3
+            if myprice >= 93 or myprice <= 99:
+                myprice = 99
             thecode = self.duobaoClass.sendPrice( youcookies, goodlist[0][0] ,myprice)
             # print(thecode)
             if thecode['code'] != 200:
