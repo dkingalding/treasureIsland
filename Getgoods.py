@@ -137,42 +137,31 @@ class getgoods(object):
 
 
     def gethistory(self,auction):
-        #https://used-api.paipai.com/auction/detail?callback=jQuery32108877681006626417_1574400875551&auctionId=120934440&p=2
-        url = (
-            "https://used-api.paipai.com/auction/detail?callback=jQuery32108877681006626417_1574400875551&auctionId={0}&p=2").format(
-            auction)
-        r = requests.get(url)
-        result_json = re.search(r'{.*}', r.text)
-        result_dict = json.loads(result_json.group())
-        # print(result_dict)
-        pricelist = result_dict['data']['historyRecord']
-        # print(pricelist)
-        historyPrice = ''
-        for nb in pricelist:
-            # print(nb['offerPrice'])
-            historyPrice = historyPrice + "/" +nb['offerPrice']
-
+        try:
+            #https://used-api.paipai.com/auction/detail?callback=jQuery32108877681006626417_1574400875551&auctionId=120934440&p=2
+            url = (
+                "https://used-api.paipai.com/auction/detail?callback=jQuery32108877681006626417_1574400875551&auctionId={0}&p=2").format(
+                auction)
+            r = requests.get(url)
+            result_json = re.search(r'{.*}', r.text)
+            result_dict = json.loads(result_json.group())
+            # print(result_dict)
+            pricelist = result_dict['data']['historyRecord']
+            # print(pricelist)
+            historyPrice = ''
+            for nb in pricelist:
+                # print(nb['offerPrice'])
+                historyPrice = historyPrice + "/" + str(nb['offerPrice'])
+        except:
+            historyPrice = '没有历史价格'
         return historyPrice
-        # try:
-        #     url = ("https://used-api.paipai.com/auction/detail?callback=jQuery32108877681006626417_1574400875551&auctionId={0}&p=2").format(auction)
-        #     # print(url)
-        #     r = requests.get(url)
-        #     result_json = re.search(r'{.*}', r.text)
-        #     result_dict = json.loads(result_json.group())
-        #     # print(result_dict)
-        #     pricelist = result_dict['data']['historyRecord']
-        #     # print(pricelist)
-        #     for nb in pricelist.keys():
-        #         print(pricelist[nb]['offerPrice'])
-        # except:
-        #     logging.error(traceback.format_exc())
-        #     print("采集历史成交价格出错")
+
 
     def getGoodsid(self, usedNo):
         #根据提供的usedNo获取拍卖品id
         #在获取历史成交价格和拍卖时选着使用
         auconttime = (int(time.time()))*1000
-        sql = "SELECT id FROM goods WHERE usedNo ={0} AND endTime >= {1}".format(usedNo,auconttime)
+        sql = "SELECT id FROM goods WHERE usedNo ={0} AND endTime >= {1} ORDER BY endTime".format(usedNo,auconttime)
         try:
             self.cursor.execute(sql)
             # 执行sql语句

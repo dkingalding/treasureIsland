@@ -2,6 +2,7 @@ import requests,json
 import re
 from random import randint
 from config import Agent
+from login import loginCook
 
 class duobao(object):
 
@@ -23,9 +24,11 @@ class duobao(object):
             # print(r.text)
             result_json = re.search(r'{.*}', r.text)
             result_dict = json.loads(result_json.group())
-            return result_dict
         except:
-            print("查询商品价格超过1s")
+            print("没有查询到信息")
+            result_dict = {}
+        finally:
+            return result_dict
 
     def sendPrice(self,youcookie,auctionId,price):
         #出价
@@ -43,5 +46,9 @@ class duobao(object):
         data['auctionId'] = str(auctionId)
         # print(data)
         resp = requests.post(buy_url, headers=HEADERS, data=data)
-        print(resp.json())
-
+        resultdata = resp.json()
+        if resultdata['code'] == 501 and resultdata['message'] == "用户未登录":
+            loginclass =loginCook()
+            loginclass.longduomingdao()
+            self.sendPrice(youcookie,auctionId,price)
+        return resultdata
