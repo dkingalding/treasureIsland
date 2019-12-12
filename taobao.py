@@ -6,13 +6,9 @@ from login import loginCook
 
 class duobao(object):
 
-<<<<<<< HEAD
-    # def __init__(self, allgoods):
-    #     pass
-=======
     def __init__(self):
         self.loginClass = loginCook()
->>>>>>> dev
+
 
     def onegoods(self):
         #获取已经存储的信息
@@ -43,14 +39,7 @@ class duobao(object):
             # print(r.text)
             result_json = re.search(r'{.*}', r.text)
             result_dict = json.loads(result_json.group())
-<<<<<<< HEAD
-            thedata = result_dict['data']
-            for key in thedata:
-                if key == paimaiid:
-                    iddata = thedata[key]
-            return iddata
-=======
->>>>>>> dev
+
         except:
             print("没有查询到信息")
             result_dict = {}
@@ -75,15 +64,9 @@ class duobao(object):
         data['auctionId'] = str(auctionId)
         # print(data)
         resp = requests.post(buy_url, headers=HEADERS, data=data)
-<<<<<<< HEAD
-        print(resp.json())
 
-
-
-=======
         resultdata = resp.json()
         if resultdata['code'] == 501 and resultdata['message'] == "用户未登录":
             self.loginClass.longduomingdao()
             self.sendPrice(auctionId, price)
         return resultdata
->>>>>>> dev

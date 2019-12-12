@@ -137,39 +137,26 @@ class getgoods(object):
 
 
     def gethistory(self,auction):
-<<<<<<< HEAD
-        historyPrice = ''
-=======
->>>>>>> dev
+
         try:
             #https://used-api.paipai.com/auction/detail?callback=jQuery32108877681006626417_1574400875551&auctionId=120934440&p=2
             url = (
                 "https://used-api.paipai.com/auction/detail?callback=jQuery32108877681006626417_1574400875551&auctionId={0}&p=2").format(
                 auction)
-<<<<<<< HEAD
-            # print(url)
-=======
->>>>>>> dev
+
             r = requests.get(url)
             result_json = re.search(r'{.*}', r.text)
             result_dict = json.loads(result_json.group())
             # print(result_dict)
             pricelist = result_dict['data']['historyRecord']
             # print(pricelist)
-<<<<<<< HEAD
-            for nb in pricelist:
-                # print(nb['offerPrice'])
-                historyPrice =historyPrice + '/'+str(nb['offerPrice'])
-        except:
-            historyPrice = '没有采集到数据'
-=======
+
             historyPrice = ''
             for nb in pricelist:
                 # print(nb['offerPrice'])
                 historyPrice = historyPrice + "/" + str(nb['offerPrice'])
         except:
             historyPrice = '没有历史价格'
->>>>>>> dev
         return historyPrice
 
 
@@ -200,13 +187,9 @@ class getgoods(object):
             shopcondition = ""
         else:
             shopcondition = "AND ss.shopId = 0"
-<<<<<<< HEAD
-        auconttime = (int(time.time()) + 60)*1000
-        # sql = "SELECT usedNo, quality, shopId, productName FROM usedname WHERE productName LIKE '%{0}%'".format(condition)
-=======
+
         auconttime = int(time.time())*1000
-        #sql = "SELECT usedNo, quality, shopId, productName FROM usedname WHERE productName LIKE '%{0}%'".format(condition)
->>>>>>> dev
+
         sql = "SELECT ss.usedNo, ss.quality, ss.shopId, ss.productName,COUNT(*) num FROM usedname ss INNER JOIN " \
               " goods gg  ON ss.usedNo = gg.usedNo WHERE ss.productName LIKE '%{0}%' AND gg.endTime >= {1} {2} GROUP BY ss.usedNo".format(
             condition, auconttime, shopcondition)
@@ -279,14 +262,7 @@ class getgoods(object):
                 # keydata = pymysql.escape_string(keydata)
                 # valuedata = pymysql.escape_string(valuedata)
                 sql = "INSERT INTO usedName ({0}) VALUES ({1})".format(keydata,valuedata)
-<<<<<<< HEAD
-                # print(sql)
-                # self.cursor.execute(sql)
-                # # 执行sql语句
-                # self.myqllink.commit()
-                # self.redislink.sadd('usedName', data['usedNo'])
-=======
->>>>>>> dev
+
                 try:
                     self.cursor.execute(sql)
                     # 执行sql语句
@@ -294,10 +270,9 @@ class getgoods(object):
                     self.redislink.sadd('usedName', data['usedNo'])
                 except:
                     # 发生错误时回滚
-<<<<<<< HEAD
-=======
+
                     logging.error(traceback.format_exc())
->>>>>>> dev
+
                     self.errordata['setsqlerror'].append(data)
                     print("usedno cuowu")
                     self.myqllink.rollback()
