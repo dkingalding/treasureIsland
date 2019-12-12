@@ -85,36 +85,41 @@ class inCode(object):
         # print("paimai")
         goodlist = self.allgoods.getGoodsid(usedNo)
         theMaxprice = str(round(int(price) * 0.95))
-        print(goodlist)
+        print(goodlist, theMaxprice)
         nowtime = round(time.time() * 1000)
-        if goodlist[0][1] > str(nowtime):
-            print("拍卖还没有开始")
-            return
-        if goodlist[0][1] - nowtime <=1000 and goodlist[0][1] - nowtime > 0:
+        #需要那结束时间对比，在结束前一秒开始拍卖
+        firsttime = int(goodlist[0][2]) - nowtime
+
+        # if goodlist[0][1] > str(nowtime):
+        #     print("拍卖还没有开始")
+        #     return
+        if firsttime <=1000 and firsttime > 0:
             #满足这个条件是才开始竞价
-            pass
-        goodsinfo = self.duobaoClass.goodsinfo(goodlist[0][0])
-        #采集到目前最高的价格
-        currentPrice = goodsinfo['data'][str(goodlist[0][0])]['currentPrice']
+            # pass
+            goodsinfo = self.duobaoClass.goodsinfo(goodlist[0][0])
 
-        print(currentPrice)
+            #采集到目前最高的价格
+            currentPrice = goodsinfo['data'][str(goodlist[0][0])]['currentPrice']
 
-        myprice = 1
+            print(currentPrice)
 
-        if currentPrice >= float(theMaxprice):
-            print("已经超过限定价格")
-            return
-        elif currentPrice < float(myprice):
-            print("已经超过我的价格")
-            return
-        else:
-            # youcookies = self.loginClass.getCookies()
-            myprice = currentPrice + 3
-            if myprice >= 93 or myprice <= 99:
-                myprice = 99
-            thecode = self.duobaoClass.sendPrice(goodlist[0][0] ,myprice)
-            # print(thecode)
-            if thecode['code'] != 200:
+            myprice = 1
+
+            if currentPrice >= float(theMaxprice):
+                print("已经超过限定价格")
+                return
+            elif currentPrice < float(myprice):
+                print("已经超过我的价格")
+                return
+            else:
+                # youcookies = self.loginClass.getCookies()
+                myprice = currentPrice + 3
+                if myprice >= 93 and myprice <= 99:
+                    myprice = 99
+                print(myprice)
+                thecode = self.duobaoClass.sendPrice(goodlist[0][0] ,myprice)
                 print(thecode)
+                # if thecode['code'] != 200:
+                #     print(thecode)
 
 
