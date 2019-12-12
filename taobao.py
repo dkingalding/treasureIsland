@@ -2,11 +2,17 @@ import requests,json
 import re
 from random import randint
 from config import Agent
+from login import loginCook
 
 class duobao(object):
 
+<<<<<<< HEAD
     # def __init__(self, allgoods):
     #     pass
+=======
+    def __init__(self):
+        self.loginClass = loginCook()
+>>>>>>> dev
 
     def onegoods(self):
         #获取已经存储的信息
@@ -37,16 +43,24 @@ class duobao(object):
             # print(r.text)
             result_json = re.search(r'{.*}', r.text)
             result_dict = json.loads(result_json.group())
+<<<<<<< HEAD
             thedata = result_dict['data']
             for key in thedata:
                 if key == paimaiid:
                     iddata = thedata[key]
             return iddata
+=======
+>>>>>>> dev
         except:
-            print("查询商品价格超过1s")
+            print("没有查询到信息")
+            result_dict = {}
+        finally:
+            return result_dict
 
-    def sendPrice(self,youcookie,auctionId,price):
+    def sendPrice(self, auctionId,price):
         #出价
+        youcookie = self.loginClass.getCookies()
+
         buy_url = 'https://used-api.jd.com/auctionRecord/offerPrice'
         data = {
             # 'trackId': 'dde516c09ed6a70f14d0d9404cd963c7',
@@ -54,14 +68,22 @@ class duobao(object):
         }
         HEADERS = {
             'Referer': 'https://paipai.jd.com/auction-detail',
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.62 Safari/537.36',
+            'User-Agent':Agent[randint(0, 3)]['User-Agent'],
             'Cookie': youcookie
         }
         data['price'] = str(int(price))
         data['auctionId'] = str(auctionId)
         # print(data)
         resp = requests.post(buy_url, headers=HEADERS, data=data)
+<<<<<<< HEAD
         print(resp.json())
 
 
 
+=======
+        resultdata = resp.json()
+        if resultdata['code'] == 501 and resultdata['message'] == "用户未登录":
+            self.loginClass.longduomingdao()
+            self.sendPrice(auctionId, price)
+        return resultdata
+>>>>>>> dev

@@ -2,9 +2,12 @@ import requests,json,time
 import re
 import pymysql
 import redis
-from config import Agent
 from config import mymysql
 from config import myredis
+from config import Agent
+from random import randint
+import logging
+import traceback
 
 class getgoods(object):
 
@@ -35,12 +38,13 @@ class getgoods(object):
             # "Connection": "keep-alive",
             # "Referer": "https: // paipai.jd.com / auction - list",
             # "Connection": "close",
-            "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36",
+            "User-Agent":Agent[randint(0, 3)]['User-Agent'],
         }
         self.myqllink = pymysql.connect(host= mymysql['host'],user = mymysql['user'], passwd= mymysql['passwd'],db= mymysql['db'])
         self.cursor = self.myqllink.cursor()
         self.errordata = {'geterror':[],'setsqlerror':[]}
         self.redislink = redis.Redis(host= myredis['host'],port= myredis['port'])
+        logging.basicConfig(filename='log.txt', level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
 
     def getAllGoods(self):
         #对外暴露方法
@@ -60,11 +64,9 @@ class getgoods(object):
                 thedata = self.__getGoods(url)
                 print(groupId, pageNo)
                 if thedata[0] == 444:
-                    print("采集出现错误")
-                    bb = False
-
+                    # print("采集出现错误")
                     self.errordata['geterror'].append(url)
-
+                    break
                 if thedata[1] == None:
                     bb = False
                     print("已经完成采集")
@@ -81,7 +83,7 @@ class getgoods(object):
                     pageNo = 0
                     bb = False
                     print("已经完成采集")
-        self.myqllink.close()
+        # self.myqllink.close()
 
     def test(self):
         #对外暴露方法
@@ -122,50 +124,74 @@ class getgoods(object):
             else:
                 print(type, key)
             print(vals)
+            # self.redislink.delete(key)
         self.redislink.delete("goodslist")
         sql = "TRUNCATE  goods"
         self.cursor.execute(sql)
+        # sql = "TRUNCATE  usedname"
+        # self.cursor.execute(sql)
+        # sql = "TRUNCATE  shop"
+        # self.cursor.execute(sql)
         # 执行sql语句
         self.myqllink.commit()
 
 
-
     def gethistory(self,auction):
+<<<<<<< HEAD
         historyPrice = ''
+=======
+>>>>>>> dev
         try:
             #https://used-api.paipai.com/auction/detail?callback=jQuery32108877681006626417_1574400875551&auctionId=120934440&p=2
             url = (
                 "https://used-api.paipai.com/auction/detail?callback=jQuery32108877681006626417_1574400875551&auctionId={0}&p=2").format(
                 auction)
+<<<<<<< HEAD
             # print(url)
+=======
+>>>>>>> dev
             r = requests.get(url)
             result_json = re.search(r'{.*}', r.text)
             result_dict = json.loads(result_json.group())
             # print(result_dict)
             pricelist = result_dict['data']['historyRecord']
             # print(pricelist)
+<<<<<<< HEAD
             for nb in pricelist:
                 # print(nb['offerPrice'])
                 historyPrice =historyPrice + '/'+str(nb['offerPrice'])
         except:
             historyPrice = '没有采集到数据'
+=======
+            historyPrice = ''
+            for nb in pricelist:
+                # print(nb['offerPrice'])
+                historyPrice = historyPrice + "/" + str(nb['offerPrice'])
+        except:
+            historyPrice = '没有历史价格'
+>>>>>>> dev
         return historyPrice
 
 
     def getGoodsid(self, usedNo):
         #根据提供的usedNo获取拍卖品id
         #在获取历史成交价格和拍卖时选着使用
-        auconttime = (int(time.time()) + 60)*1000
-        sql = "SELECT id FROM goods WHERE usedNo ={0} AND endTime >= {1}".format(usedNo,auconttime)
+        auconttime = (int(time.time()))*1000
+        sql = "SELECT id, startTime, endTime FROM goods WHERE usedNo ={0} AND endTime >= {1} ORDER BY endTime".format(usedNo,auconttime)
         try:
             self.cursor.execute(sql)
             # 执行sql语句
             self.myqllink.commit()
             results = self.cursor.fetchall()
-            return results
+
         except:
-            # 发生错误时回滚
+            #将错误信息计入，并输出错误信息
+            logging.error(traceback.format_exc())
             print("查询商品拍卖id {0} 出错".format(usedNo))
+            results = ()
+        finally:
+            return results
+
 
     def getUsedNo(self, condition, shop = 0):
         #根据条件获取商品的usedNo 可以考虑将新旧程度也加上去
@@ -174,31 +200,29 @@ class getgoods(object):
             shopcondition = ""
         else:
             shopcondition = "AND ss.shopId = 0"
+<<<<<<< HEAD
         auconttime = (int(time.time()) + 60)*1000
         # sql = "SELECT usedNo, quality, shopId, productName FROM usedname WHERE productName LIKE '%{0}%'".format(condition)
+=======
+        auconttime = int(time.time())*1000
+        #sql = "SELECT usedNo, quality, shopId, productName FROM usedname WHERE productName LIKE '%{0}%'".format(condition)
+>>>>>>> dev
         sql = "SELECT ss.usedNo, ss.quality, ss.shopId, ss.productName,COUNT(*) num FROM usedname ss INNER JOIN " \
               " goods gg  ON ss.usedNo = gg.usedNo WHERE ss.productName LIKE '%{0}%' AND gg.endTime >= {1} {2} GROUP BY ss.usedNo".format(
             condition, auconttime, shopcondition)
-        # self.cursor.execute(sql)
-        # # 执行sql语句
-        # self.myqllink.commit()
-        # results = self.cursor.fetchall()
-        # return results
         try:
             self.cursor.execute(sql)
             # 执行sql语句
             self.myqllink.commit()
             results = self.cursor.fetchall()
-            return results
         except:
             # 发生错误时回滚
+            logging.error(traceback.format_exc())
             print("查询商品 usedNo {0} 出错".format(condition))
+            results = ()
+        finally:
+            return results
 
-
-
-    def seachGoods(self):
-        #获取产品资料
-        pass
 
 
     def __getGoods(self,url):
@@ -223,9 +247,11 @@ class getgoods(object):
                 code = False
                 thedata = ''
                 return code,thedata
+            # raise Exception('发生异常错误信息')
         except:
             thedata = ''
             code = 444
+            logging.error(traceback.format_exc())
             return code,thedata
         # print(result_dict)
         # print(tt["data"][])
@@ -238,9 +264,14 @@ class getgoods(object):
         if isinstance(data,dict):
             #先查商品是否已经录入，可以使用redis集合
             # 如果商品没有录入就将商品存入到数据库和redis
+
+            #去除数据中的None和单引号，能确保数据能存储进去
             for key in data.keys():
                 if data[key] == None:
                     data[key] = 0
+                data[key] = str(data[key])
+                data[key] = data[key].replace('\'', '')
+
             if self.redislink.sismember('usedName', data['usedNo'])== False:
                 keydata = 'usedNo, productName, primaryPic, quality, shopId, size, brandId, shortProductName'
                 valuedata = ("'{0}'" +","+"'{1}'" +","+"'{2}'" +","+"'{3}'" +","+"'{4}'" +","+"'{5}'" +","+"'{6}'" +","+"'{7}'" )\
@@ -248,11 +279,14 @@ class getgoods(object):
                 # keydata = pymysql.escape_string(keydata)
                 # valuedata = pymysql.escape_string(valuedata)
                 sql = "INSERT INTO usedName ({0}) VALUES ({1})".format(keydata,valuedata)
+<<<<<<< HEAD
                 # print(sql)
                 # self.cursor.execute(sql)
                 # # 执行sql语句
                 # self.myqllink.commit()
                 # self.redislink.sadd('usedName', data['usedNo'])
+=======
+>>>>>>> dev
                 try:
                     self.cursor.execute(sql)
                     # 执行sql语句
@@ -260,6 +294,10 @@ class getgoods(object):
                     self.redislink.sadd('usedName', data['usedNo'])
                 except:
                     # 发生错误时回滚
+<<<<<<< HEAD
+=======
+                    logging.error(traceback.format_exc())
+>>>>>>> dev
                     self.errordata['setsqlerror'].append(data)
                     print("usedno cuowu")
                     self.myqllink.rollback()
@@ -278,11 +316,11 @@ class getgoods(object):
                     self.redislink.sadd('shop', data['shopId'])
                 except:
                     # 发生错误时回滚
-
                     self.errordata['setsqlerror'].append(data)
                     print("shop cuowu")
                     self.myqllink.rollback()
                     self.redislink.srem('shop', data['shopId'])
+                    logging.error(traceback.format_exc())
             #查商品号是否录入
             #如果没有如入就将商品写入数据库
             if self.redislink.sismember('goodslist', data['id'])==False:
@@ -291,39 +329,17 @@ class getgoods(object):
                     .format(data['id'],data['usedNo'],data['startTime'],data['endTime'],data['cappedPrice'],data['status'],data['quality'])
                 sql = "INSERT INTO goods ({0}) VALUES ({1})".format(keydata,valuedata)
                 try:
-                    self.cursor.execute(sql)
                     # 执行sql语句
+                    self.cursor.execute(sql)
                     self.myqllink.commit()
                     self.redislink.sadd('goodslist', data['id'])
                 except:
                     # 发生错误时回滚
-
                     self.errordata['setsqlerror'].append(data)
                     print("goodslist cuowu")
                     self.myqllink.rollback()
                     self.redislink.srem('goodslist', data['id'])
-            # for key in data.keys():
-            #     keydata = keydata + key+","
-            #     # keydata =(keydata + '%s' + key + ',')%(key)
-            #     valuedata = (valuedata +"'{0}'" +",").format(data[key])
-            # keydata = keydata.strip(',')
-            # valuedata = valuedata.strip(',')
-            # sql = "INSERT INTO goodslist ({0}) VALUES ({1})".format(keydata, valuedata)
-            # self.cursor.execute(sql)
-            #     # 执行sql语句
-            # self.myqllink.commit()
-
-            # try:
-            #     self.cursor.execute(sql)
-            #     # 执行sql语句
-            #     self.myqllink.commit()
-            #
-            # except:
-            #     # 发生错误时回滚
-            #
-            #     self.errordata['setsqlerror'].append(data)
-            #     print("sql cuowu")
-            #     self.myqllink.rollback()
+                    logging.error(traceback.format_exc())
         else:
             #返回数据，并对数据不做处理
             print('数据格式错误不是dict')
