@@ -6,6 +6,9 @@ from login import loginCook
 
 class duobao(object):
 
+    def __init__(self):
+        self.loginClass = loginCook()
+
     def onegoods(self):
         #获取已经存储的信息
         pass
@@ -30,8 +33,10 @@ class duobao(object):
         finally:
             return result_dict
 
-    def sendPrice(self,youcookie,auctionId,price):
+    def sendPrice(self, auctionId,price):
         #出价
+        youcookie = self.loginClass.getCookies()
+
         buy_url = 'https://used-api.jd.com/auctionRecord/offerPrice'
         data = {
             # 'trackId': 'dde516c09ed6a70f14d0d9404cd963c7',
@@ -48,7 +53,6 @@ class duobao(object):
         resp = requests.post(buy_url, headers=HEADERS, data=data)
         resultdata = resp.json()
         if resultdata['code'] == 501 and resultdata['message'] == "用户未登录":
-            loginclass =loginCook()
-            loginclass.longduomingdao()
-            self.sendPrice(youcookie,auctionId,price)
+            self.loginClass.longduomingdao()
+            self.sendPrice(auctionId, price)
         return resultdata
