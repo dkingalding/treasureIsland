@@ -122,4 +122,5 @@ class inCode(object):
                 # if thecode['code'] != 200:
                 #     print(thecode)
 
-
+        else:
+            print("还没有到出价的最后一秒")
