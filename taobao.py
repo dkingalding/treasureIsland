@@ -14,6 +14,8 @@ class duobao(object):
         #获取已经存储的信息
         pass
 
+
+
     def goodsinfo(self, paimaiid):
         #获取目前最高价格
         #https://used-api.paipai.com/auctionRecord/batchCurrentInfo?auctionId=120846715&callback=__jp5
@@ -23,23 +25,11 @@ class duobao(object):
         }
         query_url = 'https://used-api.paipai.com/auctionRecord/batchCurrentInfo?auctionId={0}&callback=__jp5' \
             .format(paimaiid)
-        r = s.get(query_url, headers=headers, timeout=1)
-        # print(r.text)
-        result_json = re.search(r'{.*}', r.text)
-        result_dict = json.loads(result_json.group())
-        thedata = result_dict['data']
-        print(result_dict)
-        iddata = ''
-        for key in thedata:
-            if key == paimaiid:
-                iddata = thedata[key]
-        return iddata
         try:
             r = s.get(query_url, headers=headers, timeout=1)
             # print(r.text)
             result_json = re.search(r'{.*}', r.text)
             result_dict = json.loads(result_json.group())
-
         except:
             print("没有查询到信息")
             result_dict = {}
