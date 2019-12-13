@@ -180,10 +180,11 @@ class getgoods(object):
     def getUsedNo(self, condition, shop = 0):
         #根据条件获取商品的usedNo 可以考虑将新旧程度也加上去
         #条件基本时允许商品名或者usedNo
-        if shop !=0:
+        if shop != 0:
             shopcondition = ""
         else:
             shopcondition = "AND ss.shopId = 0"
+        # print(shopcondition)
         auconttime = int(time.time())*1000
         #sql = "SELECT usedNo, quality, shopId, productName FROM usedname WHERE productName LIKE '%{0}%'".format(condition)
         sql = "SELECT ss.usedNo, ss.quality, ss.shopId, ss.productName,COUNT(*) num FROM usedname ss INNER JOIN " \

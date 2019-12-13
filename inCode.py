@@ -1,4 +1,7 @@
 import time
+from config import myredis
+import redis
+
 class inCode(object):
     #接受指令，并在本类中完成对其他基本类的调用，完成所有功能
     def __init__(self, allgoods, duobaoClass, loginClass):
@@ -7,17 +10,22 @@ class inCode(object):
         self.allgoods = allgoods
         self.duobaoClass = duobaoClass
         self.loginClass = loginClass
+        self.redislink = redis.Redis(host=myredis['host'], port=myredis['port'])
 
 
     def startWork(self):
         #记录输入的操作和产生的关键数字
         #根据操作提示不同的信息
+        #需要进行多线程或者多进程
+        #将获取所有数据的加入到任务队列
+        #将商品拍卖的加入的任务队列
+        # global joblist
         while True:
             print(
                 """
                     #     根据需要选择操作符：
                     #     getgoods、采集第二天可以买的所以商品
-                    #     seach、查询商品
+                    #     seach、查询商品使用*将要查询的商品分开
                     #     请输入你想拍卖商品的usedNo和价格使用*隔开
                     #     exit、返回上级
                     #     """
@@ -25,44 +33,54 @@ class inCode(object):
             codetime = int(time.time())
             print(codetime)
             usecode =input()
+            # usecode = 'seach*口红'
             usecode = usecode.replace(' ','')
-            if usecode == str("getgoods"):
+            coodusedNo = usecode.split('*')
+            if coodusedNo[0] == str("getgoods"):
                 # 采集第二天可以买的所以商品
-                self.allgoods.clearRedis()
-                self.allgoods.getAllGoods()
-            elif usecode == str("seach"):
-                self.seachgoods()
+                # self.allgoods.clearRedis()
+                # self.allgoods.getAllGoods()
+                pass
+            elif coodusedNo[0] == str("seach"):
+                if len(coodusedNo) <2:
+                    print('请你要查询的商品')
+                    continue
+                elif len(coodusedNo) <3:
+                    coodusedNo.append(0)
+                self.seachgoods(coodusedNo[1],coodusedNo[2] )
+                # joblist.append(coodusedNo)
             elif usecode == "exit":
                 #退出输入
                 break
             else:
                 #记得舒服卖出去的价格
                 #最高出价会根据输入的价格的95%，保证最少有5%的收益
-                usecode = usecode.replace(' ','')
-                coodusedNo = usecode.split('*')
-                if len(coodusedNo) <2:
-                    print('请输入价格')
-                    continue
-                print(coodusedNo)
-                self.paimai(coodusedNo[0], coodusedNo[1])
+                # if len(coodusedNo) <2:
+                #     print('请输入价格')
+                #     continue
+                # print(coodusedNo)
+                # self.paimai(coodusedNo[0], coodusedNo[1])
+                pass
 
 
 
-    def seachgoods(self):
-        goodinfo = set()
+    def seachgoods(self,unsedno, shopid ):
+        # goodinfo = set()
         # while True:
-        print("""
-            请输入你想查询的商品或者usedNo：
-            1、输入查所有店铺
-            2、输入只查京东备件库
-            3、退出
-             """)
-        inUsedNo = input()
-        inUsedNo = inUsedNo.replace(' ', '')
-        coodusedNo = inUsedNo.split('*')
-        if len(coodusedNo)==1:
-            coodusedNo.append(0)
-        goodsinfo = self.allgoods.getUsedNo(coodusedNo[0],coodusedNo[1])
+        # print("""
+        #     请输入你想查询的商品或者usedNo：
+        #     1、输入查所有店铺
+        #     2、输入只查京东备件库
+        #     3、退出
+        #      """)
+        # inUsedNo = input()
+        # inUsedNo
+        # inUsedNo = inUsedNo.replace(' ', '')
+        # coodusedNo = inUsedNo.split('*')
+        # if len(coodusedNo)==1:
+        #     coodusedNo.append(0)
+        # print(shopid)
+        goodsinfo = self.allgoods.getUsedNo(unsedno, shopid)
         if goodsinfo :
             for value in goodsinfo:
                 goodslist = self.allgoods.getGoodsid(value[0])
