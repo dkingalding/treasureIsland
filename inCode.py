@@ -1,16 +1,16 @@
 import time
-from config import myredis
-import redis
+# from config import myredis
+# import redis
 
 class inCode(object):
     #接受指令，并在本类中完成对其他基本类的调用，完成所有功能
-    def __init__(self, allgoods, duobaoClass, loginClass):
+    def __init__(self, allgoods, duobaoClass, loginClass, redislink):
         #将所有传入的实例都赋值给类内部
         #定义一个全局变量或者内部变量记录获取输入的内容
         self.allgoods = allgoods
         self.duobaoClass = duobaoClass
         self.loginClass = loginClass
-        self.redislink = redis.Redis(host=myredis['host'], port=myredis['port'])
+        self.redislink = redislink
 
 
     def startWork(self):
@@ -19,7 +19,6 @@ class inCode(object):
         #需要进行多线程或者多进程
         #将获取所有数据的加入到任务队列
         #将商品拍卖的加入的任务队列
-        # global joblist
         while True:
             print(
                 """
@@ -30,56 +29,62 @@ class inCode(object):
                     #     exit、返回上级
                     #     """
             )
-            codetime = int(time.time())
-            print(codetime)
             usecode =input()
-            # usecode = 'seach*口红'
-            usecode = usecode.replace(' ','')
+            usecode = usecode.replace(' ', '')
             coodusedNo = usecode.split('*')
             if coodusedNo[0] == str("getgoods"):
-                # 采集第二天可以买的所以商品
-                # self.allgoods.clearRedis()
-                # self.allgoods.getAllGoods()
-                pass
+                # 采集第二天可以买的所有商品
+                #todo 选择添加是采集所有商品还是只采集数码电子类的商品
+                caijistatus = self.redislink.get("getgoods")
+                if caijistatus != '0' and caijistatus != None:
+                    print("已经在采集或者已发送采集命令")
+                else:
+                    self.redislink.getset("getgoods", 1)
             elif coodusedNo[0] == str("seach"):
-                if len(coodusedNo) <2:
+                #查询商品就直接查询
+                if len(coodusedNo) < 2:
                     print('请你要查询的商品')
                     continue
-                elif len(coodusedNo) <3:
+                elif len(coodusedNo) < 3:
                     coodusedNo.append(0)
-                self.seachgoods(coodusedNo[1],coodusedNo[2] )
-                # joblist.append(coodusedNo)
+                self.seachgoods(coodusedNo[1], coodusedNo[2])
             elif usecode == "exit":
                 #退出输入
                 break
             else:
-                #记得舒服卖出去的价格
+                #记得输入卖出去的价格
                 #最高出价会根据输入的价格的95%，保证最少有5%的收益
-                # if len(coodusedNo) <2:
-                #     print('请输入价格')
-                #     continue
-                # print(coodusedNo)
-                # self.paimai(coodusedNo[0], coodusedNo[1])
-                pass
+                #先确认下是否输入正确，
+                #将要拍卖的商品记录到队列中
+                #根据时间设置成key存入redis中任务队列
+                if len(coodusedNo) <2:
+                    print('请输入价格')
+                    continue
+                thestatus = self.sureGood(coodusedNo[0])
+                if thestatus == 1:
+                    print("确定购买")
+                else :
+                    continue
 
 
+    def sureGood(self, unsedno):
+        goodsinfo = self.allgoods.getGoodInfo(unsedno)
+        print("你是要拍卖---{0}---{1}确定请输入yes否则输入no".format(goodsinfo[0][3], goodsinfo[0][1]))
+        surestatus =input()
+        usecode = surestatus.replace(' ', '')
+        if usecode == "yes":
+            return 1
+        else:
+            return 0
 
-    def seachgoods(self,unsedno, shopid ):
-        # goodinfo = set()
-        # while True:
-        # print("""
-        #     请输入你想查询的商品或者usedNo：
-        #     1、输入查所有店铺
-        #     2、输入只查京东备件库
-        #     3、退出
-        #      """)
-        # inUsedNo = input()
-        # inUsedNo
-        # inUsedNo = inUsedNo.replace(' ', '')
-        # coodusedNo = inUsedNo.split('*')
-        # if len(coodusedNo)==1:
-        #     coodusedNo.append(0)
-        # print(shopid)
+
+    def addgoodsjob(self, unsedno, price):
+        #添加任务列表
+        caijistatus = self.redislink.get("")
+        pass
+
+
+    def seachgoods(self,unsedno,  shopid):
         goodsinfo = self.allgoods.getUsedNo(unsedno, shopid)
         if goodsinfo :
             for value in goodsinfo:
@@ -108,9 +113,6 @@ class inCode(object):
         #需要那结束时间对比，在结束前一秒开始拍卖
         firsttime = int(goodlist[0][2]) - nowtime
 
-        # if goodlist[0][1] > str(nowtime):
-        #     print("拍卖还没有开始")
-        #     return
         if firsttime <=1000 and firsttime > 0:
             #满足这个条件是才开始竞价
             # pass

@@ -29,8 +29,8 @@ class getgoods(object):
         #手机通讯 groupId=1000006
         #其它分类 groupId=1999999
 
-        self.list = (1000005,1000442,1000009,1000004,1000003,1000011,1000010,1000002,1000404,1000007,1000008,1000006,1999999)
-        # self.list = (1000008,)
+        # self.list = (1000005,1000442,1000009,1000004,1000003,1000011,1000010,1000002,1000404,1000007,1000008,1000006,1999999)
+        self.list = (1000005,)
         # self.url = "https://used-api.jd.com/auction/list?pageNo=1&pageSize=50&category1=&status=&orderDirection=1&auctionType=1&orderType=2&callback=__jp116"
         self.headers = {
             # "Host": "used-api.jd.com",
@@ -53,6 +53,7 @@ class getgoods(object):
         #页面中的分类
         #返回的数据格式
         #开始循环采集每个分类的数据
+        print("开始采集数据")
         for groupId in self.list:
             #开始采集每个分页中商品信息，判断是否成功的依据1、code 是否为200 和采集返回的数据中auctionInfos是否为空
             pageNo = 0
@@ -62,14 +63,13 @@ class getgoods(object):
                 url = "https://used-api.paipai.com/auction/list?pageNo=%d&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=%s&callback=__jp35" % (
                 pageNo, groupId)
                 thedata = self.__getGoods(url)
-                print(groupId, pageNo)
+                # print(groupId, pageNo)
                 if thedata[0] == 444:
                     # print("采集出现错误")
                     self.errordata['geterror'].append(url)
                     break
                 if thedata[1] == None:
                     bb = False
-                    print("已经完成采集")
                 else:
                     #将数据存入数据库
                     if isinstance(thedata[1], list):
@@ -82,8 +82,8 @@ class getgoods(object):
                 if pageNo >= 200:
                     pageNo = 0
                     bb = False
-                    print("已经完成采集")
-        # self.myqllink.close()
+        print("采集结束")
+        return 200
 
     def test(self):
         #对外暴露方法
@@ -104,7 +104,7 @@ class getgoods(object):
                     time.sleep(1)
 
     def clearRedis(self):
-        #清楚redis
+        #todo 需要根据时间段清理内存数据
         #方法需要重写
         keys = self.redislink.keys()
         for key in keys:
@@ -122,8 +122,9 @@ class getgoods(object):
             elif type == b"hash":
                 vals = self.redislink.hgetall(key)
             else:
-                print(type, key)
-            print(vals)
+                pass
+            #     print(type, key)
+            # print(vals)
             # self.redislink.delete(key)
         self.redislink.delete("goodslist")
         sql = "TRUNCATE  goods"
@@ -176,6 +177,24 @@ class getgoods(object):
         finally:
             return results
 
+    def getGoodInfo(self, usedNo):
+        auconttime = int(time.time())*1000
+        sql = "SELECT gg.id, ss.quality, ss.shopId, ss.productName FROM usedname ss INNER JOIN " \
+              " goods gg  ON ss.usedNo = gg.usedNo WHERE ss.usedNo = {0} AND gg.endTime >= {1}".format(
+            usedNo, auconttime)
+        try:
+            self.cursor.execute(sql)
+            # 执行sql语句
+            self.myqllink.commit()
+            results = self.cursor.fetchall()
+        except:
+            # 发生错误时回滚
+            logging.error(traceback.format_exc())
+            print("查询商品 usedNo {0} 出错".format(usedNo))
+            results = ()
+        finally:
+            return results
+
 
     def getUsedNo(self, condition, shop = 0):
         #根据条件获取商品的usedNo 可以考虑将新旧程度也加上去
@@ -207,6 +226,7 @@ class getgoods(object):
 
     def __getGoods(self,url):
         #获取每一个分页商品信息
+        #基本方法
         try:
             r = requests.get(url,headers = self.headers)
             result_json = re.search(r'{.*}', r.text)
@@ -238,10 +258,10 @@ class getgoods(object):
         # print(tt["data"]["auctionInfos"][0])
 
     def __setdata(self,data):
-
+        #基本方法用于存储采集下来的数据
         keydata = ''
         valuedata = ''
-        if isinstance(data,dict):
+        if isinstance(data, dict):
             #先查商品是否已经录入，可以使用redis集合
             # 如果商品没有录入就将商品存入到数据库和redis
 
@@ -252,7 +272,7 @@ class getgoods(object):
                 data[key] = str(data[key])
                 data[key] = data[key].replace('\'', '')
 
-            if self.redislink.sismember('usedName', data['usedNo'])== False:
+            if self.redislink.sismember('usedName', data['usedNo']) == False:
                 keydata = 'usedNo, productName, primaryPic, quality, shopId, size, brandId, shortProductName'
                 valuedata = ("'{0}'" +","+"'{1}'" +","+"'{2}'" +","+"'{3}'" +","+"'{4}'" +","+"'{5}'" +","+"'{6}'" +","+"'{7}'" )\
                     .format(data['usedNo'],data['productName'],data['primaryPic'],data['quality'],data['shopId'],data['size'],data['brandId'],data['shortProductName'])

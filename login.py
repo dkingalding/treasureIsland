@@ -39,5 +39,6 @@ class loginCook(object):
             self.longduomingdao()
             with open(basedir + '/cookies.txt', 'r') as f:
                 theCookies = f.readline()
-        return theCookies
+        finally:
+            return theCookies
 
