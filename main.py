@@ -67,11 +67,13 @@ if __name__ == '__main__':
     t2 = threading.Thread(target=caijirenwu, name='shuchu', args=(redislink,))
     threads.append(t2)
     # p = Process(target=paimairenwu )
+    # p.start()
     # threads.append(p)
     for t in threads:
         t.start()
     for t in threads:
         t.join()
+    # p.join()
     # t.start()
     # t.join()
     # t2.start()

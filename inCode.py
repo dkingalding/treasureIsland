@@ -80,7 +80,8 @@ class inCode(object):
 
     def addgoodsjob(self, unsedno, price):
         #添加任务列表
-        caijistatus = self.redislink.get("")
+        # caijistatus = self.redislink.get("")
+
         pass
 
 
