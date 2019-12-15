@@ -4,13 +4,15 @@ import time
 
 class inCode(object):
     #接受指令，并在本类中完成对其他基本类的调用，完成所有功能
-    def __init__(self, allgoods, duobaoClass, loginClass, redislink):
+    def __init__(self, allgoods, duobaoClass, loginClass, redislink, myqllink):
         #将所有传入的实例都赋值给类内部
         #定义一个全局变量或者内部变量记录获取输入的内容
         self.allgoods = allgoods
         self.duobaoClass = duobaoClass
         self.loginClass = loginClass
         self.redislink = redislink
+        self.myqllink = myqllink
+        self.cursor = self.myqllink.cursor()
 
 
     def startWork(self):
@@ -61,8 +63,9 @@ class inCode(object):
                     print('请输入价格')
                     continue
                 thestatus = self.sureGood(coodusedNo[0])
-                if thestatus == 1:
-                    print("确定购买")
+                if thestatus[0] == 1:
+                    # print("确定购买")
+                    self.addgoodsjob(coodusedNo[0], coodusedNo[1], thestatus[1], thestatus[4] )
                 else :
                     continue
 
@@ -73,16 +76,49 @@ class inCode(object):
         surestatus =input()
         usecode = surestatus.replace(' ', '')
         if usecode == "yes":
-            return 1
+            return [1, goodsinfo[0][0], goodsinfo[0][3], goodsinfo[0][1], goodsinfo[0][4]]
         else:
-            return 0
+            return [0,]
 
 
-    def addgoodsjob(self, unsedno, price):
-        #添加任务列表
-        # caijistatus = self.redislink.get("")
+    def addgoodsjob(self, unsedno, price , goodsid, endTime):
+        #生产者
+        #将需要拍卖商品的信息存入数据库
+        #统计同一商品待拍卖的数量
+        #记录商品的拍卖时间记录到redis的有序集合中
 
-        pass
+        sql = "INSERT INTO offorlog (usedNo, xianyuprice ) VALUES ('{0}', '{1}')".format(unsedno, price)
+        getid ="select max(id) from offorlog"
+        # self.cursor.execute(sql)
+        # # 执行sql语句
+        # self.myqllink.commit()
+        #
+        # sqlid = self.cursor.execute(getid)
+        # # 执行sql语句
+        # self.myqllink.commit()
+        # print(sqlid)
+        # return
+        try:
+            self.cursor.execute(sql)
+            # 执行sql语句
+            self.myqllink.commit()
+
+            sqlid = self.cursor.execute(getid)
+            # 执行sql语句
+            self.myqllink.commit()
+            # print(sqlid)
+        except:
+            # 发生错误时回滚
+            print("拍卖录入出错")
+            self.myqllink.rollback()
+            return
+
+        self.redislink.rpush(unsedno, sqlid)
+        if self.redislink.llen(unsedno) >1:
+            treadscore = int(endTime)
+            treadinfo = unsedno
+            self.redislink.zadd('treadlist', mapping={treadinfo: treadscore })
+
 
 
     def seachgoods(self,unsedno,  shopid):
@@ -106,6 +142,7 @@ class inCode(object):
         #查询最近时间商品的价格，如果高于规定价格就拍卖
         #查询自己出的价格是否有效，是否超过了自己定的价格
         #如果没有超过自己的定价就继续出价
+        #拍卖结束后，如果拍到了，待拍数量减一。如果没有拍到，计入下一个时间段的任务
         # print("paimai")
         goodlist = self.allgoods.getGoodsid(usedNo)
         theMaxprice = str(round(int(price) * 0.95))

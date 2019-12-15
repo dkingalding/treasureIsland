@@ -11,7 +11,7 @@ import traceback
 
 class getgoods(object):
 
-    def __init__(self):
+    def __init__(self, redislink, myqllink):
         #全部商品  "https://sell.paipai.com/auction-list?groupId=-1&entryid=p0120003dbdlogo"
         #https://used-api.jd.com/auction/list?pageNo=2&pageSize=50&category1=&status=&orderDirection=1&auctionType=1&orderType=1&callback=__jp116
         # https://used-api.paipai.com/auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000005&callback=__jp35
@@ -40,10 +40,12 @@ class getgoods(object):
             # "Connection": "close",
             "User-Agent":Agent[randint(0, 3)]['User-Agent'],
         }
-        self.myqllink = pymysql.connect(host= mymysql['host'],user = mymysql['user'], passwd= mymysql['passwd'],db= mymysql['db'])
+        # self.myqllink = pymysql.connect(host= mymysql['host'],user = mymysql['user'], passwd= mymysql['passwd'],db= mymysql['db'])
+        self.myqllink = myqllink
         self.cursor = self.myqllink.cursor()
         self.errordata = {'geterror':[],'setsqlerror':[]}
-        self.redislink = redis.Redis(host= myredis['host'],port= myredis['port'])
+        # self.redislink = redis.Redis(host= myredis['host'],port= myredis['port'])
+        self.redislink = redislink
         logging.basicConfig(filename='log.txt', level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
 
     def getAllGoods(self):
@@ -136,7 +138,6 @@ class getgoods(object):
         # 执行sql语句
         self.myqllink.commit()
 
-
     def gethistory(self,auction):
         try:
             #https://used-api.paipai.com/auction/detail?callback=jQuery32108877681006626417_1574400875551&auctionId=120934440&p=2
@@ -156,7 +157,6 @@ class getgoods(object):
         except:
             historyPrice = '没有历史价格'
         return historyPrice
-
 
     def getGoodsid(self, usedNo):
         #根据提供的usedNo获取拍卖品id
@@ -179,7 +179,7 @@ class getgoods(object):
 
     def getGoodInfo(self, usedNo):
         auconttime = int(time.time())*1000
-        sql = "SELECT gg.id, ss.quality, ss.shopId, ss.productName FROM usedname ss INNER JOIN " \
+        sql = "SELECT gg.id, ss.quality, ss.shopId, ss.productName, gg.endTime FROM usedname ss INNER JOIN " \
               " goods gg  ON ss.usedNo = gg.usedNo WHERE ss.usedNo = {0} AND gg.endTime >= {1}".format(
             usedNo, auconttime)
         try:
@@ -194,7 +194,6 @@ class getgoods(object):
             results = ()
         finally:
             return results
-
 
     def getUsedNo(self, condition, shop = 0):
         #根据条件获取商品的usedNo 可以考虑将新旧程度也加上去
@@ -221,8 +220,6 @@ class getgoods(object):
             results = ()
         finally:
             return results
-
-
 
     def __getGoods(self,url):
         #获取每一个分页商品信息
