@@ -63,36 +63,38 @@ class inCode(object):
                     print('请输入价格')
                     continue
                 thestatus = self.sureGood(coodusedNo[0])
-                if thestatus[0] == 1:
+                if thestatus == 1:
                     # print("确定购买")
-                    self.addgoodsjob(coodusedNo[0], coodusedNo[1], thestatus[1], thestatus[4] )
+                    self.addgoodsjob(coodusedNo[0], coodusedNo[1])
                 else :
                     continue
 
 
     def sureGood(self, unsedno):
+        #todo 需要提示还剩余多少，还有待拍多少，选择是在这里显示还是在seach中显示
         goodsinfo = self.allgoods.getGoodInfo(unsedno)
+        # print(goodsinfo)
         print("你是要拍卖---{0}---{1}确定请输入yes否则输入no".format(goodsinfo[0][3], goodsinfo[0][1]))
         surestatus =input()
         usecode = surestatus.replace(' ', '')
         if usecode == "yes":
-            return [1, goodsinfo[0][0], goodsinfo[0][3], goodsinfo[0][1], goodsinfo[0][4]]
+            return 1
         else:
-            return [0,]
+            return 0
 
 
-    def addgoodsjob(self, unsedno, price , goodsid, endTime):
-        #生产者
+    def addgoodsjob(self, unsedno, price):
+
         #将需要拍卖商品的信息存入数据库
         #统计同一商品待拍卖的数量
         #记录商品的拍卖时间记录到redis的有序集合中
+        #todo 是否需要验证剩余拍卖量和待拍卖量
 
         sql = "INSERT INTO offorlog (usedNo, xianyuprice ) VALUES ('{0}', '{1}')".format(unsedno, price)
         getid ="select max(id) from offorlog"
         # self.cursor.execute(sql)
         # # 执行sql语句
         # self.myqllink.commit()
-        #
         # sqlid = self.cursor.execute(getid)
         # # 执行sql语句
         # self.myqllink.commit()
@@ -102,23 +104,33 @@ class inCode(object):
             self.cursor.execute(sql)
             # 执行sql语句
             self.myqllink.commit()
-
-            sqlid = self.cursor.execute(getid)
+            self.cursor.execute(getid)
             # 执行sql语句
             self.myqllink.commit()
+            sqlid = self.cursor.fetchall()
             # print(sqlid)
         except:
-            # 发生错误时回滚
+            # 发生错误时回滚1000033031280901
             print("拍卖录入出错")
             self.myqllink.rollback()
             return
 
-        self.redislink.rpush(unsedno, sqlid)
-        if self.redislink.llen(unsedno) >1:
-            treadscore = int(endTime)
-            treadinfo = unsedno
-            self.redislink.zadd('treadlist', mapping={treadinfo: treadscore })
+        self.redislink.rpush(unsedno, sqlid[0][0])
+        #将所有拍卖时间记录到队列中
+        #todo 存在逻辑错误，如果前一天的待拍卖商品还没有拍到，新一天的队列可能会为空
+        #do 每一次增加都获取商品所有的可拍卖时间，并记录下来
 
+        goodslist = self.allgoods.getGoodsid(unsedno)
+        mapping = {}
+        if goodslist:
+            for key in goodslist:
+                #将所有该商品的拍卖时间都记录到treadinfo中
+
+                mapping[str(unsedno)+"*"+ str(key[0])] = key[2]
+            # treadscore = int(endTime)
+            # treadinfo = unsedno+"*"+ goodsid
+            self.redislink.zadd('treadlist', mapping = mapping)
+            # self.allgoods.clearRedis()
 
 
     def seachgoods(self,unsedno,  shopid):

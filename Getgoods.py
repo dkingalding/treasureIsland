@@ -112,30 +112,33 @@ class getgoods(object):
         for key in keys:
             print(key)
             type = self.redislink.type(key)
-            if type == b'string':
+            if type == 'string':
                 vals = self.redislink.get(key)
-            elif type == b'list':
+            elif type == 'list':
                 vals = self.redislink.lrange(key, 0, -1)
                 # print(vals)
-            elif type == b'set':
+            elif type == 'set':
                 vals = self.redislink.smembers(key);
-            elif type == b'zset':
+            elif type == 'zset':
                 vals = self.redislink.zrange(key, 0, -1)
-            elif type == b"hash":
+            elif type == "hash":
                 vals = self.redislink.hgetall(key)
             else:
                 pass
-            #     print(type, key)
-            # print(vals)
-            # self.redislink.delete(key)
-        self.redislink.delete("goodslist")
+                print(type, key)
+            print(vals)
+            self.redislink.delete(key)
+        # self.redislink.delete("goodslist")
         sql = "TRUNCATE  goods"
+        # sql = "TRUNCATE  offorlog"
         self.cursor.execute(sql)
-        # sql = "TRUNCATE  usedname"
-        # self.cursor.execute(sql)
-        # sql = "TRUNCATE  shop"
-        # self.cursor.execute(sql)
-        # 执行sql语句
+        sql = "TRUNCATE  offorlog"
+        self.cursor.execute(sql)
+            # sql = "TRUNCATE  usedname"
+            # self.cursor.execute(sql)
+            # sql = "TRUNCATE  shop"
+            # self.cursor.execute(sql)
+            # 执行sql语句
         self.myqllink.commit()
 
     def gethistory(self,auction):
