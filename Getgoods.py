@@ -1,9 +1,9 @@
 import requests,json,time
 import re
-import pymysql
-import redis
-from config import mymysql
-from config import myredis
+# import pymysql
+# import redis
+# from config import mymysql
+# from config import myredis
 from config import Agent
 from random import randint
 import logging
@@ -126,20 +126,14 @@ class getgoods(object):
             else:
                 pass
                 print(type, key)
-            print(vals)
-            self.redislink.delete(key)
-        # self.redislink.delete("goodslist")
-        sql = "TRUNCATE  goods"
-        # sql = "TRUNCATE  offorlog"
-        self.cursor.execute(sql)
-        sql = "TRUNCATE  offorlog"
-        self.cursor.execute(sql)
-            # sql = "TRUNCATE  usedname"
-            # self.cursor.execute(sql)
-            # sql = "TRUNCATE  shop"
-            # self.cursor.execute(sql)
-            # 执行sql语句
-        self.myqllink.commit()
+            if key == "treadlist":
+                print(vals)
+            # self.redislink.delete(key)
+
+        # self.redislink.delete("treadlist")
+        # sql = "TRUNCATE  goods"
+        # self.cursor.execute(sql)
+        # self.myqllink.commit()
 
     def gethistory(self,auction):
         try:
@@ -151,14 +145,17 @@ class getgoods(object):
             result_json = re.search(r'{.*}', r.text)
             result_dict = json.loads(result_json.group())
             # print(result_dict)
-            pricelist = result_dict['data']['historyRecord']
+            if result_dict['code'] == 200:
+                pricelist = result_dict['data']['historyRecord']
             # print(pricelist)
-            historyPrice = ''
-            for nb in pricelist:
-                # print(nb['offerPrice'])
-                historyPrice = historyPrice + "/" + str(nb['offerPrice'])
+                historyPrice = ''
+                for nb in pricelist:
+                    # print(nb['offerPrice'])
+                    historyPrice = historyPrice + "/" + str(nb['offerPrice'])
+            else:
+                historyPrice = "数据出错"
         except:
-            historyPrice = '没有历史价格'
+            historyPrice = '获取历史价格错误'
         return historyPrice
 
     def getGoodsid(self, usedNo):
@@ -197,6 +194,37 @@ class getgoods(object):
             results = ()
         finally:
             return results
+
+    def goodssend(self, offerid):
+        # auconttime = int(time.time())*1000
+        # sql = "SELECT id, startTime, endTime, usedNo FROM goods WHERE id ={0}".format(goodsid)
+        # sql = "SELECT id, startTime, endTime, usedNo FROM goods WHERE id = {0}  ORDER BY endTime".format(goodsid)
+        # self.cursor.execute(sql)
+        # # 执行sql语句
+        # self.myqllink.commit()
+        # results = self.cursor.fetchall()
+        # return results
+        sql = "SELECT id, usedNo, xianyuPrice FROM offorlog WHERE id = {0}".format(offerid)
+        # self.cursor.execute(sql)
+        # # 执行sql语句
+        # self.myqllink.commit()
+        # results = self.cursor.fetchall()
+        # return results
+        try:
+            self.cursor.execute(sql)
+            # 执行sql语句
+            self.myqllink.commit()
+            results = self.cursor.fetchall()
+
+        except:
+            #将错误信息计入，并输出错误信息
+            logging.error(traceback.format_exc())
+            print("查询商品拍卖记录{0} 出错".format(offerid))
+            results = ()
+        finally:
+            return results
+
+
 
     def getUsedNo(self, condition, shop = 0):
         #根据条件获取商品的usedNo 可以考虑将新旧程度也加上去
@@ -286,7 +314,7 @@ class getgoods(object):
                     # 发生错误时回滚
                     logging.error(traceback.format_exc())
                     self.errordata['setsqlerror'].append(data)
-                    print("usedno cuowu")
+                    print("存品种错误")
                     self.myqllink.rollback()
                     self.redislink.srem('usedName', data['usedNo'])
 
@@ -304,7 +332,7 @@ class getgoods(object):
                 except:
                     # 发生错误时回滚
                     self.errordata['setsqlerror'].append(data)
-                    print("shop cuowu")
+                    print("存储店铺错误")
                     self.myqllink.rollback()
                     self.redislink.srem('shop', data['shopId'])
                     logging.error(traceback.format_exc())
@@ -323,7 +351,7 @@ class getgoods(object):
                 except:
                     # 发生错误时回滚
                     self.errordata['setsqlerror'].append(data)
-                    print("goodslist cuowu")
+                    print("存储商品错误")
                     self.myqllink.rollback()
                     self.redislink.srem('goodslist', data['id'])
                     logging.error(traceback.format_exc())
