@@ -30,13 +30,15 @@ class duobao(object):
             # print(r.text)
             result_json = re.search(r'{.*}', r.text)
             result_dict = json.loads(result_json.group())
+            if result_dict['code'] !=200:
+                result_dict = {}
         except:
             print("没有查询到信息")
             result_dict = {}
         finally:
             return result_dict
 
-    def sendPrice(self, auctionId,price):
+    def sendPrice(self, auctionId, price):
         #出价
         youcookie = self.loginClass.getCookies()
 
