@@ -59,7 +59,7 @@ if __name__ == '__main__':
 
         startScore = int(time.time() + 1) * 1000
         # startScore = 1000000000000
-        endScore = startScore+ 60000
+        endScore = startScore+ 2000
         # endScore = 2000000000000
         # print(startScore,endScore)
         goodslist = redislink.zrangebyscore('treadlist', startScore, endScore)

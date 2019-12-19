@@ -187,9 +187,9 @@ class inCode(object):
                 goodslist = self.allgoods.getGoodsid(value[0])
                 # print(value)
                 # print(goodslist)
-                if goodslist:
-                    hisprice = self.allgoods.gethistory(goodslist[0][0])
-                    value = value + (hisprice, )
+                # if goodslist:
+                    # hisprice = self.allgoods.gethistory(goodslist[0][0])
+                    # value = value + (hisprice, )
                 print(value)
         else:
             print("没有相关商品")
