@@ -24,3 +24,8 @@ pymysql.err.InterfaceError: (0, '')
     raise err.InterfaceError("(0, '')")
 pymysql.err.InterfaceError: (0, '')
 
+2019-12-20 13:47:43,497 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 244, in __getGoods
+    if result_dict["data"]["auctionInfos"]:
+TypeError: 'NoneType' object is not subscriptable
+

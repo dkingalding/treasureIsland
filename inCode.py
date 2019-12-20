@@ -15,59 +15,7 @@ class inCode(object):
         self.cursor = self.myqllink.cursor()
 
 
-    # def startWork(self):
-    #     #记录输入的操作和产生的关键数字
-    #     #根据操作提示不同的信息
-    #     #需要进行多线程或者多进程
-    #     #将获取所有数据的加入到任务队列
-    #     #将商品拍卖的加入的任务队列
-    #     while True:
-    #         print(
-    #             """
-    #                 #     根据需要选择操作符：
-    #                 #     getgoods、采集第二天可以买的所以商品
-    #                 #     seach、查询商品使用*将要查询的商品分开
-    #                 #     请输入你想拍卖商品的usedNo和价格使用*隔开
-    #                 #     exit、返回上级
-    #                 #     """
-    #         )
-    #         usecode =input()
-    #         usecode = usecode.replace(' ', '')
-    #         coodusedNo = usecode.split('*')
-    #         if coodusedNo[0] == str("getgoods"):
-    #             # 采集第二天可以买的所有商品
-    #             #todo 选择添加是采集所有商品还是只采集数码电子类的商品
-    #             caijistatus = self.redislink.get("getgoods")
-    #             if caijistatus != '0' and caijistatus != None:
-    #                 print("已经在采集或者已发送采集命令")
-    #             else:
-    #                 self.redislink.getset("getgoods", 1)
-    #         elif coodusedNo[0] == str("seach"):
-    #             #查询商品就直接查询
-    #             if len(coodusedNo) < 2:
-    #                 print('请你要查询的商品')
-    #                 continue
-    #             elif len(coodusedNo) < 3:
-    #                 coodusedNo.append(0)
-    #             self.seachgoods(coodusedNo[1], coodusedNo[2])
-    #         elif usecode == "exit":
-    #             #退出输入
-    #             break
-    #         else:
-    #             #记得输入卖出去的价格
-    #             #最高出价会根据输入的价格的95%，保证最少有5%的收益
-    #             #先确认下是否输入正确，
-    #             #将要拍卖的商品记录到队列中
-    #             #根据时间设置成key存入redis中任务队列
-    #             if len(coodusedNo) <2:
-    #                 print('请输入价格')
-    #                 continue
-    #             thestatus = self.sureGood(coodusedNo[0])
-    #             if thestatus == 1:
-    #                 # print("确定购买")
-    #                 self.addgoodsjob(coodusedNo[0], coodusedNo[1])
-    #             else :
-    #                 continue
+
 
     def startWork(self):
         #记录输入的操作和产生的关键数字
@@ -78,15 +26,16 @@ class inCode(object):
         print(
             """
                 #     根据需要选择操作符：
-                #     getgoods、采集第二天可以买的所以商品
-                #     seach、查询商品使用*将要查询的商品分开
+                #     getgoods、采集第二天可以买的所以商品如果采集所有就加&1
+                #     seach、查询商品使用&将要查询的商品分开
                 #     请输入你想拍卖商品的usedNo和价格使用*隔开
-                #     exit、返回上级
-                #     """
+                #     ding查看订单相关redis 
+                #     dele删除待拍卖列表
+             """
         )
         usecode =input()
         usecode = usecode.replace(' ', '')
-        coodusedNo = usecode.split('*')
+        coodusedNo = usecode.split('&')
         if coodusedNo[0] == str("getgoods"):
             # 采集第二天可以买的所有商品
             #todo 选择添加是采集所有商品还是只采集数码电子类的商品
@@ -102,10 +51,12 @@ class inCode(object):
             elif len(coodusedNo) < 3:
                 coodusedNo.append(0)
             self.seachgoods(coodusedNo[1], coodusedNo[2])
-        elif usecode == "exit":
-            #退出输入
-            self.allgoods.clearRedis()
-
+        elif usecode == "ding":
+            #查看订单相关的redis
+            self.dinghis()
+        elif usecode == "dele":
+            #查看订单相关的redis
+            self.deleoffer()
         else:
             #记得输入卖出去的价格
             #最高出价会根据输入的价格的95%，保证最少有5%的收益
@@ -122,6 +73,32 @@ class inCode(object):
             else :
                 # continue
                return
+
+    def deleoffer(self):
+        print("你确定要删除redis中订单么，确定输入yes否则输入no：")
+        theinput = input()
+        if theinput == "yes":
+            keys = self.redislink.keys()
+            for key in keys:
+                # print(key)
+                type = self.redislink.type(key)
+                # if type == 'string':
+                #     vals = self.redislink.get(key)
+                if type == 'list':
+                    print(key)
+                    # vals = self.redislink.lrange(key, 0, -1)
+                    self.redislink.delete(key)
+                # elif type == 'set':
+                #     vals = self.redislink.smembers(key);
+                elif type == 'zset':
+                    print(key)
+                    self.redislink.delete(key)
+                # elif type == "hash":
+                #     vals = self.redislink.hgetall(key)
+                else:
+                    pass
+        else:
+            pass
 
     def sureGood(self, unsedno):
         #todo 需要提示还剩余多少，还有待拍多少，选择是在这里显示还是在seach中显示
@@ -185,14 +162,13 @@ class inCode(object):
         if goodsinfo :
             for value in goodsinfo:
                 goodslist = self.allgoods.getGoodsid(value[0])
-                # print(value)
-                # print(goodslist)
-                # if goodslist:
-                    # hisprice = self.allgoods.gethistory(goodslist[0][0])
-                    # value = value + (hisprice, )
+                if goodslist:
+                    hisprice = self.allgoods.gethistory(goodslist[0][0])
+                    value = value + (hisprice, )
                 print(value)
         else:
             print("没有相关商品")
+
 
     def paimai(self, goodsid, sqlNo, endtime):
         #开始拍卖
@@ -306,3 +282,16 @@ class inCode(object):
             return 200
 
 
+    def dinghis(self):
+        keys = self.redislink.keys()
+        for key in keys:
+            # print(key)
+            type = self.redislink.type(key)
+            if type == 'list':
+                vals = self.redislink.lrange(key, 0, -1)
+                print(vals)
+            elif type == 'zset':
+                vals = self.redislink.zrange(key, 0, -1)
+                print(vals)
+            else:
+                pass

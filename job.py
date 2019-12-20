@@ -23,22 +23,10 @@ thecode = inCode(allgoods, duobaoClas, loginClass, redislink, myqllink)
 
 # 使用队列
 qpaimai = Queue('low', connection=redislink)
-qcaiji = Queue('high', connection=redislink)
+queue = Queue('high', connection=redislink)
+qcaiji = queue
 
 
-# def shuru():
-#     thecode.startWork()
-#
-#
-# def caijirenwu(redislink):
-#     # 采集数据的进程
-#
-#     # 数值2表示正在采集中
-#     redislink.getset("getgoods", 2)
-#     allgoods.clearRedis()
-#     theresult = allgoods.getAllGoods()
-#     if theresult == 200:
-#         redislink.getset("getgoods", 0)
 
 
 def paimairenwu(goodsid, sqlNo , endScore):
@@ -50,21 +38,17 @@ def paimairenwu(goodsid, sqlNo , endScore):
 
 
 if __name__ == '__main__':
-
     # 需要任务队列，线程可以修改任务队列中的数据
-    redislink.getset("getgoods", 0)
-
+    # 每次开启需要验证登录
+    theclick = int(time.strftime('%H', time.localtime(time.time())))
+    #早上10点和下午两点之间采集数据时视为补充数据，不需要清楚历史数据
+    if theclick <=10 :
+        loginClass.longduomingdao()
 
     while True:
-
         startScore = int(time.time() + 1) * 1000
-        # startScore = 1000000000000
         endScore = startScore+ 2000
-        # endScore = 2000000000000
-        # print(startScore,endScore)
         goodslist = redislink.zrangebyscore('treadlist', startScore, endScore)
-        # allgoods.clearRedis()
-        # print(goodslist)
         if goodslist:
             print(goodslist)
             print(startScore)
@@ -81,7 +65,6 @@ if __name__ == '__main__':
                     sqlNo = redislink.lindex(dd[0], 0)
                     print(sqlNo)
                     threads.append(threading.Thread(target=paimairenwu, name=sqlNo, args=(dd[1], sqlNo, endScore)))
-
             for t in threads:
                 t.start()
             for t in threads:

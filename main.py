@@ -23,8 +23,8 @@ duobaoClas = duobao()
 thecode = inCode(allgoods, duobaoClas, loginClass, redislink, myqllink)
 
 #使用队列
-qpaimai = Queue('low', connection = redislink)
-qcaiji = Queue('high', connection = redislink)
+# qpaimai = Queue('low', connection = redislink)
+# qcaiji = Queue('high', connection = redislink)
 
 
 def shuru():
@@ -36,39 +36,36 @@ def caijirenwu(redislink):
 
     #数值2表示正在采集中
     redislink.getset("getgoods", 2)
-    allgoods.clearRedis()
+    #判断现在是否是新的一天，如果是新的一天就清除goodlist（redis）和goods（数据库）
+    theclick = int(time.strftime('%H', time.localtime(time.time())))
+    #早上10点和下午两点之间采集数据时视为补充数据，不需要清楚历史数据
+    if theclick <=10 or theclick >=14:
+        allgoods.clearRedis()
+
     theresult = allgoods.getAllGoods()
     if theresult == 200:
         redislink.getset("getgoods", 0)
 
-def paimairenwu(goodsid, price, sqlNo):
-    #任务的队列生产者
-    #循环取出redis 有序集合trealist中当前时间的mapping
-    #查看相依的商品redis 的list中是否有待拍卖的
-    #有带拍卖的就将其计入到任务队列中
-    thecode.paimai(goodsid, price, sqlNo)
+# def paimairenwu(goodsid, price, sqlNo):
+#     #任务的队列生产者
+#     #循环取出redis 有序集合trealist中当前时间的mapping
+#     #查看相依的商品redis 的list中是否有待拍卖的
+#     #有带拍卖的就将其计入到任务队列中
+#     thecode.paimai(goodsid, price, sqlNo)
 
 
 
 if __name__ == '__main__':
-
-    allgoods.clearRedis()
-    #需要任务队列，线程可以修改任务队列中的数据
-    # print(time.time())
-    # redislink.getset("getgoods", 0)
-    # threads = []
-    # thecode.paimai(123201716, 27, 17)
-    # print(duobaoClas.goodsinfo(123213509))
+    redislink.getset("getgoods", 0)
     while True:
         print(time.time())
         t = threading.Thread(target=shuru, name='LoopThread')
-        # threads.append(t)
         t.start()
         t.join()
         value = redislink.get("getgoods")
         if value == '1':
             t2 = threading.Thread(target=caijirenwu, name='shuchu', args=(redislink,))
-            # threads.append(t2)
             t2.start()
+            # t2.join()
 
 

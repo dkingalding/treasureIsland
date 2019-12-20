@@ -29,8 +29,8 @@ class getgoods(object):
         #手机通讯 groupId=1000006
         #其它分类 groupId=1999999
 
-        # self.list = (1000005,1000442,1000009,1000004,1000003,1000011,1000010,1000002,1000404,1000007,1000008,1000006,1999999)
-        self.list = (1000005,)
+        self.list = (1000005,1000442,1000009,1000004,1000003,1000011,1000010,1000002,1000404,1000007,1000008,1000006,1999999)
+        # self.list = (1000005,)
         # self.url = "https://used-api.jd.com/auction/list?pageNo=1&pageSize=50&category1=&status=&orderDirection=1&auctionType=1&orderType=2&callback=__jp116"
         self.headers = {
             # "Host": "used-api.jd.com",
@@ -107,50 +107,23 @@ class getgoods(object):
 
     def clearRedis(self):
         #todo 需要根据时间段清理内存数据
-        #方法需要重写
-        keys = self.redislink.keys()
-        for key in keys:
-            print(key)
-            type = self.redislink.type(key)
-            if type == 'string':
-                vals = self.redislink.get(key)
-            elif type == 'list':
-                vals = self.redislink.lrange(key, 0, -1)
-                # print(vals)
-            elif type == 'set':
-                vals = self.redislink.smembers(key);
-            elif type == 'zset':
-                vals = self.redislink.zrange(key, 0, -1)
-            elif type == "hash":
-                vals = self.redislink.hgetall(key)
-            else:
-                pass
-                print(type, key)
-            if key == "treadlist":
-                print(vals)
-            # self.redislink.delete(key)
+        self.redislink.delete("goodslist")
+        sql = "TRUNCATE  goods"
+        self.cursor.execute(sql)
+        self.myqllink.commit()
 
-        # self.redislink.delete("treadlist")
-        # sql = "TRUNCATE  goods"
-        # self.cursor.execute(sql)
-        # self.myqllink.commit()
-
-    def gethistory(self,auction):
-
+    def gethistory(self, auction):
         try:
             #https://used-api.paipai.com/auction/detail?callback=jQuery32108877681006626417_1574400875551&auctionId=120934440&p=2
             url = (
                 "https://used-api.paipai.com/auction/detail?callback=jQuery32108877681006626417_1574400875551&auctionId={0}&p=2").format(
                 auction)
-
             r = requests.get(url)
             result_json = re.search(r'{.*}', r.text)
             result_dict = json.loads(result_json.group())
             # print(result_dict)
             if result_dict['code'] == 200:
                 pricelist = result_dict['data']['historyRecord']
-            # print(pricelist)
-
                 historyPrice = ''
                 for nb in pricelist:
                     # print(nb['offerPrice'])
