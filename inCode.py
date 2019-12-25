@@ -288,9 +288,11 @@ class inCode(object):
             # print(key)
             type = self.redislink.type(key)
             if type == 'list':
+                print(key)
                 vals = self.redislink.lrange(key, 0, -1)
                 print(vals)
             elif type == 'zset':
+                print(key)
                 vals = self.redislink.zrange(key, 0, -1)
                 print(vals)
             else:

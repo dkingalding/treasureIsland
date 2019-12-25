@@ -29,3 +29,1308 @@ pymysql.err.InterfaceError: (0, '')
     if result_dict["data"]["auctionInfos"]:
 TypeError: 'NoneType' object is not subscriptable
 
+2019-12-21 03:13:07,071 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 157, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\connection.py", line 61, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 334, in connect
+    conn = self._new_conn()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x05539870>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=3&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000005&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x05539870>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 235, in __getGoods
+    r = requests.get(url,headers = self.headers)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=3&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000005&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x05539870>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+2019-12-21 03:13:07,120 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 157, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\connection.py", line 61, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 334, in connect
+    conn = self._new_conn()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x03FFB4B0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000442&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x03FFB4B0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 235, in __getGoods
+    r = requests.get(url,headers = self.headers)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000442&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x03FFB4B0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+2019-12-21 03:13:07,135 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 157, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\connection.py", line 61, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 334, in connect
+    conn = self._new_conn()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x03FFB4F0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000009&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x03FFB4F0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 235, in __getGoods
+    r = requests.get(url,headers = self.headers)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000009&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x03FFB4F0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+2019-12-21 03:13:07,168 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 157, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\connection.py", line 61, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 334, in connect
+    conn = self._new_conn()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x03FFB690>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000004&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x03FFB690>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 235, in __getGoods
+    r = requests.get(url,headers = self.headers)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000004&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x03FFB690>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+2019-12-21 03:13:07,182 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 157, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\connection.py", line 61, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 334, in connect
+    conn = self._new_conn()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x03FFB5B0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000003&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x03FFB5B0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 235, in __getGoods
+    r = requests.get(url,headers = self.headers)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000003&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x03FFB5B0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+2019-12-21 03:13:07,204 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 157, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\connection.py", line 61, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 334, in connect
+    conn = self._new_conn()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x03FFBA90>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000011&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x03FFBA90>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 235, in __getGoods
+    r = requests.get(url,headers = self.headers)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000011&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x03FFBA90>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+2019-12-21 03:13:07,216 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 157, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\connection.py", line 61, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 334, in connect
+    conn = self._new_conn()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x03FFB690>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000010&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x03FFB690>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 235, in __getGoods
+    r = requests.get(url,headers = self.headers)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000010&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x03FFB690>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+2019-12-21 03:13:07,233 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 157, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\connection.py", line 61, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 334, in connect
+    conn = self._new_conn()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x03FFB650>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000002&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x03FFB650>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 235, in __getGoods
+    r = requests.get(url,headers = self.headers)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000002&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x03FFB650>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+2019-12-21 03:13:07,249 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 157, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\connection.py", line 61, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 334, in connect
+    conn = self._new_conn()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x03FFBA70>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000404&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x03FFBA70>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 235, in __getGoods
+    r = requests.get(url,headers = self.headers)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000404&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x03FFBA70>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+2019-12-21 03:13:07,274 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 157, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\connection.py", line 61, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 334, in connect
+    conn = self._new_conn()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x03FFB690>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000007&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x03FFB690>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 235, in __getGoods
+    r = requests.get(url,headers = self.headers)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000007&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x03FFB690>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+2019-12-21 03:13:07,285 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 157, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\connection.py", line 61, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 334, in connect
+    conn = self._new_conn()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x03FFB5B0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000008&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x03FFB5B0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 235, in __getGoods
+    r = requests.get(url,headers = self.headers)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000008&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x03FFB5B0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+2019-12-21 03:13:07,301 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 157, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\connection.py", line 61, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 334, in connect
+    conn = self._new_conn()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x03FFBCD0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000006&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x03FFBCD0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 235, in __getGoods
+    r = requests.get(url,headers = self.headers)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000006&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x03FFBCD0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+2019-12-21 03:13:07,317 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 157, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\connection.py", line 61, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 334, in connect
+    conn = self._new_conn()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x03FFB510>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1999999&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x03FFB510>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 235, in __getGoods
+    r = requests.get(url,headers = self.headers)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1999999&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x03FFB510>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+2019-12-21 22:33:05,733 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 157, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\connection.py", line 61, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 334, in connect
+    conn = self._new_conn()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x05640250>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=2&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000442&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x05640250>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 235, in __getGoods
+    r = requests.get(url,headers = self.headers)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=2&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000442&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x05640250>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+2019-12-21 22:33:05,764 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 157, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\connection.py", line 61, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 334, in connect
+    conn = self._new_conn()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x0564C7B0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000009&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x0564C7B0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 235, in __getGoods
+    r = requests.get(url,headers = self.headers)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000009&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x0564C7B0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+2019-12-21 22:33:05,777 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 157, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\connection.py", line 61, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 334, in connect
+    conn = self._new_conn()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x0564C0B0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000004&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x0564C0B0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 235, in __getGoods
+    r = requests.get(url,headers = self.headers)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000004&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x0564C0B0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+2019-12-21 22:33:05,789 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 157, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\connection.py", line 61, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 334, in connect
+    conn = self._new_conn()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x0564C090>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000003&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x0564C090>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 235, in __getGoods
+    r = requests.get(url,headers = self.headers)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000003&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x0564C090>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+2019-12-21 22:33:05,800 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 157, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\connection.py", line 61, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 334, in connect
+    conn = self._new_conn()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x0564CDD0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000011&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x0564CDD0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 235, in __getGoods
+    r = requests.get(url,headers = self.headers)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000011&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x0564CDD0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+2019-12-21 22:33:05,813 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 157, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\connection.py", line 61, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 334, in connect
+    conn = self._new_conn()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x0564C550>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000010&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x0564C550>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 235, in __getGoods
+    r = requests.get(url,headers = self.headers)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000010&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x0564C550>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+2019-12-21 22:33:05,825 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 157, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\connection.py", line 61, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 334, in connect
+    conn = self._new_conn()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x0564C090>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000002&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x0564C090>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 235, in __getGoods
+    r = requests.get(url,headers = self.headers)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000002&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x0564C090>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+2019-12-21 22:33:05,841 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 157, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\connection.py", line 61, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 334, in connect
+    conn = self._new_conn()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x0564CD30>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000404&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x0564CD30>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 235, in __getGoods
+    r = requests.get(url,headers = self.headers)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000404&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x0564CD30>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+2019-12-21 22:33:05,853 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 157, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\connection.py", line 61, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 334, in connect
+    conn = self._new_conn()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x0564CE30>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000007&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x0564CE30>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 235, in __getGoods
+    r = requests.get(url,headers = self.headers)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000007&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x0564CE30>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+2019-12-21 22:33:05,865 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 157, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\connection.py", line 61, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 334, in connect
+    conn = self._new_conn()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x0564C090>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000008&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x0564C090>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 235, in __getGoods
+    r = requests.get(url,headers = self.headers)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000008&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x0564C090>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+2019-12-21 22:33:05,894 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 157, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\connection.py", line 61, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 334, in connect
+    conn = self._new_conn()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x0564CDD0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000006&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x0564CDD0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 235, in __getGoods
+    r = requests.get(url,headers = self.headers)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000006&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x0564CDD0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+2019-12-21 22:33:05,905 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 157, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\connection.py", line 61, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 334, in connect
+    conn = self._new_conn()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x0564C210>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1999999&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x0564C210>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 235, in __getGoods
+    r = requests.get(url,headers = self.headers)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='used-api.paipai.com', port=443): Max retries exceeded with url: /auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1999999&callback=__jp35 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x0564C210>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+2019-12-22 21:45:15,077 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 244, in __getGoods
+    if result_dict["data"]["auctionInfos"]:
+TypeError: 'NoneType' object is not subscriptable
+

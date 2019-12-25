@@ -11,7 +11,7 @@ from config import mymysql
 from rq import Queue
 
 #先对一些变量定义事先实例化了几个对象
-
+#redislink = redis.Redis(host = '120.27.22.37', port = 6347, decode_responses=True)
 redislink = redis.Redis(host=myredis['host'], port=myredis['port'], decode_responses=True)
 myqllink = pymysql.connect(host= mymysql['host'], user = mymysql['user'], passwd = mymysql['passwd'], db = mymysql['db'])
 
@@ -57,6 +57,25 @@ def caijirenwu(redislink):
 
 if __name__ == '__main__':
     redislink.getset("getgoods", 0)
+
+    # keys = redislink.keys()
+    # for key in keys:
+    #     # print(key)
+    #     type = redislink.type(key)
+    #     if type == 'string':
+    #         vals = redislink.get(key)
+    #     elif type == 'list':
+    #         vals = redislink.lrange(key, 0, -1)
+    #         print(vals)
+    #     elif type == 'set':
+    #         vals = redislink.smembers(key);
+    #     elif type == 'zset':
+    #         vals = redislink.zrange(key, 0, -1)
+    #     elif type == "hash":
+    #         vals = redislink.hgetall(key)
+    #     else:
+    #         pass
+
     while True:
         print(time.time())
         t = threading.Thread(target=shuru, name='LoopThread')
@@ -66,6 +85,6 @@ if __name__ == '__main__':
         if value == '1':
             t2 = threading.Thread(target=caijirenwu, name='shuchu', args=(redislink,))
             t2.start()
-            # t2.join()
+            t2.join()
 
 
