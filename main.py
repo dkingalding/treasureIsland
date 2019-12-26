@@ -85,6 +85,8 @@ if __name__ == '__main__':
         if value == '1':
             t2 = threading.Thread(target=caijirenwu, name='shuchu', args=(redislink,))
             t2.start()
-            t2.join()
+
+            # t2.join()
+
 
 
