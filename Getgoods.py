@@ -155,7 +155,7 @@ class getgoods(object):
 
     def getGoodInfo(self, usedNo):
         auconttime = int(time.time())*1000
-        sql = "SELECT gg.id, ss.quality, ss.shopId, ss.productName, gg.endTime FROM usedname ss INNER JOIN " \
+        sql = "SELECT gg.id, ss.quality, ss.shopId, ss.productName, gg.endTime FROM usedName ss INNER JOIN " \
               " goods gg  ON ss.usedNo = gg.usedNo WHERE ss.usedNo = {0} AND gg.endTime >= {1}".format(
             usedNo, auconttime)
         try:
@@ -212,7 +212,7 @@ class getgoods(object):
 
         auconttime = int(time.time())*1000
 
-        sql = "SELECT ss.usedNo, ss.quality, ss.shopId, ss.productName,COUNT(*) num FROM usedname ss INNER JOIN " \
+        sql = "SELECT ss.usedNo, ss.quality, ss.shopId, ss.productName,COUNT(*) num FROM usedName ss INNER JOIN " \
               " goods gg  ON ss.usedNo = gg.usedNo WHERE ss.productName LIKE '%{0}%' AND gg.endTime >= {1} {2} GROUP BY ss.usedNo".format(
             condition, auconttime, shopcondition)
         try:

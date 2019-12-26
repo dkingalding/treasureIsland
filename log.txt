@@ -1334,3 +1334,2145 @@ requests.exceptions.ConnectionError: HTTPSConnectionPool(host='used-api.paipai.c
     if result_dict["data"]["auctionInfos"]:
 TypeError: 'NoneType' object is not subscriptable
 
+2019-12-25 23:00:35,836 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:36,195 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:36,550 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:36,813 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:37,076 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:37,428 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:37,789 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:38,148 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:38,504 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:38,859 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:39,124 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:39,473 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:39,739 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:40,061 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:40,437 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:40,701 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:40,962 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:41,329 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:41,594 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:41,948 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:42,210 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:42,475 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:42,739 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:43,003 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:43,276 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:43,539 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:43,806 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:44,156 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:44,420 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:44,682 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:44,949 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:45,218 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:45,482 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:45,748 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:46,106 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:46,371 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:46,641 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:46,904 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:47,257 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:47,579 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:47,840 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:48,103 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:48,369 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:48,791 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:49,054 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:49,318 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:49,652 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:49,968 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:50,324 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:50,591 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:54,154 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:54,421 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:54,691 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:54,955 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:55,217 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:55,482 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:55,750 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:56,016 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:56,279 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:56,548 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:56,820 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:57,084 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:57,352 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:57,625 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:57,896 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:58,157 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:58,532 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:58,904 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:59,195 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:59,458 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:59,722 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:00:59,985 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:01:00,249 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:01:00,511 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:01:00,776 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:01:01,039 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:01:01,302 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:01:01,566 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:01:01,829 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:01:02,094 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:01:02,363 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:01:02,641 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:01:02,906 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:01:03,169 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:01:03,435 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:01:03,702 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:01:03,964 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:01:04,225 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:01:04,486 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:01:04,750 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:01:05,014 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:01:05,277 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:01:05,541 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:01:05,807 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:01:06,079 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:01:06,342 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:01:06,608 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:01:06,874 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:01:07,139 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:01:07,410 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 288, in __setdata
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedName' doesn't exist")
+
+2019-12-25 23:31:29,644 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 219, in getUsedNo
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedname' doesn't exist")
+
+2019-12-26 20:26:21,233 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 162, in getGoodInfo
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.InternalError: (1054, "Unknown column 'seach' in 'where clause'")
+

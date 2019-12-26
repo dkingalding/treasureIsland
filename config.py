@@ -4,6 +4,6 @@ Agent = [
     {"User-Agent":"Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0"},
     {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_0) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.56 Safari/535.11"}
 ]
-mymysql = {"host":'127.0.0.1', "user":"root", "passwd":"123456","db":'duobaodao'  }
+mymysql = {"host":'120.27.22.37', "user":"root", "passwd":"Af2Jna8Fs91p","db":'duobaodao'  }
 
-myredis = {"host":'127.0.0.1', "port":6379,}
+myredis = {"host":'120.27.22.37', "port":6347,}
