@@ -44,7 +44,7 @@ if __name__ == '__main__':
     #早上10点和下午两点之间采集数据时视为补充数据，不需要清楚历史数据
     if theclick <=10 :
         loginClass.longduomingdao()
-
+    loginClass.longduomingdao()
     while True:
         startScore = int(time.time() + 1) * 1000
         endScore = startScore+ 2000

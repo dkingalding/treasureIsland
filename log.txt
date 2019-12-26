@@ -3476,3 +3476,45 @@ pymysql.err.ProgrammingError: (1146, "Table 'duobaodao.usedname' doesn't exist")
     raise errorclass(errno, errval)
 pymysql.err.InternalError: (1054, "Unknown column 'seach' in 'where clause'")
 
+2019-12-26 20:49:37,961 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 219, in getUsedNo
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.InternalError: (1267, "Illegal mix of collations (utf8_general_ci,IMPLICIT) and (utf8mb4_general_ci,COERCIBLE) for operation 'like'")
+
+2019-12-26 23:17:29,955 - ERROR - Traceback (most recent call last):
+  File "/home/alading/work/island/Getgoods.py", line 219, in getUsedNo
+    self.cursor.execute(sql)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.6/dist-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.InternalError: (1267, "Illegal mix of collations (utf8_general_ci,IMPLICIT) and (utf8mb4_general_ci,COERCIBLE) for operation 'like'")
+
