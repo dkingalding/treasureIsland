@@ -12,19 +12,12 @@ from rq import Queue
 
 # 先对一些变量定义事先实例化了几个对象
 
-redislink = redis.Redis(host=myredis['host'], port=myredis['port'], decode_responses=True)
-myqllink = pymysql.connect(host=mymysql['host'], user=mymysql['user'], passwd=mymysql['passwd'], db=mymysql['db'])
 
-loginClass = loginCook()
-
-allgoods = getgoods(redislink, myqllink)
-duobaoClas = duobao()
-thecode = inCode(allgoods, duobaoClas, loginClass, redislink, myqllink)
 
 # 使用队列
-qpaimai = Queue('low', connection=redislink)
-queue = Queue('high', connection=redislink)
-qcaiji = queue
+# qpaimai = Queue('low', connection=redislink)
+# queue = Queue('high', connection=redislink)
+# qcaiji = queue
 
 
 
@@ -34,12 +27,28 @@ def paimairenwu(goodsid, sqlNo , endScore):
     # 循环取出redis 有序集合trealist中当前时间的mapping
     # 查看相依的商品redis 的list中是否有待拍卖的
     # 有带拍卖的就将其计入到任务队列中
+    redislink = redis.Redis(host=myredis['host'], port=myredis['port'], decode_responses=True)
+    myqllink = pymysql.connect(host=mymysql['host'], user=mymysql['user'], passwd=mymysql['passwd'], db=mymysql['db'])
+
+    loginClass = loginCook()
+
+    allgoods = getgoods(redislink, myqllink)
+    duobaoClas = duobao()
+    thecode = inCode(allgoods, duobaoClas, loginClass, redislink, myqllink)
     thecode.paimai(goodsid, sqlNo, endScore)
 
 
 if __name__ == '__main__':
     # 需要任务队列，线程可以修改任务队列中的数据
     # 每次开启需要验证登录
+    redislink = redis.Redis(host=myredis['host'], port=myredis['port'], decode_responses=True)
+    myqllink = pymysql.connect(host=mymysql['host'], user=mymysql['user'], passwd=mymysql['passwd'], db=mymysql['db'])
+
+    loginClass = loginCook()
+
+    allgoods = getgoods(redislink, myqllink)
+    duobaoClas = duobao()
+    thecode = inCode(allgoods, duobaoClas, loginClass, redislink, myqllink)
     theclick = int(time.strftime('%H', time.localtime(time.time())))
     #早上10点和下午两点之间采集数据时视为补充数据，不需要清楚历史数据
     if theclick <=10 :

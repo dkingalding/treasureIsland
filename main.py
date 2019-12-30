@@ -26,10 +26,10 @@ thecode = inCode(allgoods, duobaoClas, loginClass, redislink, myqllink)
 # qpaimai = Queue('low', connection = redislink)
 # qcaiji = Queue('high', connection = redislink)
 
-#
-# def shuru():
-#
-#     thecode.startWork()
+
+def shuru():
+
+    thecode.startWork()
 
 def caijirenwu(redislink):
     #采集数据的进程
@@ -76,47 +76,15 @@ if __name__ == '__main__':
     #     else:
     #         pass
 
-    # while True:
-        # print(time.time())
-        # t = threading.Thread(target=shuru, name='LoopThread')
-        # t.start()
-        # t.join()
-
-    # 需要任务队列，线程可以修改任务队列中的数据
-    # 每次开启需要验证登录
-    theclick = int(time.strftime('%H', time.localtime(time.time())))
-    #早上10点和下午两点之间采集数据时视为补充数据，不需要清楚历史数据
-    if theclick <=10 :
-        loginClass.longduomingdao()
-    loginClass.longduomingdao()
     while True:
+        print(time.time())
+        t = threading.Thread(target=shuru, name='LoopThread')
+        t.start()
+        t.join()
         value = redislink.get("getgoods")
         if value == '1':
             t2 = threading.Thread(target=caijirenwu, name='shuchu', args=(redislink,))
             t2.start()
             t2.join()
-        startScore = int(time.time() + 1) * 1000
-        endScore = startScore+ 2000
-        goodslist = redislink.zrangebyscore('treadlist', startScore, endScore)
-        if goodslist:
-            print(goodslist)
-            print(startScore)
-            print(endScore)
-            for value in goodslist:
-                threads = []
-                dd = value.split('*')
-                print(dd)
-                if redislink.llen(dd[0]):
-                    # 满足这些条件才开始进入任务队列
-                    # 在这里开启线程
-                    # 目前按照这逻辑在同一时间段只能拍卖一个商品
-                    print("有订单要拍卖")
-                    sqlNo = redislink.lindex(dd[0], 0)
-                    print(sqlNo)
-                    threads.append(threading.Thread(target=paimairenwu, name=sqlNo, args=(dd[1], sqlNo, endScore)))
-            for t in threads:
-                t.start()
-            for t in threads:
-                t.join()
-        redislink.zremrangebyscore('treadlist', 0, endScore)
+
 
