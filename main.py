@@ -26,10 +26,10 @@ thecode = inCode(allgoods, duobaoClas, loginClass, redislink, myqllink)
 # qpaimai = Queue('low', connection = redislink)
 # qcaiji = Queue('high', connection = redislink)
 
-#
-# def shuru():
-#
-#     thecode.startWork()
+
+def shuru():
+
+    thecode.startWork()
 
 def caijirenwu(redislink):
     #采集数据的进程
@@ -76,26 +76,21 @@ if __name__ == '__main__':
     #     else:
     #         pass
 
-    # while True:
-        # print(time.time())
-        # t = threading.Thread(target=shuru, name='LoopThread')
-        # t.start()
-        # t.join()
-
-    # 需要任务队列，线程可以修改任务队列中的数据
-    # 每次开启需要验证登录
-    theclick = int(time.strftime('%H', time.localtime(time.time())))
-    #早上10点和下午两点之间采集数据时视为补充数据，不需要清楚历史数据
-    if theclick <=10 :
-        loginClass.longduomingdao()
-    loginClass.longduomingdao()
     while True:
+        print(time.time())
+        t = threading.Thread(target=shuru, name='LoopThread')
+        t.start()
+        t.join()
         value = redislink.get("getgoods")
         if value == '1':
             t2 = threading.Thread(target=caijirenwu, name='shuchu', args=(redislink,))
             t2.start()
+<<<<<<< HEAD
 
             # t2.join()
 
+=======
+            t2.join()
+>>>>>>> 237b73309bef7f1901db145093c6ce30d7aaeea2
 
 
