@@ -1,17 +1,21 @@
 import time
-# from config import myredis
-# import redis
+from config import myredis
+import redis
+from config import mymysql
+import pymysql
 
 class inCode(object):
     #接受指令，并在本类中完成对其他基本类的调用，完成所有功能
-    def __init__(self, allgoods, duobaoClass, loginClass, redislink, myqllink):
+    def __init__(self, allgoods, duobaoClass, loginClass):
         #将所有传入的实例都赋值给类内部
         #定义一个全局变量或者内部变量记录获取输入的内容
         self.allgoods = allgoods
         self.duobaoClass = duobaoClass
         self.loginClass = loginClass
-        self.redislink = redislink
-        self.myqllink = myqllink
+
+        self.redislink = redis.Redis(host=myredis['host'], port=myredis['port'], decode_responses=True)
+        self.myqllink = pymysql.connect(host=mymysql['host'], user=mymysql['user'], passwd=mymysql['passwd'], db=mymysql['db'])
+
         self.cursor = self.myqllink.cursor()
 
 
@@ -184,7 +188,7 @@ class inCode(object):
             print("没有本次拍卖")
             return
 
-        theMaxprice = round(int(offerlist[0][2]) * 0.95)
+        theMaxprice = round(int(offerlist[0][2]))
 
         print(theMaxprice, theMaxprice)
         nowtime = round(time.time() * 1000)
@@ -233,7 +237,8 @@ class inCode(object):
                 #将成功的计入到数据库，并消除代拍任务
                 #UPDATE Person SET Address = 'Zhongshan 23', City = 'Nanjing' WHERE LastName = 'Wilson'
                 try:
-                    sql = "UPDATE  offerlog SET goodsid = '{0}', officePrice = '{1}' WHERE id = '{2}'".format(goodsid, myprice, sqlNo)
+                    sql = "UPDATE  offerlog SET goodsid = '{0}', officePrice = '{1}' ， endTime = '{2}'  status = 1 \
+                    WHERE id = '{3}'".format(goodsid, myprice, time.strftime("%Y-%m-%d", time.localtime()),sqlNo )
                     self.cursor.execute(sql)
                     # 执行sql语句
                     self.myqllink.commit()

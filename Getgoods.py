@@ -1,9 +1,9 @@
 import requests,json,time
 import re
-# import pymysql
-# import redis
-# from config import mymysql
-# from config import myredis
+import pymysql
+import redis
+from config import mymysql
+from config import myredis
 from config import Agent
 from random import randint
 import logging
@@ -11,7 +11,7 @@ import traceback
 
 class getgoods(object):
 
-    def __init__(self, redislink, myqllink):
+    def __init__(self):
         #全部商品  "https://sell.paipai.com/auction-list?groupId=-1&entryid=p0120003dbdlogo"
         #https://used-api.jd.com/auction/list?pageNo=2&pageSize=50&category1=&status=&orderDirection=1&auctionType=1&orderType=1&callback=__jp116
         # https://used-api.paipai.com/auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000005&callback=__jp35
@@ -40,12 +40,12 @@ class getgoods(object):
             # "Connection": "close",
             "User-Agent":Agent[randint(0, 3)]['User-Agent'],
         }
-        # self.myqllink = pymysql.connect(host= mymysql['host'],user = mymysql['user'], passwd= mymysql['passwd'],db= mymysql['db'])
-        self.myqllink = myqllink
-        self.cursor = self.myqllink.cursor()
+
+
         self.errordata = {'geterror':[],'setsqlerror':[]}
-        # self.redislink = redis.Redis(host= myredis['host'],port= myredis['port'])
-        self.redislink = redislink
+        self.redislink = redis.Redis(host=myredis['host'], port=myredis['port'], decode_responses=True)
+        self.myqllink = pymysql.connect(host=mymysql['host'], user=mymysql['user'], passwd=mymysql['passwd'], db=mymysql['db'])
+        self.cursor = self.myqllink.cursor()
         logging.basicConfig(filename='log.txt', level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
 
     def getAllGoods(self):
@@ -180,7 +180,7 @@ class getgoods(object):
         # self.myqllink.commit()
         # results = self.cursor.fetchall()
         # return results
-        sql = "SELECT id, usedNo, xianyuPrice FROM offorlog WHERE id = {0}".format(offerid)
+        sql = "SELECT id, usedNo, officePrice  FROM offorlog WHERE id = {0} AND status != 2".format(offerid)
         # self.cursor.execute(sql)
         # # 执行sql语句
         # self.myqllink.commit()
@@ -285,6 +285,7 @@ class getgoods(object):
                 sql = "INSERT INTO usedName ({0}) VALUES ({1})".format(keydata,valuedata)
 
                 try:
+                    self.myqllink.ping(reconnect=True)
                     self.cursor.execute(sql)
                     # 执行sql语句
                     self.myqllink.commit()
@@ -306,6 +307,7 @@ class getgoods(object):
                     .format(data['shopId'],data['shopName'])
                 sql = "INSERT INTO shop ({0}) VALUES ({1})".format(keydata,valuedata)
                 try:
+                    self.myqllink.ping(reconnect=True)
                     self.cursor.execute(sql)
                     # 执行sql语句
                     self.myqllink.commit()
@@ -326,6 +328,7 @@ class getgoods(object):
                 sql = "INSERT INTO goods ({0}) VALUES ({1})".format(keydata,valuedata)
                 try:
                     # 执行sql语句
+                    self.myqllink.ping(reconnect=True)
                     self.cursor.execute(sql)
                     self.myqllink.commit()
                     self.redislink.sadd('goodslist', data['id'])
