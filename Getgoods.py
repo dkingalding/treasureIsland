@@ -11,7 +11,7 @@ import traceback
 
 class getgoods(object):
 
-    def __init__(self):
+    def __init__(self, redislink):
         #全部商品  "https://sell.paipai.com/auction-list?groupId=-1&entryid=p0120003dbdlogo"
         #https://used-api.jd.com/auction/list?pageNo=2&pageSize=50&category1=&status=&orderDirection=1&auctionType=1&orderType=1&callback=__jp116
         # https://used-api.paipai.com/auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000005&callback=__jp35
@@ -43,7 +43,8 @@ class getgoods(object):
 
 
         self.errordata = {'geterror':[],'setsqlerror':[]}
-        self.redislink = redis.Redis(host=myredis['host'], port=myredis['port'], decode_responses=True)
+        self.redislink = redislink
+        # self.redislink = redis.Redis(host=myredis['host'], port=myredis['port'], decode_responses=True)
         self.myqllink = pymysql.connect(host=mymysql['host'], user=mymysql['user'], passwd=mymysql['passwd'], db=mymysql['db'])
         self.cursor = self.myqllink.cursor()
         logging.basicConfig(filename='log.txt', level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -106,127 +107,21 @@ class getgoods(object):
                     time.sleep(1)
 
     def clearRedis(self):
-        #todo 需要根据时间段清理内存数据
+
         self.redislink.delete("goodslist")
         sql = "TRUNCATE  goods"
         self.cursor.execute(sql)
         self.myqllink.commit()
 
-    def gethistory(self, auction):
-        try:
-            #https://used-api.paipai.com/auction/detail?callback=jQuery32108877681006626417_1574400875551&auctionId=120934440&p=2
-            url = (
-                "https://used-api.paipai.com/auction/detail?callback=jQuery32108877681006626417_1574400875551&auctionId={0}&p=2").format(
-                auction)
-            r = requests.get(url)
-            result_json = re.search(r'{.*}', r.text)
-            result_dict = json.loads(result_json.group())
-            # print(result_dict)
-            if result_dict['code'] == 200:
-                pricelist = result_dict['data']['historyRecord']
-                historyPrice = ''
-                for nb in pricelist:
-                    # print(nb['offerPrice'])
-                    historyPrice = historyPrice + "/" + str(nb['offerPrice'])
-            else:
-                historyPrice = "数据出错"
-        except:
-            historyPrice = '获取历史价格错误'
-        return historyPrice
+        # self.redislink.delete("treadlist")
 
-    def getGoodsid(self, usedNo):
-        #根据提供的usedNo获取拍卖品id
-        #在获取历史成交价格和拍卖时选着使用
-        auconttime = (int(time.time()))*1000
-        sql = "SELECT id, startTime, endTime FROM goods WHERE usedNo ={0} AND endTime >= {1} ORDER BY endTime".format(usedNo,auconttime)
-        try:
-            self.cursor.execute(sql)
-            # 执行sql语句
-            self.myqllink.commit()
-            results = self.cursor.fetchall()
-
-        except:
-            #将错误信息计入，并输出错误信息
-            logging.error(traceback.format_exc())
-            print("查询商品拍卖id {0} 出错".format(usedNo))
-            results = ()
-        finally:
-            return results
-
-    def getGoodInfo(self, usedNo):
-        auconttime = int(time.time())*1000
-        sql = "SELECT gg.id, ss.quality, ss.shopId, ss.productName, gg.endTime FROM usedName ss INNER JOIN " \
-              " goods gg  ON ss.usedNo = gg.usedNo WHERE ss.usedNo = {0} AND gg.endTime >= {1}".format(
-            usedNo, auconttime)
-        try:
-            self.cursor.execute(sql)
-            # 执行sql语句
-            self.myqllink.commit()
-            results = self.cursor.fetchall()
-        except:
-            # 发生错误时回滚
-            logging.error(traceback.format_exc())
-            print("查询商品 usedNo {0} 出错".format(usedNo))
-            results = ()
-        finally:
-            return results
-
-    def goodssend(self, offerid):
-        # auconttime = int(time.time())*1000
-        # sql = "SELECT id, startTime, endTime, usedNo FROM goods WHERE id ={0}".format(goodsid)
-        # sql = "SELECT id, startTime, endTime, usedNo FROM goods WHERE id = {0}  ORDER BY endTime".format(goodsid)
+        # self.redislink.delete("goodslist")
+        # sql = "TRUNCATE  goods"
         # self.cursor.execute(sql)
-        # # 执行sql语句
         # self.myqllink.commit()
-        # results = self.cursor.fetchall()
-        # return results
-        sql = "SELECT id, usedNo, officePrice  FROM offorlog WHERE id = {0} AND status != 2".format(offerid)
+        # sql = "TRUNCATE  offorlog"
         # self.cursor.execute(sql)
-        # # 执行sql语句
         # self.myqllink.commit()
-        # results = self.cursor.fetchall()
-        # return results
-        try:
-            self.cursor.execute(sql)
-            # 执行sql语句
-            self.myqllink.commit()
-            results = self.cursor.fetchall()
-
-        except:
-            #将错误信息计入，并输出错误信息
-            logging.error(traceback.format_exc())
-            print("查询商品拍卖记录{0} 出错".format(offerid))
-            results = ()
-        finally:
-            return results
-
-
-
-    def getUsedNo(self, condition, shop = 0):
-        #根据条件获取商品的usedNo 可以考虑将新旧程度也加上去
-        #条件基本时允许商品名或者usedNo
-        if shop != 0:
-            shopcondition = ""
-        else:
-            shopcondition = "AND ss.shopId = 0"
-
-        auconttime = int(time.time())*1000
-
-        sql = "SELECT ss.usedNo, ss.quality, ss.shopId, ss.productName,COUNT(*) num FROM usedName ss INNER JOIN " \
-              " goods gg  ON ss.usedNo = gg.usedNo WHERE ss.productName LIKE '%{0}%' AND gg.endTime >= {1} {2} GROUP BY ss.usedNo".format(
-            condition, auconttime, shopcondition)
-        try:
-            self.cursor.execute(sql)
-            # 执行sql语句
-            self.myqllink.commit()
-            results = self.cursor.fetchall()
-        except:
-            # 发生错误时回滚
-            logging.error(traceback.format_exc())
-            print("查询商品 usedNo {0} 出错".format(condition))
-            results = ()
-        finally:
-            return results
 
     def __getGoods(self,url):
         #获取每一个分页商品信息
