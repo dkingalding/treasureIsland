@@ -173,9 +173,10 @@ class offer(object):
             print(sqlNo)
             offerlist = self.goodssend(sqlNo)
             print(offerlist)
-            if offerlist :
+            if offerlist:
                 return sqlNo
             else:
+                print('删除订单',sqlNo)
                 self.redislink.lpop(usedno)
                 self.surestatus(usedno)
         else:

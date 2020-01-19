@@ -39,26 +39,28 @@ def paimairenwu(goodsid, sqlNo , endScore):
     tt = offer(Pool)
     tt.paimai(goodsid, sqlNo, endScore)
 
-def caijirenwu(redislink):
+def caijirenwu(redislink, groupid):
     #控制采集
 
     #数值2表示正在采集中
     conn = redis.Redis(connection_pool=redislink)
-    print('有采集任务')
-    conn.getset("getgoods", 2)
+    print('有采集任务',groupid)
+
     #判断现在是否是新的一天，如果是新的一天就清除goodlist（redis）和goods（数据库）
-    theclick = int(time.strftime('%H', time.localtime(time.time())))
+
     #早上10点和下午两点之间采集数据时视为补充数据，不需要清楚历史数据
     caijigoods = getgoods(conn)
     # allgoods.clearRedis()
-    if theclick <=10 or theclick >=14:
-        caijigoods.clearRedis()
+
     #开始采集数据并返回采集结果
-    theresult = caijigoods.getAllGoods()
+    theresult = caijigoods.getAllGoods(groupid)
 
     #如果采集结果返回为200 就将数据状态码改会0
     if theresult == 200:
-        conn.getset("getgoods", 0)
+        caijigoods.reorder()
+
+
+
 
 if __name__ == '__main__':
     # 需要任务队列，线程可以修改任务队列中的数据
@@ -66,7 +68,8 @@ if __name__ == '__main__':
     #每次启动程序就登录保证cookies有效
     loginClass = loginCook()
     theclick = int(time.strftime('%H', time.localtime(time.time())))
-
+    # caijigoods = getgoods(conn)
+    # caijigoods.reorder()
     # conn = redis.Redis(connection_pool=Pool)
     # caijigoods = getgoods(conn)
     # caijigoods.clearRedis()
@@ -76,11 +79,22 @@ if __name__ == '__main__':
     # loginClass.longduomingdao()
     while True:
         value = conn.get("getgoods")
+        groupids = conn.smembers("groupgoods")
         # 获取采集数据的状态码，是否开启采集线程
         if value == '1':
-            t2 = threading.Thread(target=caijirenwu, name='shuchu', args=(Pool,))
-            t2.start()
-
+            caijiduilie = []
+            caiji = getgoods(conn)
+            if theclick <= 10 or theclick >= 14:
+                caiji.clearRedis()
+            if groupids:
+                for groupid in groupids:
+                    caijiduilie.append(threading.Thread(target=caijirenwu, name='shuchu', args=(Pool,groupid)))
+                conn.getset("getgoods", 2)
+                for t in caijiduilie:
+                    t.start()
+            else:
+                t2 = threading.Thread(target=caijirenwu, name='shuchu', args=(Pool, '1000005'))
+                t2.start()
 
         # #开始获取在一定时间段内的
         startScore = int(time.time() + 1) * 1000
