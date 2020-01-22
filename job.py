@@ -24,7 +24,7 @@ os.environ['TZ'] = 'Asia/Shanghai'
 Pool = redis.ConnectionPool(host= myredis['host'], port= myredis['port'], max_connections=10, decode_responses=True)
 
 # 从池子中拿一个链接
-conn = redis.Redis(connection_pool=Pool)
+
 # loginClass = loginCook()
 
 
@@ -78,18 +78,21 @@ if __name__ == '__main__':
         loginClass.longduomingdao()
     # loginClass.longduomingdao()
     while True:
+        conn = redis.Redis(connection_pool=Pool)
         value = conn.get("getgoods")
         groupids = conn.smembers("groupgoods")
         # 获取采集数据的状态码，是否开启采集线程
+        theclick = int(time.strftime('%H', time.localtime(time.time())))
         if value == '1':
             caijiduilie = []
             caiji = getgoods(conn)
+            conn.getset("getgoods", 2)
             if theclick <= 10 or theclick >= 14:
                 caiji.clearRedis()
             if groupids:
                 for groupid in groupids:
                     caijiduilie.append(threading.Thread(target=caijirenwu, name='shuchu', args=(Pool,groupid)))
-                conn.getset("getgoods", 2)
+
                 for t in caijiduilie:
                     t.start()
             else:
