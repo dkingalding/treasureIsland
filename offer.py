@@ -89,7 +89,7 @@ class offer(object):
                         #如果出价成功，记录出价记录
                     else:
                         result = {'code': 300, 'goodsid': goodsid, "usedNo":offerlist[0][1], "price": 1}
-                        # myprice = 1
+                        myprice = 0
                         # 如果出价失败，不记录出价记录
                 else:
                     #记录拍卖状态
@@ -99,8 +99,8 @@ class offer(object):
                 #将成功的计入到数据库，并消除代拍任务
                 #UPDATE Person SET Address = 'Zhongshan 23', City = 'Nanjing' WHERE LastName = 'Wilson'
                 try:
-                    sql = "UPDATE  offerlog SET goodsid = '{0}', officePrice = '{1}'  endTime = '{2}'  status = 1 \
-                    WHERE id = '{3}'".format(goodsid, myprice, time.strftime("%Y-%m-%d", time.localtime()),sqlNo )
+                    sql = "UPDATE  offorlog SET goodsid = '{0}', officePrice = '{1}' , endtime = '{2}',status = 1 \
+        WHERE id ='{3}'".format(goodsid, myprice, time.strftime("%Y-%m-%d", time.localtime()),sqlNo )
                     self.cursor.execute(sql)
                     # 执行sql语句
                     self.myqllink.commit()
@@ -203,3 +203,10 @@ class offer(object):
             results = ()
         finally:
             return results
+
+    def tets(self):
+        sql = "UPDATE  offorlog SET goodsid = '{0}', officePrice = '{1}' , endtime = '{2}'  ,status = 1 \
+        WHERE id = '{3}'".format(111, 111, time.strftime("%Y-%m-%d", time.localtime()), 1)
+        self.cursor.execute(sql)
+        # 执行sql语句
+        self.myqllink.commit()

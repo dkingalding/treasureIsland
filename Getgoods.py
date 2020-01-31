@@ -11,7 +11,7 @@ import traceback
 
 class getgoods(object):
 
-    def __init__(self, redislink):
+    def __init__(self, conredis):
         #全部商品  "https://sell.paipai.com/auction-list?groupId=-1&entryid=p0120003dbdlogo"
         #https://used-api.jd.com/auction/list?pageNo=2&pageSize=50&category1=&status=&orderDirection=1&auctionType=1&orderType=1&callback=__jp116
         # https://used-api.paipai.com/auction/list?pageNo=1&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000005&callback=__jp35
@@ -43,7 +43,8 @@ class getgoods(object):
 
 
         self.errordata = {'geterror':[],'setsqlerror':[]}
-        self.redislink = redislink
+        self.redislink = redis.Redis(connection_pool = conredis)
+        self.redispool = conredis
         # self.redislink = redis.Redis(host=myredis['host'], port=myredis['port'], decode_responses=True)
         self.myqllink = pymysql.connect(host=mymysql['host'], user=mymysql['user'], passwd=mymysql['passwd'], db=mymysql['db'])
         self.cursor = self.myqllink.cursor()
@@ -62,6 +63,7 @@ class getgoods(object):
         pageNo = 0
         bb = True
         while bb:
+            print(pageNo)
             pageNo = pageNo + 1
             url = "https://used-api.paipai.com/auction/list?pageNo=%d&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=%s&callback=__jp35" % (
             pageNo, groupId)
