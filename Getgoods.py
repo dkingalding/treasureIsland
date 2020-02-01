@@ -252,7 +252,7 @@ class getgoods(object):
                 # vals = self.redislink.lrange(key, 0, -1)
                 # print(vals)
                 mapping = {}
-                sql = "SELECT id, usedNo, endTime FROM goods  WHERE usedNo = {0} AND endTime >= {1}".format(
+                sql = "SELECT id, usedNo, endTime FROM goods  WHERE usedNo LIKE '{0}%' AND endTime >= {1}".format(
                     key, auconttime)
                 try:
                     self.cursor.execute(sql)

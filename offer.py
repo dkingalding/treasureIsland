@@ -100,6 +100,8 @@ class offer(object):
                 #将成功的计入到数据库，并消除代拍任务
                 #UPDATE Person SET Address = 'Zhongshan 23', City = 'Nanjing' WHERE LastName = 'Wilson'
                 try:
+                    if myprice < 99:
+                        myprice = myprice + 8
                     sql = "UPDATE  offorlog SET goodsid = '{0}', officePrice = '{1}' , endtime = '{2}',status = 1 \
         WHERE id ='{3}'".format(goodsid, myprice, time.strftime("%Y-%m-%d", time.localtime()),sqlNo )
                     self.cursor.execute(sql)
