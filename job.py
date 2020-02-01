@@ -77,8 +77,7 @@ if __name__ == '__main__':
             caijiduilie = []
             caiji = getgoods(Pool)
             conn.getset("getgoods", 2)
-            if theclick <= 10 or theclick >= 20:
-                caiji.clearRedis()
+
             print(groupids)
             if groupids:
                 for groupid in groupids:

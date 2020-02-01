@@ -122,6 +122,7 @@ class inCode(object):
         #记录商品的拍卖时间记录到redis的有序集合中
         #todo 是否需要验证剩余拍卖量和待拍卖量
         officePrice = int(price)*0.95
+        usedno = unsedno[:-4]
         sql = "INSERT INTO offorlog (usedNo, xianyuprice,officePrice ,status ) VALUES ('{0}', '{1}',{2},0)".format(unsedno, price, officePrice)
         getid ="select max(id) from offorlog"
         try:
@@ -139,17 +140,17 @@ class inCode(object):
             self.myqllink.rollback()
             return
 
-        self.redislink.rpush(unsedno, sqlid[0][0])
+        self.redislink.rpush(usedno, sqlid[0][0])
         #将所有拍卖时间记录到队列中
         #todo 存在逻辑错误，如果前一天的待拍卖商品还没有拍到，新一天的队列可能会为空
         #do 每一次增加都获取商品所有的可拍卖时间，并记录下来
-        goodslist = self.allgoods.getGoodsid(unsedno)
+        goodslist = self.allgoods.getGoodsid(usedno)
         mapping = {}
         if goodslist:
             print(goodslist)
             for key in goodslist:
                 #将所有该商品的拍卖时间都记录到treadinfo中
-                mapping[str(unsedno)+"*"+ str(key[0])] = key[2]
+                mapping[str(usedno)+"*"+ str(key[0])] = key[2]
                 print(key[2])
             # treadscore = int(endTime)
             # treadinfo = unsedno+"*"+ goodsid

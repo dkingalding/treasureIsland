@@ -85,7 +85,8 @@ class offer(object):
                     bb = self.chujia(goodsid, myprice)
                     if bb ==200:
                         result = {'code': 200, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
-
+                    elif bb == 304:
+                        result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
                         #如果出价成功，记录出价记录
                     else:
                         result = {'code': 300, 'goodsid': goodsid, "usedNo":offerlist[0][1], "price": 1}
@@ -104,7 +105,7 @@ class offer(object):
                     self.cursor.execute(sql)
                     # 执行sql语句
                     self.myqllink.commit()
-                    self.redislink.lpop(offerlist[0][1])
+                    self.redislink.lpop(sqlNo)
                 except:
                     # logging.error(traceback.format_exc())
                     # self.errordata['setsqlerror'].append(data)
@@ -145,7 +146,7 @@ class offer(object):
         thecode = self.duobaoClass.sendPrice(goodsid, myprice)
         if thecode['code'] != 200:
             print(thecode)
-            return 444
+            return thecode['code']
         else:
             print("出价成功")
             return 200
