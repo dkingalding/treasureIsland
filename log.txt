@@ -1,0 +1,75 @@
+2019-12-26 23:20:34,686 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 221, in getUsedNo
+    self.myqllink.commit()
+  File "F:\python\duobaodao\lib\site-packages\pymysql\connections.py", line 420, in commit
+    self._read_ok_packet()
+  File "F:\python\duobaodao\lib\site-packages\pymysql\connections.py", line 394, in _read_ok_packet
+    pkt = self._read_packet()
+  File "F:\python\duobaodao\lib\site-packages\pymysql\connections.py", line 657, in _read_packet
+    packet_header = self._read_bytes(4)
+  File "F:\python\duobaodao\lib\site-packages\pymysql\connections.py", line 688, in _read_bytes
+    self._sock.settimeout(self._read_timeout)
+AttributeError: 'NoneType' object has no attribute 'settimeout'
+
+2019-12-30 23:03:10,664 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 219, in getUsedNo
+    self.cursor.execute(sql)
+  File "F:\python\duobaodao\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "F:\python\duobaodao\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "F:\python\duobaodao\lib\site-packages\pymysql\connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "F:\python\duobaodao\lib\site-packages\pymysql\connections.py", line 732, in _read_query_result
+    result.read()
+  File "F:\python\duobaodao\lib\site-packages\pymysql\connections.py", line 1082, in read
+    self._read_result_packet(first_packet)
+  File "F:\python\duobaodao\lib\site-packages\pymysql\connections.py", line 1151, in _read_result_packet
+    self._get_descriptions()
+  File "F:\python\duobaodao\lib\site-packages\pymysql\connections.py", line 1252, in _get_descriptions
+    assert eof_packet.is_eof_packet(), 'Protocol error, expecting EOF'
+AssertionError: Protocol error, expecting EOF
+
+2019-12-30 23:05:41,523 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 219, in getUsedNo
+    self.cursor.execute(sql)
+  File "F:\python\duobaodao\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "F:\python\duobaodao\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "F:\python\duobaodao\lib\site-packages\pymysql\connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "F:\python\duobaodao\lib\site-packages\pymysql\connections.py", line 732, in _read_query_result
+    result.read()
+  File "F:\python\duobaodao\lib\site-packages\pymysql\connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "F:\python\duobaodao\lib\site-packages\pymysql\connections.py", line 671, in _read_packet
+    % (packet_number, self._next_seq_id))
+pymysql.err.InternalError: Packet sequence number wrong - got 95 expected 2
+
+2019-12-30 23:06:35,818 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 219, in getUsedNo
+    self.cursor.execute(sql)
+  File "F:\python\duobaodao\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "F:\python\duobaodao\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "F:\python\duobaodao\lib\site-packages\pymysql\connections.py", line 516, in query
+    self._execute_command(COMMAND.COM_QUERY, sql)
+  File "F:\python\duobaodao\lib\site-packages\pymysql\connections.py", line 750, in _execute_command
+    raise err.InterfaceError("(0, '')")
+pymysql.err.InterfaceError: (0, '')
+
+2019-12-30 23:11:43,244 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 219, in getUsedNo
+    self.cursor.execute(sql)
+  File "F:\python\duobaodao\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "F:\python\duobaodao\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "F:\python\duobaodao\lib\site-packages\pymysql\connections.py", line 516, in query
+    self._execute_command(COMMAND.COM_QUERY, sql)
+  File "F:\python\duobaodao\lib\site-packages\pymysql\connections.py", line 750, in _execute_command
+    raise err.InterfaceError("(0, '')")
+pymysql.err.InterfaceError: (0, '')
+
