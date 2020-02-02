@@ -67,13 +67,12 @@ class offer(object):
             myprice = 0
             result = {'code': 400, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": 0}
             # while firsttime <=1000 and firsttime > -500 and iscontend:
-            while firsttime > 0 and iscontend:
+            while firsttime > 0:
                 thestatus = self.biPrice(goodsid, myprice, theMaxprice)
-                firsttime = int(endtime) - round(time.time() * 1000)
+                firsttime = int(endtime) - round(time.time() * 1000) +1000
                 print(thestatus)
                 if thestatus[0] == 400:
                     result = {'code':400, 'goodsid':goodsid, "usedNo":offerlist[0][1], "price":1 }
-                    iscontend = 0
                     break
                 elif thestatus[0] == 300:
                     myprice = thestatus[1] + 3
@@ -106,7 +105,7 @@ class offer(object):
                     if myprice < 99:
                         myprice = myprice + 8
                     sql = "UPDATE  offorlog SET goodsid = '{0}', officePrice = '{1}' , endtime = '{2}',status = 1 \
-        WHERE id ='{3}'".format(goodsid, myprice, time.strftime("%Y-%m-%d", time.localtime()),sqlNo )
+        WHERE id ='{3}'".format(goodsid, myprice, time.strftime("%Y-%m-%d", time.localtime()),offerlist[0][0] )
                     self.cursor.execute(sql)
                     # 执行sql语句
                     self.myqllink.commit()
