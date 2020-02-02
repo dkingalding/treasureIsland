@@ -167,6 +167,11 @@ class getgoods(object):
             # 如果商品没有录入就将商品存入到数据库和redis
 
             #去除数据中的None和单引号，能确保数据能存储进去
+            #判断redis 连接是否可用
+            try:
+                self.redislink.ping()
+            except:
+                self.redislink = redis.Redis(connection_pool = self.redispool)
             for key in data.keys():
                 if data[key] == None:
                     data[key] = 0

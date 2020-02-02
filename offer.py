@@ -87,7 +87,10 @@ class offer(object):
                         result = {'code': 200, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
                     elif bb == 304:
                         result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
+                    elif bb == 305:
+                        result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
                         #如果出价成功，记录出价记录
+                        break
                     else:
                         result = {'code': 300, 'goodsid': goodsid, "usedNo":offerlist[0][1], "price": 1}
                         myprice = 0

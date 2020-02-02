@@ -68,6 +68,10 @@ if __name__ == '__main__':
     # loginClass.longduomingdao()
     while True:
         conn = redis.Redis(connection_pool=Pool)
+        singin = conn.get("singin")
+        if singin == '1':
+            loginClass.longduomingdao()
+            conn.set("singin", 0)
         value = conn.get("getgoods")
         groupids = conn.smembers("groupgoods")
         #

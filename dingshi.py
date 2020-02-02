@@ -49,8 +49,8 @@ if __name__ == '__main__':
 
     conn = redis.Redis(connection_pool=Pool)
     value = conn.get("getgoods")
-    groupids = [1000005,1999999]
-
+    # groupids = [1000005,1999999]
+    groupids = conn.smembers("groupgoods")
     caijiduilie = []
     caiji = getgoods(Pool)
     conn.getset("getgoods", 2)
