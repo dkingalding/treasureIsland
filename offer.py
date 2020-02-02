@@ -53,24 +53,27 @@ class offer(object):
         theMaxprice = round(float(offerlist[0][2]))
 
         print(theMaxprice, theMaxprice)
-        nowtime = round(time.time() * 1000)
-        print(nowtime)
-        #需要那结束时间对比，在结束前一秒开始拍卖
-        firsttime = int(endtime) - nowtime
-        print(firsttime)
+        # nowtime = round(time.time() * 1000)
+        # print(nowtime)
+        # #需要那结束时间对比，在结束前一秒开始拍卖
+        # firsttime = int(endtime) - nowtime
+        # print(firsttime)
 
         # if firsttime <=2000 and firsttime > 0:
-        if firsttime > 0:
-            #满足这个条件是才开始竞价
-            # pass
-            iscontend = 1
-            myprice = 0
-            result = {'code': 400, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": 0}
-            # while firsttime <=1000 and firsttime > -500 and iscontend:
-            while firsttime > 0:
+        # if firsttime > 0:
+        #     pass
+        #满足这个条件是才开始竞价
+        # pass
+        firsttime = 1
+        myprice = 0
+        result = {'code': 400, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": 0}
+        while firsttime > 0:
+            #计算时间
+            firsttime = int(endtime) - round(time.time() * 1000) + 1000
+
+            if firsttime <= 2000:
                 thestatus = self.biPrice(goodsid, myprice, theMaxprice)
-                firsttime = int(endtime) - round(time.time() * 1000) +1000
-                print(thestatus)
+                print( offerlist[0][0],thestatus)
                 if thestatus[0] == 400:
                     result = {'code':400, 'goodsid':goodsid, "usedNo":offerlist[0][1], "price":1 }
                     break
@@ -97,32 +100,46 @@ class offer(object):
                 else:
                     #记录拍卖状态
                     result = {'code': 200, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
-
-            if result['code'] == 200:
-                #将成功的计入到数据库，并消除代拍任务
-                #UPDATE Person SET Address = 'Zhongshan 23', City = 'Nanjing' WHERE LastName = 'Wilson'
-                try:
-                    if myprice < 99:
-                        myprice = myprice + 8
-                    sql = "UPDATE  offorlog SET goodsid = '{0}', officePrice = '{1}' , endtime = '{2}',status = 1 \
-        WHERE id ='{3}'".format(goodsid, myprice, time.strftime("%Y-%m-%d", time.localtime()),offerlist[0][0] )
-                    self.cursor.execute(sql)
-                    # 执行sql语句
-                    self.myqllink.commit()
-                    usedno = offerlist[0][2]
-                    usedno =  usedno[:-4]
-                    self.redislink.lpop(usedno)
-                except:
-                    # logging.error(traceback.format_exc())
-                    # self.errordata['setsqlerror'].append(data)
-                    print("拍卖存入失误")
-                    self.myqllink.rollback()
-                print("拍卖成功")
-                pass
             else:
-                print("本次拍卖失败", result['code'])
+                print('还没到出价格时机')
+
+        if result['code'] == 200:
+            #将成功的计入到数据库，并消除代拍任务
+            #UPDATE Person SET Address = 'Zhongshan 23', City = 'Nanjing' WHERE LastName = 'Wilson'
+            try:
+                if myprice < 99:
+                    myprice = myprice + 8
+                sql = "UPDATE  offorlog SET goodsid = '{0}', officePrice = '{1}' , endtime = '{2}',status = 1 \
+    WHERE id ='{3}'".format(goodsid, myprice, time.strftime("%Y-%m-%d", time.localtime()),offerlist[0][0] )
+                self.cursor.execute(sql)
+                # 执行sql语句
+                self.myqllink.commit()
+                usedno = offerlist[0][2]
+                usedno =  usedno[:-4]
+                self.redislink.lpop(usedno)
+            except:
+                # logging.error(traceback.format_exc())
+                # self.errordata['setsqlerror'].append(data)
+                print("拍卖存入失误")
+                self.myqllink.rollback()
+            print("拍卖成功")
+
         else:
-            print("还没有到出价的最后一秒")
+            # UPDATE Person SET Address = 'Zhongshan 23', City = 'Nanjing' WHERE LastName = 'Wilson'
+            try:
+
+                sql = "UPDATE  offorlog SET status = 0 WHERE id ='{0}'".format(offerlist[0][0])
+                self.cursor.execute(sql)
+                # 执行sql语句
+                self.myqllink.commit()
+
+            except:
+                # logging.error(traceback.format_exc())
+                # self.errordata['setsqlerror'].append(data)
+                print("拍卖存入失误")
+                self.myqllink.rollback()
+            print("本次拍卖失败", result['code'])
+
 
 
 
@@ -183,6 +200,16 @@ class offer(object):
 
             print(offerlist)
             if offerlist:
+                #更改订单状态添加3在抢购中
+                try:
+                    sql = "UPDATE  offorlog SET status = 3 WHERE id ='{0}'".format(offerlist[0][0])
+                    self.cursor.execute(sql)
+                    # 执行sql语句
+                    self.myqllink.commit()
+                except:
+                    print("订单状体没有改变")
+                    self.myqllink.rollback()
+
                 print('拍卖订单号',sqlNo)
                 # return sqlNo
                 return offerlist

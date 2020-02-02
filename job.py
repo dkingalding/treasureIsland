@@ -120,7 +120,7 @@ if __name__ == '__main__':
             for t in threads:
                 t.join(5.0)
             del(thecode)
-        #删除已经过时的记录
+        #删除已经过时的记录,保证了任务不重复进行
         conn.zremrangebyscore('treadlist', 0, endScore)
         del(conn)
 
