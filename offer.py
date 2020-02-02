@@ -35,7 +35,7 @@ class offer(object):
             print("没有相关商品")
 
 
-    def paimai(self, goodsid, sqlNo, endtime):
+    def paimai(self, goodsid,offerlist , endtime):
         #开始拍卖
         #拍卖的时候可以需要商品的usedNo 和价格
         #根据usedNo 获取商品的id 根据结束时间排序
@@ -44,11 +44,11 @@ class offer(object):
         #如果没有超过自己的定价就继续出价
         #拍卖结束后，如果拍到了，待拍数量减一。如果没有拍到，计入下一个时间段的任务
         # print("paimai")
-        offerlist = self.goodssend(sqlNo)
-        print(offerlist)
-        if not offerlist:
-            print("没有本次拍卖")
-            return
+        # offerlist = self.goodssend(sqlNo)
+        # print(offerlist)
+        # if not offerlist:
+        #     print("没有本次拍卖")
+        #     return
 
         theMaxprice = round(float(offerlist[0][2]))
 
@@ -110,7 +110,9 @@ class offer(object):
                     self.cursor.execute(sql)
                     # 执行sql语句
                     self.myqllink.commit()
-                    self.redislink.lpop(sqlNo)
+                    usedno = offerlist[0][2]
+                    usedno =  usedno[:-4]
+                    self.redislink.lpop(usedno)
                 except:
                     # logging.error(traceback.format_exc())
                     # self.errordata['setsqlerror'].append(data)
@@ -173,30 +175,31 @@ class offer(object):
                 pass
 
     def surestatus(self, usedno):
-        print('dd',usedno)
+        print('根据usedno获取订单编号',usedno)
         if self.redislink.llen(usedno):
             sqlNo = self.redislink.lindex(usedno, 0)
-            print(sqlNo)
+            print('订单号',sqlNo)
+            #验证订单状态，查看订单是否取消或完成
             offerlist = self.goodssend(sqlNo)
+
             print(offerlist)
             if offerlist:
-                return sqlNo
+                print('拍卖订单号',sqlNo)
+                # return sqlNo
+                return offerlist
             else:
                 print('删除订单',sqlNo)
                 self.redislink.lpop(usedno)
+                print('继续获取有用的订单')
                 self.surestatus(usedno)
         else:
+            print('没有列表为',usedno )
             return
 
     def goodssend(self, offerid):
         #查询订单
         sql = "SELECT id, usedNo, officePrice  FROM offorlog WHERE id = {0} AND status = 0".format(offerid)
-        # print(sql)
-        # self.cursor.execute(sql)
-        # # 执行sql语句
-        # self.myqllink.commit()
-        # results = self.cursor.fetchall()
-        # return results
+
         try:
             self.cursor.execute(sql)
             # 执行sql语句
@@ -210,9 +213,9 @@ class offer(object):
         finally:
             return results
 
-    def tets(self):
-        sql = "UPDATE  offorlog SET goodsid = '{0}', officePrice = '{1}' , endtime = '{2}'  ,status = 1 \
-        WHERE id = '{3}'".format(111, 111, time.strftime("%Y-%m-%d", time.localtime()), 1)
-        self.cursor.execute(sql)
-        # 执行sql语句
-        self.myqllink.commit()
+    # def tets(self):
+    #     sql = "UPDATE  offorlog SET goodsid = '{0}', officePrice = '{1}' , endtime = '{2}'  ,status = 1 \
+    #     WHERE id = '{3}'".format(111, 111, time.strftime("%Y-%m-%d", time.localtime()), 1)
+    #     self.cursor.execute(sql)
+    #     # 执行sql语句
+    #     self.myqllink.commit()
