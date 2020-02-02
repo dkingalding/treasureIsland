@@ -95,7 +95,7 @@ if __name__ == '__main__':
             del(caiji)
         # #开始获取在一定时间段内的
         startScore = int(time.time() + 1) * 1000
-        endScore = startScore+ 4000
+        endScore = startScore+ 2000
         # print(startScore,endScore)
         # # startScore = 0
         # endScore = 1579174980000
