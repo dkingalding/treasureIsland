@@ -29,7 +29,7 @@ class seachgoods(object):
         #根据提供的usedNo获取拍卖品id
         #在获取历史成交价格和拍卖时选着使用
         auconttime = (int(time.time()))*1000
-        sql = "SELECT id, startTime, endTime FROM goods WHERE usedNo ={0} AND endTime >= {1} ORDER BY endTime".format(usedNo,auconttime)
+        sql = "SELECT id, startTime, endTime FROM goods WHERE usedNo LIKE '{0}%' AND endTime >= {1} ORDER BY endTime".format(usedNo,auconttime)
         try:
             self.cursor.execute(sql)
             # 执行sql语句
