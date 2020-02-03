@@ -53,15 +53,7 @@ class offer(object):
         theMaxprice = round(float(offerlist[0][2]))
 
         print(theMaxprice, theMaxprice)
-        # nowtime = round(time.time() * 1000)
-        # print(nowtime)
-        # #需要那结束时间对比，在结束前一秒开始拍卖
-        # firsttime = int(endtime) - nowtime
-        # print(firsttime)
 
-        # if firsttime <=2000 and firsttime > 0:
-        # if firsttime > 0:
-        #     pass
         #满足这个条件是才开始竞价
         # pass
         firsttime = 1
@@ -85,13 +77,15 @@ class offer(object):
                     if myprice >= 93 and myprice <= 99:
                         myprice = 99
                     bb = self.chujia(goodsid, myprice)
-                    if bb ==200:
+                    if bb == 200:
                         result = {'code': 200, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
                     elif bb == 304:
                         result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
+                        myprice = 0
+                        # 拍卖出价过低
                     elif bb == 305:
                         result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
-                        #如果出价成功，记录出价记录
+                        #拍卖结束
                         break
                     else:
                         result = {'code': 300, 'goodsid': goodsid, "usedNo":offerlist[0][1], "price": 1}
@@ -101,7 +95,8 @@ class offer(object):
                     #记录拍卖状态
                     result = {'code': 200, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
             else:
-                print('还没到出价格时机')
+                # print('还没到出价格时机')
+                pass
 
         if result['code'] == 200:
             #将成功的计入到数据库，并消除代拍任务
@@ -114,8 +109,9 @@ class offer(object):
                 self.cursor.execute(sql)
                 # 执行sql语句
                 self.myqllink.commit()
-                usedno = offerlist[0][2]
+                usedno = offerlist[0][1]
                 usedno =  usedno[:-4]
+                print(usedno)
                 self.redislink.lpop(usedno)
             except:
                 # logging.error(traceback.format_exc())
@@ -126,18 +122,17 @@ class offer(object):
 
         else:
             # UPDATE Person SET Address = 'Zhongshan 23', City = 'Nanjing' WHERE LastName = 'Wilson'
-            try:
-
-                sql = "UPDATE  offorlog SET status = 0 WHERE id ='{0}'".format(offerlist[0][0])
-                self.cursor.execute(sql)
-                # 执行sql语句
-                self.myqllink.commit()
-
-            except:
-                # logging.error(traceback.format_exc())
-                # self.errordata['setsqlerror'].append(data)
-                print("拍卖存入失误")
-                self.myqllink.rollback()
+            # try:
+            #     sql = "UPDATE  offorlog SET status = 0 WHERE id ='{0}'".format(offerlist[0][0])
+            #     self.cursor.execute(sql)
+            #     # 执行sql语句
+            #     self.myqllink.commit()
+            #
+            # except:
+            #     # logging.error(traceback.format_exc())
+            #     # self.errordata['setsqlerror'].append(data)
+            #     print("拍卖存入失误")
+            #     self.myqllink.rollback()
             print("本次拍卖失败", result['code'])
 
 
@@ -147,6 +142,8 @@ class offer(object):
         print("对价",myprice)
         goodsinfo = self.duobaoClass.goodsinfo(goodsid)
         if not goodsinfo:
+            #没有信息
+            print("没有信息")
             return [300, myprice]
         currentPrice = int(goodsinfo['data'][str(goodsid)]['currentPrice'])
         if currentPrice > int(theMaxprice):
@@ -159,9 +156,9 @@ class offer(object):
             return [300, currentPrice]
         elif currentPrice == int(myprice):
             #返回200，如果超过时间了，还是200，那就竞拍成功
-            #在拍卖的主程序中将拍卖删除，代拍数列中也删除一个任务
             return [200, currentPrice]
         else :
+            print("价格对比错误",currentPrice,myprice)
             return [300, currentPrice]
 
     def chujia(self, goodsid, myprice):
@@ -201,14 +198,14 @@ class offer(object):
             print(offerlist)
             if offerlist:
                 #更改订单状态添加3在抢购中
-                try:
-                    sql = "UPDATE  offorlog SET status = 3 WHERE id ='{0}'".format(offerlist[0][0])
-                    self.cursor.execute(sql)
-                    # 执行sql语句
-                    self.myqllink.commit()
-                except:
-                    print("订单状体没有改变")
-                    self.myqllink.rollback()
+                # try:
+                #     sql = "UPDATE  offorlog SET status = 3 WHERE id ='{0}'".format(offerlist[0][0])
+                #     self.cursor.execute(sql)
+                #     # 执行sql语句
+                #     self.myqllink.commit()
+                # except:
+                #     print("订单状体没有改变")
+                #     self.myqllink.rollback()
 
                 print('拍卖订单号',sqlNo)
                 # return sqlNo
