@@ -63,20 +63,30 @@ class offer(object):
             #计算时间
             firsttime = int(endtime) - round(time.time() * 1000) + 1000
 
-            if firsttime <= 2000:
+            if firsttime <= 1500:
                 thestatus = self.biPrice(goodsid, myprice, theMaxprice)
                 print( offerlist[0][0],thestatus)
                 if thestatus[0] == 400:
                     result = {'code':400, 'goodsid':goodsid, "usedNo":offerlist[0][1], "price":1 }
                     break
                 elif thestatus[0] == 300:
-                    myprice = thestatus[1] + 3
-                    print(myprice)
+                    myprice = thestatus[1] + 1
+
                     if myprice >= theMaxprice:
                         myprice = theMaxprice
                     if myprice >= 93 and myprice <= 99:
                         myprice = 99
+
+                    myprice2 = thestatus[1] + 3
+
+                    if myprice2 >= theMaxprice:
+                        myprice2 = theMaxprice
+                    if myprice2 >= 93 and myprice2 <= 99:
+                        myprice2 = 99
+                    print(myprice, myprice2)
+
                     bb = self.chujia(goodsid, myprice)
+
                     if bb == 200:
                         result = {'code': 200, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
                     elif bb == 304:
@@ -91,6 +101,23 @@ class offer(object):
                         result = {'code': 300, 'goodsid': goodsid, "usedNo":offerlist[0][1], "price": 1}
                         myprice = 0
                         # 如果出价失败，不记录出价记录
+
+                    bb2 = self.chujia(goodsid, myprice2)
+
+                    if bb2 == 200:
+                        result = {'code': 200, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
+                        myprice = myprice2
+                    elif bb2 == 304:
+                        result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
+                        myprice = 0
+                        # 拍卖出价过低
+                    elif bb2 == 305:
+                        result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
+                        # 拍卖结束
+                        break
+                    else:
+                        result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": 1}
+                        myprice = 0
                 else:
                     #记录拍卖状态
                     result = {'code': 200, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
