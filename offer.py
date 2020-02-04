@@ -50,7 +50,7 @@ class offer(object):
         #     print("没有本次拍卖")
         #     return
 
-        theMaxprice = round(float(offerlist[0][2]))
+        theMaxprice = round(float(offerlist[0][2]))+1
 
         print(theMaxprice)
 

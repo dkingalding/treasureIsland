@@ -90,40 +90,40 @@ class getgoods(object):
         print(groupId,"采集结束")
         return 200
 
-    def test(self):
-        #对外暴露方法
-        #测试使用
-        url = "https://used-api.paipai.com/auction/list?pageNo=1&pageSize=100&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000005&callback=__jp35"
-        thedata = self.__getGoods(url)
-        print(thedata)
-        if thedata[1] == None:
-            bb = False
-            print("已经完成采集")
-        else:
-            # 将数据存入数据库
-            print('dddd')
-            if isinstance(thedata[1], list):
-                print("list")
-                for data in thedata[1]:
-                    self.__setdata(data)
-                    time.sleep(1)
+    # def test(self):
+    #     #对外暴露方法
+    #     #测试使用
+    #     url = "https://used-api.paipai.com/auction/list?pageNo=1&pageSize=100&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=1000005&callback=__jp35"
+    #     thedata = self.__getGoods(url)
+    #     print(thedata)
+    #     if thedata[1] == None:
+    #         bb = False
+    #         print("已经完成采集")
+    #     else:
+    #         # 将数据存入数据库
+    #         print('dddd')
+    #         if isinstance(thedata[1], list):
+    #             print("list")
+    #             for data in thedata[1]:
+    #                 self.__setdata(data)
+    #                 time.sleep(1)
 
     def clearRedis(self):
 
         self.redislink.delete("goodslist")
+        # self.redislink.delete("shop")
+        # self.redislink.delete("usedName")
         sql = "TRUNCATE  goods"
         self.cursor.execute(sql)
         self.myqllink.commit()
-
-        # self.redislink.delete("treadlist")
-
-        # self.redislink.delete("goodslist")
-        # sql = "TRUNCATE  goods"
+        # sql = "TRUNCATE  shop"
         # self.cursor.execute(sql)
         # self.myqllink.commit()
-        # sql = "TRUNCATE  offorlog"
+        # sql = "TRUNCATE  usedName"
         # self.cursor.execute(sql)
         # self.myqllink.commit()
+
+
 
     def __getGoods(self,url):
         #获取每一个分页商品信息
