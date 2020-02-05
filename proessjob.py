@@ -59,8 +59,8 @@ if __name__ == '__main__':
     loginClass = loginCook()
     theclick = int(time.strftime('%H', time.localtime(time.time())))
 
-    if theclick <=10 :
-        loginClass.longduomingdao()
+    # if theclick <=10 :
+    #     loginClass.longduomingdao()
     #开启进程池
     pool = multiprocessing.Pool()
 

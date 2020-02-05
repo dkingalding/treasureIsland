@@ -50,21 +50,22 @@ class offer(object):
         #     print("没有本次拍卖")
         #     return
 
-        theMaxprice = round(float(offerlist[0][2]))+1
+        theMaxprice = round(float(offerlist[0][2]))
 
         print(theMaxprice)
 
         #满足这个条件是才开始竞价
         # pass
-        firsttime = 1
+        # firsttime = 1
         myprice = 0
+        gg = False
         result = {'code': 400, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": 0}
 
-        while firsttime > 0:
+        while True:
             #计算时间
             firsttime = int(endtime) - round(time.time() * 1000) + 50
 
-            if firsttime <= 200:
+            if firsttime <= 550:
                 thestatus = self.biPrice(goodsid, myprice, theMaxprice)
                 print( offerlist[0][0],thestatus)
                 if thestatus[0] == 400:
@@ -73,55 +74,39 @@ class offer(object):
                     break
                 elif thestatus[0] == 300:
                     #新改出价方案
-                    for i in range(thestatus[1],theMaxprice):
-                        if i >= 93 and i <= 99:
-                            i = 99
-                        bb = self.chujia(goodsid, i)
-                        if bb == 200:
-                            result = {'code': 200, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
-                            myprice = i
-                        elif bb == 304:
-                            result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
-                            myprice = 0
-                            # 拍卖出价过低
-                        elif bb == 305:
-                            # result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
-                            # 拍卖结束
-                            break
-                    # myprice = thestatus[1] + 1
-                    #
-                    # if myprice >= theMaxprice:
-                    #     myprice = theMaxprice
-                    # if myprice >= 93 and myprice <= 99:
-                    #     myprice = 99
+                    startprice = thestatus[1]+1
+                    print(startprice)
+                    while True:
+                        for i in range(startprice,theMaxprice):
+                            if i >= 93 and i <= 99:
+                                i = 99
+                            bb = self.chujia(goodsid, i)
+                            print(offerlist[0][0],bb, i)
 
-                    # myprice2 = thestatus[1] + 6
-                    #
-                    # if myprice2 >= theMaxprice:
-                    #     myprice2 = theMaxprice
-                    # if myprice2 >= 93 and myprice2 <= 99:
-                    #     myprice2 = 99
-                    # print(myprice)
-                    #
-                    # bb = self.chujia(goodsid, myprice)
-                    #
-                    # if bb == 200:
-                    #     result = {'code': 200, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
-                    # elif bb == 304:
-                    #     result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
-                    #     myprice = 0
-                    #     # 拍卖出价过低
-                    # elif bb == 305:
-                    #     result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
-                    #     #拍卖结束
-                    #     break
-                    # else:
-                    #     result = {'code': 300, 'goodsid': goodsid, "usedNo":offerlist[0][1], "price": 1}
-                    #     myprice = 0
-                        # 如果出价失败，不记录出价记录
-                else:
-                    #记录拍卖状态
-                    result = {'code': 200, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
+                            if bb == 200:
+                                result = {'code': 200, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
+                                myprice = i
+                            elif bb == 304:
+                                result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
+                                startprice = i+1
+                                if i == theMaxprice-1:
+                                    gg = True
+                                    break
+                                # 拍卖出价过低
+                            elif bb == 305:
+                                # result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
+                                # 拍卖结束
+                                gg = True
+                                break
+                            else:
+                                pass
+                        print(gg)
+                        if gg:
+                            break
+                    if gg:
+                        break
+
+
             else:
                 # print('还没到出价格时机')
                 pass
@@ -172,19 +157,19 @@ class offer(object):
         if not goodsinfo:
             #没有信息
             print("没有信息")
-            return [300, myprice]
+            return [400, myprice]
         currentPrice = int(goodsinfo['data'][str(goodsid)]['currentPrice'])
-        if currentPrice > int(theMaxprice):
+        if currentPrice >= int(theMaxprice):
             #返回通知结束进程，并取消着次竞拍
             print("已经超过限定价格")
             return [400, currentPrice]
-        elif currentPrice > int(myprice):
-            #继续出价
-            print("已经超过我出价格")
-            return [300, currentPrice]
-        elif currentPrice == int(myprice):
-            #返回200，如果超过时间了，还是200，那就竞拍成功
-            return [200, currentPrice]
+        # elif currentPrice > int(myprice):
+        #     #继续出价
+        #     print("已经超过我出价格")
+        #     return [300, currentPrice]
+        # elif currentPrice == int(myprice):
+        #     #返回200，如果超过时间了，还是200，那就竞拍成功
+        #     return [200, currentPrice]
         else :
             print("价格对比错误",currentPrice,myprice)
             return [300, currentPrice]
