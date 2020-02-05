@@ -65,7 +65,7 @@ class offer(object):
             #计算时间
             firsttime = int(endtime) - round(time.time() * 1000) + 50
 
-            if firsttime <= 1000:
+            if firsttime <= 2000:
                 thestatus = self.biPrice(goodsid, myprice, theMaxprice)
                 print( offerlist[0][0],thestatus)
                 if thestatus[0] == 400:
@@ -74,7 +74,9 @@ class offer(object):
                     break
                 elif thestatus[0] == 300:
                     #新改出价方案
-                    startprice = thestatus[1]+1
+                    startprice = thestatus[1]+3
+                    if startprice >= theMaxprice:
+                        startprice = theMaxprice
                     # print(startprice)
                     while True:
                         for i in range(startprice,theMax):
