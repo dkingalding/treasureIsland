@@ -63,8 +63,8 @@ class offer(object):
 
         while True:
             #计算时间
-            firsttime = int(endtime) - round(time.time() * 1000)
-            if firsttime <= 2000:
+            firsttime = int(endtime) - round(time.time() * 1000)+100
+            if firsttime <= 2100:
                 thestatus = self.biPrice(goodsid, myprice, theMaxprice)
                 print( offerlist[0][0],thestatus)
                 if thestatus[0] == 400:
@@ -74,10 +74,11 @@ class offer(object):
                 elif thestatus[0] == 300:
                     #新改出价方案
                     myprice = thestatus[1]+3
-                    if myprice >= theMaxprice:
-                        myprice = theMaxprice
+
                     if myprice >= 93 and myprice <= 99:
                         myprice = 99
+                    if myprice >= theMaxprice:
+                        myprice = theMaxprice
                     bb = self.chujia(goodsid, myprice)
                     # print(offerlist[0][0],bb, myprice)
 
@@ -87,14 +88,19 @@ class offer(object):
                     elif bb == 304:
                         result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
                     elif bb == 305:
+                        #时间已经结束
                         result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
                         break
                     else:
                         result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": 1}
                         myprice = 0
+                elif thestatus[0] == 300 :
+                    continue
                 else:
                     # 记录拍卖状态
                     result = {'code': 200, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
+            elif firsttime < 100:
+                break
             else:
                 # print('还没到出价格时机')
                 pass
@@ -122,18 +128,7 @@ class offer(object):
                 self.myqllink.rollback()
             print("拍卖成功")
         else:
-            # UPDATE Person SET Address = 'Zhongshan 23', City = 'Nanjing' WHERE LastName = 'Wilson'
-            # try:
-            #     sql = "UPDATE  offorlog SET status = 0 WHERE id ='{0}'".format(offerlist[0][0])
-            #     self.cursor.execute(sql)
-            #     # 执行sql语句
-            #     self.myqllink.commit()
-            #
-            # except:
-            #     # logging.error(traceback.format_exc())
-            #     # self.errordata['setsqlerror'].append(data)
-            #     print("拍卖存入失误")
-            #     self.myqllink.rollback()
+
             print("本次拍卖失败", result['code'])
 
 
@@ -145,7 +140,7 @@ class offer(object):
         if not goodsinfo:
             #没有信息
             print("没有信息")
-            return [400, myprice]
+            return [500, myprice]
         currentPrice = int(goodsinfo['data'][str(goodsid)]['currentPrice'])
         if currentPrice >= int(theMaxprice):
             #返回通知结束进程，并取消着次竞拍
