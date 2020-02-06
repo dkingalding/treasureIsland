@@ -94,14 +94,16 @@ class offer(object):
                     else:
                         result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": 1}
                         myprice = 0
-                elif thestatus[0] == 300 :
+                elif thestatus[0] == 500 :
                     continue
                 else:
                     # 记录拍卖状态
                     result = {'code': 200, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
-            elif firsttime < 100:
+            elif firsttime < 50:
+                print(firsttime)
                 break
             else:
+                continue
                 # print('还没到出价格时机')
                 pass
 
