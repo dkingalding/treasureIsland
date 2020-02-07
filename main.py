@@ -9,6 +9,7 @@ from config import myredis
 import redis
 from config import mymysql
 from seachgoods import seachgoods
+from mailtongzhi import dingmail
 from rq import Queue
 
 #先对一些变量定义事先实例化了几个对象
@@ -64,7 +65,11 @@ def shuru():
 
 if __name__ == '__main__':
     redislink.getset("getgoods", 0)
-
+    offerlist =9
+    titl = '%s订单拍卖成功，填写地址付钱' % offerlist
+    content = 'http://120.27.22.37/admin/offerlogs/%s/edit' % offerlist
+    mailclass = dingmail()
+    mailclass.sendmail(titl, content)
     # keys = redislink.keys()
     # for key in keys:
     #     # print(key)

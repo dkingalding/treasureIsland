@@ -5,6 +5,7 @@ from config import mymysql
 import pymysql
 from taobao import duobao
 from seachgoods import seachgoods
+from mailtongzhi import dingmail
 
 class offer(object):
     #接受指令，并在本类中完成对其他基本类的调用，完成所有功能
@@ -99,9 +100,9 @@ class offer(object):
                 else:
                     # 记录拍卖状态
                     result = {'code': 200, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
-            elif firsttime < 50:
-                print(firsttime)
-                break
+                if firsttime < 50:
+                    print('超时',firsttime)
+                    break
             else:
                 continue
                 # print('还没到出价格时机')
@@ -123,6 +124,11 @@ class offer(object):
                 usedno =  usedno[:-4]
                 print(usedno)
                 self.redislink.lpop(usedno)
+                titl = '%s订单拍卖成功，填写地址付钱'%offerlist[0][0]
+                content = 'http://120.27.22.37/admin/offerlogs/%s/edit'%offerlist[0][0]
+                mailclass = dingmail()
+                mailclass.sendmail(titl, content)
+
             except:
                 # logging.error(traceback.format_exc())
                 # self.errordata['setsqlerror'].append(data)
@@ -144,7 +150,7 @@ class offer(object):
             print("没有信息")
             return [500, myprice]
         currentPrice = int(goodsinfo['data'][str(goodsid)]['currentPrice'])
-        if currentPrice >= int(theMaxprice):
+        if currentPrice > int(theMaxprice):
             #返回通知结束进程，并取消着次竞拍
             print("已经超过限定价格")
             return [400, currentPrice]
