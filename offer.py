@@ -65,7 +65,7 @@ class offer(object):
         while True:
             #计算时间
             firsttime = int(endtime) - round(time.time() * 1000)+100
-            if firsttime <= 2100:
+            if firsttime <= 1100:
                 thestatus = self.biPrice(goodsid, myprice, theMaxprice)
                 print( offerlist[0][0],thestatus)
                 if thestatus[0] == 400:
@@ -211,7 +211,7 @@ class offer(object):
                 #     print("订单状体没有改变")
                 #     self.myqllink.rollback()
 
-                print('拍卖订单号',sqlNo)
+
                 # return sqlNo
                 return offerlist
             else:
