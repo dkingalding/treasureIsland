@@ -65,7 +65,7 @@ class offer(object):
         while True:
             #计算时间
             firsttime = int(endtime) - round(time.time() * 1000)+100
-            if firsttime <= 1100:
+            if firsttime <= 800:
                 thestatus = self.biPrice(goodsid, myprice, theMaxprice)
                 print( offerlist[0][0],thestatus)
                 if thestatus[0] == 400:
