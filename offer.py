@@ -62,53 +62,63 @@ class offer(object):
 
         result = {'code': 400, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": 0}
 
-
         while True:
             #计算时间
             firsttime = int(endtime) - round(time.time() * 1000)+100
-            if firsttime <= 800:
+            #获取数列使用
+            stopprice = theMaxprice + 1
+            if firsttime <= 600:
+                #获取此时的出价
+                if firsttime < 50:
+                    print('超时',firsttime)
+                    break
                 thestatus = self.biPrice(goodsid, myprice, theMaxprice)
-                print( offerlist[0][0],thestatus)
+                print(offerlist[0][0], thestatus)
                 if thestatus[0] == 400:
                     #超过了价格
                     result = {'code':400, 'goodsid':goodsid, "usedNo":offerlist[0][1], "price":1 }
                     break
                 elif thestatus[0] == 300:
-                    #新改出价方案
-                    myprice = thestatus[1]+3
-
+                    #获取现在价格到自己最高价格之间的所有价格，组成列表
+                    timeover = 0
+                    myprice = thestatus[1]+1
                     if myprice >= 93 and myprice <= 99:
                         myprice = 99
-
                     if myprice >= theMaxprice:
                         myprice = theMaxprice
-
-                    bb = self.chujia(goodsid, myprice)
-                    # print(offerlist[0][0],bb, myprice)
-
-                    if bb == 200:
-                        result = {'code': 200, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
-
-                    elif bb == 304:
-                        result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
-                        myprice=myprice-1
-                    elif bb == 305:
-                        #时间已经结束
-                        result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
-                        break
-                    else:
-                        result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": 1}
-                        myprice = 0
-
+                    # pricelist = range(myprice, stopprice)
+                    while True:
+                        if timeover ==1:
+                            break
+                        pricelist = range(myprice, stopprice)
+                        for i in pricelist:
+                            bb = self.chujia(goodsid, i)
+                            if bb == 200:
+                                result = {'code': 200, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": i}
+                                myprice = i
+                                break
+                            elif bb == 304:
+                                #价格过低
+                                myprice = i
+                                if i == theMaxprice:
+                                    result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": i}
+                                    break
+                            elif bb == 305:
+                                timeover =1
+                                # 时间已经结束
+                                # result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
+                                break
+                            else:
+                                pass
+                        if myprice == theMaxprice:
+                            break
                 elif thestatus[0] == 500 :
                     continue
 
                 else:
                     # 记录拍卖状态
                     result = {'code': 200, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
-                if firsttime < 50:
-                    print('超时',firsttime)
-                    break
+
             else:
                 continue
                 # print('还没到出价格时机')
