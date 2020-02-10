@@ -63,8 +63,8 @@ if __name__ == '__main__':
     # caijigoods = getgoods(conn)
     # caijigoods.clearRedis()
     #早上10点和下午两点之间采集数据时视为补充数据，不需要清楚历史数据
-    if theclick <=10 :
-        loginClass.longduomingdao()
+    # if theclick <=10 :
+    #     loginClass.longduomingdao()
     # loginClass.longduomingdao()
     while True:
         conn = redis.Redis(connection_pool=redisPool)
@@ -85,8 +85,9 @@ if __name__ == '__main__':
             print(groupids)
             if groupids:
                 for groupid in groupids:
-                    caijiduilie.append(threading.Thread(target=caijirenwu, name='shuchu', args=(redisPool,groupid)))
 
+                    caijiduilie.append(threading.Thread(target=caijirenwu, name=groupid, args=(redisPool,groupid)))
+                    # caijiduilie.append(threading.Thread(target=caijirenwu, name=bb, args=(redisPool, groupid)))
                 for t in caijiduilie:
                     t.start()
             else:
@@ -114,7 +115,10 @@ if __name__ == '__main__':
                 dd = value.split('*')
                 offerno = thecode.surestatus(dd[0])
                 if offerno:
+                    print('拍卖订单号', dd[0])
+                    aa = dd[1]+'*'
                     threads.append(threading.Thread(target=paimairenwu, name=dd[1], args=(dd[1], offerno, endScore)))
+                    threads.append(threading.Thread(target=paimairenwu, name=aa, args=(dd[1], offerno, endScore)))
             for t in threads:
                 t.start()
             for t in threads:
