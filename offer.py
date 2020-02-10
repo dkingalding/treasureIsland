@@ -92,6 +92,8 @@ class offer(object):
                             break
                         pricelist = range(myprice, stopprice)
                         for i in pricelist:
+                            if i >= 93 and i <= 99:
+                                i = 99
                             bb = self.chujia(goodsid, i)
                             if bb == 200:
                                 result = {'code': 200, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": i}
