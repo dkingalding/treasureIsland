@@ -88,6 +88,7 @@ class offer(object):
 
                     elif bb == 304:
                         result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
+                        myprice=myprice-1
                     elif bb == 305:
                         #时间已经结束
                         result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
