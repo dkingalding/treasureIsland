@@ -3,6 +3,7 @@ import re
 from random import randint
 from config import Agent
 from login import loginCook
+from mailtongzhi import dingmail
 
 class duobao(object):
 
@@ -60,5 +61,9 @@ class duobao(object):
         resultdata = resp.json()
         if resultdata['code'] == 501 and resultdata['message'] == "用户未登录":
             self.loginClass.longduomingdao()
+            titl = '拍卖时登录失败'
+            content = 'http://120.27.22.37/index.php赶紧登录'
+            mailclass = dingmail()
+            mailclass.sendmail(titl, content)
             self.sendPrice(auctionId, price)
         return resultdata
