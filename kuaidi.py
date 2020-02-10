@@ -56,6 +56,7 @@ class kuaidi(object):
         if results:
             # 没有发货
             return 0
+        return 0
 
     def genxin(self, id, kuaidistatus):
         myqllink = pymysql.connect(host=mymysql['host'], user=mymysql['user'], passwd=mymysql['passwd'],
@@ -94,13 +95,12 @@ if __name__ == '__main__':
     results = cursor.fetchall()
     emailcontent = set()
     for offer in results:
-        # print(offer)
+        print(offer)
         if offer[1]:
             bb = kuai.getkuaidi(offer[1])
-            kuai.genxin(offer[0] , bb)
+            kuai.genxin(offer[0], bb)
             if bb == 2:
                 emailcontent.add(offer)
                 #将信息填入表格,发邮件用
-                pass
     kuai.sendemail(emailcontent)
     # print(emailcontent)
