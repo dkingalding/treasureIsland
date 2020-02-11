@@ -98,7 +98,7 @@ class offer(object):
                             if bb == 200:
                                 result = {'code': 200, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": i}
                                 myprice = i
-                                break
+                                # break
                             elif bb == 304:
                                 #价格过低
                                 myprice = i
