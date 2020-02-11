@@ -68,6 +68,10 @@ if __name__ == '__main__':
     # loginClass.longduomingdao()
     while True:
         conn = redis.Redis(connection_pool=redisPool)
+        try:
+            conn.ping()
+        except:
+            conn = redis.Redis(connection_pool= redisPool)
         singin = conn.get("singin")
         if singin == '1':
             loginClass.longduomingdao()
