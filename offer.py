@@ -67,7 +67,7 @@ class offer(object):
             firsttime = int(endtime) - round(time.time() * 1000)+100
             #获取数列使用
             stopprice = theMaxprice + 1
-            if firsttime <= 600:
+            if firsttime <= 800:
                 #获取此时的出价
                 if firsttime < 50:
                     print('超时',firsttime)
@@ -82,6 +82,7 @@ class offer(object):
                     #获取现在价格到自己最高价格之间的所有价格，组成列表
                     timeover = 0
                     myprice = thestatus[1]+1
+                    result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": 1}
                     if myprice >= 93 and myprice <= 99:
                         myprice = 99
                     if myprice >= theMaxprice:
@@ -90,7 +91,7 @@ class offer(object):
                     while True:
                         if timeover ==1:
                             break
-                        pricelist = range(myprice, stopprice)
+                        pricelist = range(myprice+1, stopprice)
                         for i in pricelist:
                             if i >= 93 and i <= 99:
                                 i = 99
