@@ -67,11 +67,9 @@ class offer(object):
             firsttime = int(endtime) - round(time.time() * 1000)+100
             #获取数列使用
             stopprice = theMaxprice + 1
-            if firsttime <= 800:
+            if firsttime <= 300:
                 #获取此时的出价
-                if firsttime < 50:
-                    print('超时',firsttime)
-                    break
+
                 thestatus = self.biPrice(goodsid, myprice, theMaxprice)
                 print(offerlist[0][0], thestatus)
                 if thestatus[0] == 400:
@@ -91,7 +89,7 @@ class offer(object):
                     while True:
                         if timeover ==1:
                             break
-                        pricelist = range(myprice+1, stopprice)
+                        pricelist = range(myprice+1, stopprice, 3)
                         for i in pricelist:
                             if i >= 93 and i <= 99:
                                 i = 99
@@ -121,7 +119,9 @@ class offer(object):
                 else:
                     # 记录拍卖状态
                     result = {'code': 200, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
-
+                if firsttime < 50:
+                    print('超时',firsttime)
+                    break
             else:
                 continue
                 # print('还没到出价格时机')
