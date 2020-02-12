@@ -53,11 +53,6 @@ class offer(object):
 
         theMaxprice = round(float(offerlist[0][2]))
 
-        # print(theMaxprice)
-
-        #满足这个条件是才开始竞价
-        # pass
-        # firsttime = 1
         myprice = 0
 
         result = {'code': 400, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": 0}
@@ -79,17 +74,17 @@ class offer(object):
                 elif thestatus[0] == 300:
                     #获取现在价格到自己最高价格之间的所有价格，组成列表
                     timeover = 0
-                    myprice = thestatus[1]+1
+                    startprice = thestatus[1]+1
                     result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": 1}
-                    if myprice >= 93 and myprice <= 99:
-                        myprice = 99
-                    if myprice >= theMaxprice:
-                        myprice = theMaxprice
+                    if startprice >= 93 and startprice <= 99:
+                        startprice = 99
+                    if startprice >= theMaxprice:
+                        startprice = theMaxprice
                     # pricelist = range(myprice, stopprice)
                     while True:
                         if timeover ==1:
                             break
-                        pricelist = range(myprice+1, stopprice, 3)
+                        pricelist = range(startprice+1, stopprice, 3)
                         for i in pricelist:
                             if i >= 93 and i <= 99:
                                 i = 99
@@ -159,7 +154,7 @@ class offer(object):
             print("本次拍卖失败", result['code'])
 
 
-
+    
 
     def biPrice(self, goodsid, myprice,theMaxprice):
         print("对价",myprice)
