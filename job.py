@@ -53,19 +53,9 @@ if __name__ == '__main__':
     # 需要任务队列，线程可以修改任务队列中的数据
     # 每次开启需要验证登录
     #每次启动程序就登录保证cookies有效
-    # thecode = offer(Pool)
-    # offerno = thecode.tets()
+
     loginClass = loginCook()
-    theclick = int(time.strftime('%H', time.localtime(time.time())))
-    # caijigoods = getgoods(conn)
-    # caijigoods.reorder()
-    # conn = redis.Redis(connection_pool=Pool)
-    # caijigoods = getgoods(conn)
-    # caijigoods.clearRedis()
-    #早上10点和下午两点之间采集数据时视为补充数据，不需要清楚历史数据
-    # if theclick <=10 :
-    #     loginClass.longduomingdao()
-    # loginClass.longduomingdao()
+
     while True:
         conn = redis.Redis(connection_pool=redisPool)
         try:
