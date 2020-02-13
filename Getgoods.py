@@ -266,7 +266,17 @@ class getgoods(object):
                     results = self.cursor.fetchall()
                     if results:
                         for goodslist in results:
-                            mapping[str(key) + "*" + str(goodslist[0])] = goodslist[2]
+                            usedno = goodslist[1]
+                            unsedno = usedno[-4:-2]
+                            if unsedno == '07'or unsedno == '08':
+                                keyno = key+'1'
+                            elif unsedno == '09':
+                                keyno = key + '2'
+                            elif unsedno == '33':
+                                keyno = key + '3'
+                            else:
+                                continue
+                            mapping[keyno + "*" + str(goodslist[0])] = goodslist[2]
                             # print(goodslist[2])
                         self.redislink.zadd('treadlist', mapping=mapping)
                 except:
