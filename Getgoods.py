@@ -257,8 +257,18 @@ class getgoods(object):
                 # vals = self.redislink.lrange(key, 0, -1)
                 # print(vals)
                 mapping = {}
+                usedno = key[0,-1]
+                unsedno = key[-1]
+                if unsedno == '1':
+                    condition = "usedNo = {0} OR usedNo = {1}".format(usedno + '0701', usedno + '0801')
+                elif unsedno == '2':
+                    condition = "usedNo = {0} OR usedNo = {1}".format(usedno + '0901', usedno + '0951')
+                elif unsedno == '3':
+                    condition ="usedNo = {0}".format(usedno+'3371')
+                else:
+                    continue
                 sql = "SELECT id, usedNo, endTime FROM goods  WHERE usedNo LIKE '{0}%' AND endTime >= {1}".format(
-                    key, auconttime)
+                    condition, auconttime)
                 try:
                     self.cursor.execute(sql)
                     # 执行sql语句
@@ -266,17 +276,8 @@ class getgoods(object):
                     results = self.cursor.fetchall()
                     if results:
                         for goodslist in results:
-                            usedno = goodslist[1]
-                            unsedno = usedno[-4:-2]
-                            if unsedno == '07'or unsedno == '08':
-                                keyno = key+'1'
-                            elif unsedno == '09':
-                                keyno = key + '2'
-                            elif unsedno == '33':
-                                keyno = key + '3'
-                            else:
-                                continue
-                            mapping[keyno + "*" + str(goodslist[0])] = goodslist[2]
+
+                            mapping[str(key) + "*" + str(goodslist[0])] = goodslist[2]
                             # print(goodslist[2])
                         self.redislink.zadd('treadlist', mapping=mapping)
                 except:
