@@ -257,7 +257,7 @@ class getgoods(object):
                 # vals = self.redislink.lrange(key, 0, -1)
                 # print(vals)
                 mapping = {}
-                usedno = key[0,-1]
+                usedno = key[0:-1]
                 unsedno = key[-1]
                 if unsedno == '1':
                     condition = "usedNo = {0} OR usedNo = {1}".format(usedno + '0701', usedno + '0801')

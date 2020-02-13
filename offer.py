@@ -207,6 +207,7 @@ class offer(object):
 
     def surestatus(self, usedno):
         print('根据usedno获取订单编号',usedno)
+        offerlist = ''
         if self.redislink.llen(usedno):
             sqlNo = self.redislink.lindex(usedno, 0)
             print('订单号',sqlNo)
@@ -235,7 +236,7 @@ class offer(object):
                 self.surestatus(usedno)
         else:
             print('没有列表为',usedno )
-            return
+            return offerlist
 
     def goodssend(self, offerid):
         #查询订单
