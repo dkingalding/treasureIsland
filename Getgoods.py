@@ -267,7 +267,7 @@ class getgoods(object):
                     condition ="usedNo = {0}".format(usedno+'3371')
                 else:
                     continue
-                sql = "SELECT id, usedNo, endTime FROM goods  WHERE usedNo LIKE '{0}%' AND endTime >= {1}".format(
+                sql = "SELECT id, usedNo, endTime FROM goods  WHERE {0} AND endTime >= {1}".format(
                     condition, auconttime)
                 try:
                     self.cursor.execute(sql)
