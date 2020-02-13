@@ -62,7 +62,7 @@ class offer(object):
             firsttime = int(endtime) - round(time.time() * 1000)+100
             #获取数列使用
             stopprice = theMaxprice + 1
-            if firsttime <= 300:
+            if firsttime <= 800:
                 #获取此时的出价
 
                 thestatus = self.biPrice(goodsid, myprice, theMaxprice)
@@ -80,7 +80,7 @@ class offer(object):
                         startprice = 99
                     if startprice >= theMaxprice:
                         startprice = theMaxprice
-                    # pricelist = range(myprice, stopprice)
+
                     while True:
                         if timeover ==1:
                             break
@@ -95,7 +95,7 @@ class offer(object):
                                 # break
                             elif bb == 304:
                                 #价格过低
-                                myprice = i
+                                startprice = i
                                 if i == theMaxprice:
                                     result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": i}
                                     break
