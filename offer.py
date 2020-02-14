@@ -52,7 +52,7 @@ class offer(object):
             firsttime = int(endtime) - round(time.time() * 1000)+100
             #获取数列使用
             stopprice = theMaxprice + 1
-            if firsttime <= 800:
+            if firsttime <= 900:
                 #获取此时的出价
 
                 thestatus = self.biPrice(goodsid, myprice, theMaxprice)
@@ -132,7 +132,7 @@ class offer(object):
         while True:
             #计算时间
             firsttime = int(endtime) - round(time.time() * 1000)+100
-            if firsttime <= 300:
+            if firsttime <= 400:
                 #在这里开始出价
                 bb = self.chujia(goodsid, theMaxprice)
                 if bb == 200:
