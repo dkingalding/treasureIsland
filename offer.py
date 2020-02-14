@@ -192,6 +192,7 @@ class offer(object):
             #没有信息
             print("没有信息")
             return [500, myprice]
+        print(goodsinfo['data'])
         currentPrice = int(goodsinfo['data'][str(goodsid)]['currentPrice'])
         if currentPrice > int(theMaxprice):
             #返回通知结束进程，并取消着次竞拍
