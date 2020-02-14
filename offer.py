@@ -128,6 +128,7 @@ class offer(object):
         #开主线程中为一个拍卖开启两个进程，一个正常拍卖，一个在最后提供最高价，防止漏拍
         theMaxprice = round(float(offerlist[0][2]))
         result = {'code': 400, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": 0}
+        myprice = 0
         while True:
             #计算时间
             firsttime = int(endtime) - round(time.time() * 1000)+100
