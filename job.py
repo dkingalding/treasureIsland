@@ -16,14 +16,23 @@ redisPool = redis.ConnectionPool(host= myredis['host'], port= myredis['port'], m
 
 
 
-def paimairenwu(goodsid, sqlNo , endScore):
+def paimairenwu(goodsid, sqlNo , endScore,usedno ):
     # 任务的队列生产者
     # 循环取出redis 有序集合trealist中当前时间的mapping
     # 查看相依的商品redis 的list中是否有待拍卖的
     # 有带拍卖的就将其计入到任务队列中
 
     tt = offer(redisPool)
-    tt.paimai(goodsid, sqlNo, endScore)
+    tt.paimai(goodsid, sqlNo, endScore, usedno)
+
+def paimaibaozhen(goodsid, sqlNo , endScore,usedno ):
+    # 任务的队列生产者
+    # 循环取出redis 有序集合trealist中当前时间的mapping
+    # 查看相依的商品redis 的list中是否有待拍卖的
+    # 有带拍卖的就将其计入到任务队列中
+
+    tt = offer(redisPool)
+    tt.paimaibaozhen(goodsid, sqlNo, endScore, usedno)
 
 def caijirenwu(redislink, groupid):
     #控制采集
@@ -110,9 +119,9 @@ if __name__ == '__main__':
                 offerno = thecode.surestatus(dd[0])
                 if offerno:
                     print('拍卖订单号', dd[0])
-                    # dd = dd[1]+'8'
-                    threads.append(threading.Thread(target=paimairenwu, name=dd[1], args=(dd[1], offerno, endScore)))
-                    # threads.append(threading.Thread(target=paimairenwu, name=dd, args=(dd[1], offerno, endScore)))
+                    dd = dd[1]+'8'
+                    threads.append(threading.Thread(target=paimairenwu, name=dd[1], args=(dd[1], offerno, endScore, dd[0])))
+                    threads.append(threading.Thread(target=paimaibaozhen, name=dd, args=(dd[1], offerno, endScore, dd[0])))
             for t in threads:
                 t.start()
             for t in threads:

@@ -36,7 +36,7 @@ class offer(object):
             print("没有相关商品")
 
 
-    def paimai(self, goodsid,offerlist , endtime):
+    def paimai(self, goodsid,offerlist , endtime, usedno):
         #开始拍卖
         #拍卖的时候可以需要商品的usedNo 和价格
         #根据usedNo 获取商品的id 根据结束时间排序
@@ -44,19 +44,9 @@ class offer(object):
         #查询自己出的价格是否有效，是否超过了自己定的价格
         #如果没有超过自己的定价就继续出价
         #拍卖结束后，如果拍到了，待拍数量减一。如果没有拍到，计入下一个时间段的任务
-        # print("paimai")
-        # offerlist = self.goodssend(sqlNo)
-        # print(offerlist)
-        # if not offerlist:
-        #     print("没有本次拍卖")
-        #     return
-
         theMaxprice = round(float(offerlist[0][2]))
-
         myprice = 0
-
         result = {'code': 400, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": 0}
-
         while True:
             #计算时间
             firsttime = int(endtime) - round(time.time() * 1000)+100
@@ -92,6 +82,7 @@ class offer(object):
                             if bb == 200:
                                 result = {'code': 200, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": i}
                                 myprice = i
+                                startprice = i
                                 # break
                             elif bb == 304:
                                 #价格过低
@@ -124,36 +115,73 @@ class offer(object):
 
         if result['code'] == 200:
 
-            #将成功的计入到数据库，并消除代拍任务
-            #UPDATE Person SET Address = 'Zhongshan 23', City = 'Nanjing' WHERE LastName = 'Wilson'
-            try:
-                if myprice < 99:
-                    myprice = myprice + 8
-                sql = "UPDATE  offorlog SET goodsid = '{0}', officePrice = '{1}' , endtime = '{2}',status = 1 \
-    WHERE id ='{3}'".format(goodsid, myprice, time.strftime("%Y-%m-%d", time.localtime()),offerlist[0][0] )
-                self.cursor.execute(sql)
-                # 执行sql语句
-                self.myqllink.commit()
-                usedno = offerlist[0][1]
-                usedno =  usedno[:-4]
-                print(usedno)
-                self.redislink.lpop(usedno)
-                titl = '%s订单拍卖成功，填写地址付钱'%offerlist[0][0]
-                content = 'http://120.27.22.37/admin/offerlogs/%s/edit'%offerlist[0][0]
-                mailclass = dingmail()
-                mailclass.sendmail(titl, content)
-
-            except:
-                # logging.error(traceback.format_exc())
-                # self.errordata['setsqlerror'].append(data)
-                print("拍卖存入失误")
-                self.myqllink.rollback()
-            print("拍卖成功")
+            self.saveorder( myprice, goodsid, offerlist, usedno)
         else:
-
             print("本次拍卖失败", result['code'])
 
 
+
+
+    def paimaibaozhen(self, goodsid,offerlist , endtime, usedno):
+        #最高价出价
+        #防止漏拍
+        #开主线程中为一个拍卖开启两个进程，一个正常拍卖，一个在最后提供最高价，防止漏拍
+        theMaxprice = round(float(offerlist[0][2]))
+        result = {'code': 400, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": 0}
+        while True:
+            #计算时间
+            firsttime = int(endtime) - round(time.time() * 1000)+100
+            if firsttime <= 300:
+                #在这里开始出价
+                bb = self.chujia(goodsid, theMaxprice)
+                if bb == 200:
+                    result = {'code': 200, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": theMaxprice}
+                    myprice = theMaxprice
+                    break
+                elif bb == 304:
+                    #出价过低
+                    result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": theMaxprice}
+                    break
+                elif bb == 305:
+                    # 时间已经结束
+                    result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": theMaxprice}
+                    break
+                else:
+                    #其他状态不改变状态
+                    pass
+            if firsttime < 50:
+                print('超时', firsttime)
+                break
+        thestatus = self.biPrice(goodsid, myprice, theMaxprice)
+        if thestatus[0] == 200:
+            self.saveorder( myprice, goodsid, offerlist, usedno)
+        else:
+            print("本次拍卖失败", result['code'])
+
+
+    def saveorder(self, myprice, goodsid, offerlist, usedno):
+        # 将成功的计入到数据库，并消除代拍任务
+        # UPDATE Person SET Address = 'Zhongshan 23', City = 'Nanjing' WHERE LastName = 'Wilson'
+        try:
+            if myprice < 99:
+                myprice = myprice + 8
+            sql = "UPDATE  offorlog SET goodsid = '{0}', officePrice = '{1}' , endtime = '{2}',status = 1 \
+           WHERE id ='{3}'".format(goodsid, myprice, time.strftime("%Y-%m-%d", time.localtime()), offerlist[0][0])
+            self.cursor.execute(sql)
+            # 执行sql语句
+            self.myqllink.commit()
+            # usedno = offerlist[0][1]
+            # usedno = usedno[:-4]
+            print(usedno)
+            self.redislink.lpop(usedno)
+            titl = '%s订单拍卖成功，填写地址付钱' % offerlist[0][0]
+            content = 'http://120.27.22.37/admin/offerlogs/%s/edit' % offerlist[0][0]
+            mailclass = dingmail()
+            mailclass.sendmail(titl, content)
+        except:
+            print("拍卖存入失误")
+            self.myqllink.rollback()
+        print("拍卖成功")
     
 
     def biPrice(self, goodsid, myprice,theMaxprice):
