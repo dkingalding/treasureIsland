@@ -26,11 +26,7 @@ def paimairenwu(goodsid, sqlNo , endScore,usedno ):
     tt.paimai(goodsid, sqlNo, endScore, usedno)
 
 def paimaibaozhen(goodsid, sqlNo , endScore,usedno ):
-    # 任务的队列生产者
-    # 循环取出redis 有序集合trealist中当前时间的mapping
-    # 查看相依的商品redis 的list中是否有待拍卖的
-    # 有带拍卖的就将其计入到任务队列中
-
+    # 拍卖保证
     tt = offer(redisPool)
     tt.paimaibaozhen(goodsid, sqlNo, endScore, usedno)
 
@@ -100,18 +96,12 @@ if __name__ == '__main__':
         # #开始获取在一定时间段内的
         startScore = int(time.time() + 1) * 1000
         endScore = startScore+ 2000
-        # print(startScore,endScore)
-        # # startScore = 0
-        # endScore = 1579174980000
+
         goodslist = conn.zrangebyscore('treadlist', startScore, endScore)
-        # print(goodslist)
-        # break
+
         if goodslist:
             print(goodslist)
 
-            # print(startScore, endScore)
-            # print(startScore)
-            # print(endScore)
             thecode = offer(redisPool)
             for value in goodslist:
                 threads = []
