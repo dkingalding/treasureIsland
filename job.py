@@ -98,7 +98,7 @@ if __name__ == '__main__':
             del(caiji)
         # #开始获取在一定时间段内的
         startScore = int(time.time() + 1) * 1000
-        endScore = startScore+ 2000
+        endScore = startScore+ 3000
 
         goodslist = conn.zrangebyscore('treadlist', startScore, endScore)
 
