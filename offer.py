@@ -52,7 +52,7 @@ class offer(object):
             firsttime = int(endtime) - round(time.time() * 1000)+100
             #获取数列使用
             stopprice = theMaxprice + 1
-            if firsttime <= 900:
+            if firsttime <= 1000:
                 #获取此时的出价
 
                 thestatus = self.biPrice(goodsid, myprice, theMaxprice)
@@ -83,7 +83,7 @@ class offer(object):
                                 result = {'code': 200, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": i}
                                 myprice = i
                                 startprice = i
-                                # break
+                                break
                             elif bb == 304:
                                 #价格过低
                                 startprice = i
@@ -132,7 +132,7 @@ class offer(object):
         while True:
             #计算时间
             firsttime = int(endtime) - round(time.time() * 1000)+100
-            if firsttime <= 400:
+            if firsttime <= 200:
                 #在这里开始出价
                 bb = self.chujia(goodsid, theMaxprice)
                 if bb == 200:
@@ -186,11 +186,11 @@ class offer(object):
     
 
     def biPrice(self, goodsid, myprice,theMaxprice):
-        print("对价",myprice)
+        # print("对价",myprice)
         goodsinfo = self.duobaoClass.goodsinfo(goodsid)
         if not goodsinfo:
             #没有信息
-            print("没有信息")
+            # print("没有信息")
             return [500, myprice]
         # print(goodsinfo['data'])
         currentPrice = int(goodsinfo['data'][str(goodsid)]['currentPrice'])
@@ -200,23 +200,23 @@ class offer(object):
             return [400, currentPrice]
         elif currentPrice > int(myprice):
             #继续出价
-            print("已经超过我出价格")
+            # print("已经超过我出价格")
             return [300, currentPrice]
         elif currentPrice == int(myprice):
             #返回200，如果超过时间了，还是200，那就竞拍成功
             return [200, currentPrice]
         else :
-            print("价格对比错误",currentPrice,myprice)
+            # print("价格对比错误",currentPrice,myprice)
             return [300, currentPrice]
 
     def chujia(self, goodsid, myprice):
-        print("在出价",myprice)
+        # print("在出价",myprice)
         thecode = self.duobaoClass.sendPrice(goodsid, myprice)
         if thecode['code'] != 200:
-            print(thecode)
+            # print(thecode)
             return thecode['code']
         else:
-            print("出价成功")
+            # print("出价成功")
             return 200
 
     def dinghis(self):
