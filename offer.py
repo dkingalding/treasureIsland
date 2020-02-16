@@ -74,7 +74,7 @@ class offer(object):
                     while True:
                         if timeover ==1:
                             break
-                        pricelist = range(startprice+1, stopprice, 3)
+                        pricelist = range(startprice+3, stopprice, 3)
                         for i in pricelist:
                             if i >= 93 and i <= 99:
                                 i = 99
