@@ -150,9 +150,9 @@ class offer(object):
                 else:
                     #其他状态不改变状态
                     pass
-            if firsttime < 50:
-                print('超时', firsttime)
-                break
+                if firsttime < 50:
+                    print('超时', firsttime)
+                    break
         thestatus = self.biPrice(goodsid, myprice, theMaxprice)
         if thestatus[0] == 200:
             self.saveorder( myprice, goodsid, offerlist, usedno)
