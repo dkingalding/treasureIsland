@@ -132,7 +132,7 @@ class offer(object):
         while True:
             #计算时间
             firsttime = int(endtime) - round(time.time() * 1000)+100
-            if firsttime <=400:
+            if firsttime <=300:
                 #在这里开始出价
                 bb = self.chujia(goodsid, theMaxprice)
                 if bb == 200:
@@ -246,18 +246,6 @@ class offer(object):
 
             print(offerlist)
             if offerlist:
-                #更改订单状态添加3在抢购中
-                # try:
-                #     sql = "UPDATE  offorlog SET status = 3 WHERE id ='{0}'".format(offerlist[0][0])
-                #     self.cursor.execute(sql)
-                #     # 执行sql语句
-                #     self.myqllink.commit()
-                # except:
-                #     print("订单状体没有改变")
-                #     self.myqllink.rollback()
-
-
-                # return sqlNo
                 return offerlist
             else:
                 print('删除订单',sqlNo)
@@ -285,9 +273,4 @@ class offer(object):
         finally:
             return results
 
-    # def tets(self):
-    #     sql = "UPDATE  offorlog SET goodsid = '{0}', officePrice = '{1}' , endtime = '{2}'  ,status = 1 \
-    #     WHERE id = '{3}'".format(111, 111, time.strftime("%Y-%m-%d", time.localtime()), 1)
-    #     self.cursor.execute(sql)
-    #     # 执行sql语句
-    #     self.myqllink.commit()
+b
