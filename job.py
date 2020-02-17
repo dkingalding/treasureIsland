@@ -112,9 +112,9 @@ if __name__ == '__main__':
                 offerno = thecode.surestatus(dd[0])
                 if offerno:
                     print('拍卖订单号', dd[1])
-                    name2= dd[1]+'8'
+                    # name2= dd[1]+'8'
                     threads.append(threading.Thread(target=paimairenwu, name=dd[1], args=(dd[1], offerno, endScore, dd[0])))
-                    threads.append(threading.Thread(target=paimaibaozhen, name=name2, args=(dd[1], offerno, endScore, dd[0])))
+                    # threads.append(threading.Thread(target=paimaibaozhen, name=name2, args=(dd[1], offerno, endScore, dd[0])))
             for t in threads:
                 t.start()
             for t in threads:
