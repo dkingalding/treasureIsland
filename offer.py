@@ -64,7 +64,7 @@ class offer(object):
                 elif thestatus[0] == 300:
                     #获取现在价格到自己最高价格之间的所有价格，组成列表
                     timeover = 0
-                    startprice = thestatus[1]+1
+                    startprice = thestatus[1]+3
                     result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": 1}
                     if startprice >= 93 and startprice <= 99:
                         startprice = 99
@@ -74,7 +74,7 @@ class offer(object):
                     while True:
                         if timeover ==1:
                             break
-                        pricelist = range(startprice+3, stopprice, 3)
+                        pricelist = range(startprice, stopprice, 3)
                         for i in pricelist:
                             if i >= 93 and i <= 99:
                                 i = 99
@@ -82,7 +82,7 @@ class offer(object):
                             if bb == 200:
                                 result = {'code': 200, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": i}
                                 myprice = i
-                                startprice = i
+                                startprice = i+1
                                 break
                             elif bb == 304:
                                 #价格过低
