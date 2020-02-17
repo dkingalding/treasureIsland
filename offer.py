@@ -273,4 +273,4 @@ class offer(object):
         finally:
             return results
 
-b
+
