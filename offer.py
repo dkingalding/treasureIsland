@@ -48,21 +48,19 @@ class offer(object):
         myprice = 0
         result = {'code': 400, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": 0}
         while True:
-            #计算时间
-            firsttime = int(endtime) - round(time.time() * 1000)+100
-            #获取数列使用
-            stopprice = theMaxprice + 1
+            firsttime = int(endtime) - round(time.time() * 1000) + 100
+            # 获取数列使用
             if firsttime <= 1000:
-                #获取此时的出价
+                # 获取此时的出价
 
                 thestatus = self.biPrice(goodsid, myprice, theMaxprice)
-                # print(offerlist[0][0], thestatus)
+
                 if thestatus[0] == 400:
-                    #超过了价格
-                    result = {'code':400, 'goodsid':goodsid, "usedNo":offerlist[0][1], "price":1 }
+                    # 超过了价格
+                    result = {'code': 400, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": 1}
                     break
                 elif thestatus[0] == 300:
-                    #获取现在价格到自己最高价格之间的所有价格，组成列表
+                    # 获取现在价格到自己最高价格之间的所有价格，组成列表
                     startprice = thestatus[1] + 3
 
                     if startprice >= 93 and startprice <= 99:
@@ -86,9 +84,10 @@ class offer(object):
                         break
                     else:
                         result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": 1}
-                        myprice = 0
+
                 elif thestatus[0] == 500 :
                     continue
+
                 else:
                     # 记录拍卖状态
                     result = {'code': 200, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
@@ -104,7 +103,7 @@ class offer(object):
 
             self.saveorder( myprice, goodsid, offerlist, usedno)
         else:
-            print("本次拍卖失败", result['code'])
+            print("本次拍卖失败", result)
 
 
 
