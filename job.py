@@ -87,9 +87,7 @@ if __name__ == '__main__':
             print(groupids)
             if groupids:
                 for groupid in groupids:
-
                     caijiduilie.append(threading.Thread(target=caijirenwu, name=groupid, args=(redisPool,groupid)))
-                    # caijiduilie.append(threading.Thread(target=caijirenwu, name=bb, args=(redisPool, groupid)))
                 for t in caijiduilie:
                     t.start()
             else:
