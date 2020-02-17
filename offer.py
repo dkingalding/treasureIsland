@@ -127,25 +127,25 @@ class offer(object):
         #防止漏拍
         #开主线程中为一个拍卖开启两个进程，一个正常拍卖，一个在最后提供最高价，防止漏拍
         theMaxprice = round(float(offerlist[0][2]))
-        result = {'code': 400, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": 0}
+        # result = {'code': 400, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": 0}
         myprice = 0
         while True:
             #计算时间
             firsttime = int(endtime) - round(time.time() * 1000)+100
-            if firsttime <= 300:
+            if firsttime <=400:
                 #在这里开始出价
                 bb = self.chujia(goodsid, theMaxprice)
                 if bb == 200:
-                    result = {'code': 200, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": theMaxprice}
+                    # result = {'code': 200, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": theMaxprice}
                     myprice = theMaxprice
                     break
                 elif bb == 304:
                     #出价过低
-                    result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": theMaxprice}
+                    # result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": theMaxprice}
                     break
                 elif bb == 305:
                     # 时间已经结束
-                    result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": theMaxprice}
+                    # result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": theMaxprice}
                     break
                 else:
                     #其他状态不改变状态
@@ -157,7 +157,7 @@ class offer(object):
         if thestatus[0] == 200:
             self.saveorder( myprice, goodsid, offerlist, usedno)
         else:
-            print("本次拍卖失败", result['code'])
+            print("本次拍卖失败")
 
 
     def saveorder(self, myprice, goodsid, offerlist, usedno):
