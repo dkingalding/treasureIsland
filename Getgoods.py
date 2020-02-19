@@ -62,6 +62,7 @@ class getgoods(object):
         #开始采集每个分页中商品信息，判断是否成功的依据1、code 是否为200 和采集返回的数据中auctionInfos是否为空
         pageNo = 0
         bb = True
+        onlyjindong = self.redislink.get("onlyjindong")
         while bb:
             print(pageNo)
             pageNo = pageNo + 1
@@ -81,7 +82,7 @@ class getgoods(object):
                     # print("list")
                     for data1 in thedata[1]:
                         # print(data1)
-                        self.__setdata(data1)
+                        self.__setdata(data1, onlyjindong)
                     time.sleep(2)
             time.sleep(1)
             if pageNo >= 200:
@@ -158,7 +159,7 @@ class getgoods(object):
         # print(tt["data"][])
         # print(tt["data"]["auctionInfos"][0])
 
-    def __setdata(self,data):
+    def __setdata(self,data, onlyjindong):
         #基本方法用于存储采集下来的数据
         keydata = ''
         valuedata = ''
@@ -177,6 +178,13 @@ class getgoods(object):
                     data[key] = 0
                 data[key] = str(data[key])
                 data[key] = data[key].replace('\'', '')
+
+            #获取只收集备件库产品还是所有的产品都收集。如果只采集京东，当 usedNo 不等于0的时候返回
+
+            if onlyjindong :
+                # print('只采集京东')
+                if data['shopId']!='0':
+                    return 0
 
             if self.redislink.sismember('usedName', data['usedNo']) == False:
                 keydata = 'usedNo, productName, primaryPic, quality, shopId, size, brandId, shortProductName'
@@ -243,7 +251,7 @@ class getgoods(object):
                     logging.error(traceback.format_exc())
         else:
             #返回数据，并对数据不做处理
-            print('数据格式错误不是dict')
+            print('数据格式错误不是字典')
 
     def reorder(self):
         # 在重新采集完商品列表后重新载入抢购任务2
