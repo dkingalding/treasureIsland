@@ -66,11 +66,13 @@ if __name__ == '__main__':
 
     while True:
         conn = redis.Redis(connection_pool=redisPool)
+        singin =0
         try:
             conn.ping()
+            singin = conn.get("singin")
         except:
             conn = redis.Redis(connection_pool= redisPool)
-        singin = conn.get("singin")
+            continue
         if singin == '1':
             loginClass.longduomingdao()
             conn.set("singin", 0)
