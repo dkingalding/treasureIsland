@@ -65,5 +65,5 @@ class duobao(object):
             content = 'http://120.27.22.37/index.php赶紧登录'
             mailclass = dingmail()
             mailclass.sendmail(titl, content)
-            self.sendPrice(auctionId, price)
+            # self.sendPrice(auctionId, price)
         return resultdata
