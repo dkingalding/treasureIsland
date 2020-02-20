@@ -118,7 +118,7 @@ class offer(object):
         while True:
             #计算时间
             firsttime = int(endtime) - round(time.time() * 1000)+100
-            if firsttime <=300:
+            if firsttime <=200:
                 #在这里开始出价
                 bb = self.chujia(goodsid, theMaxprice)
                 if bb == 200:
@@ -199,10 +199,10 @@ class offer(object):
         # print("在出价",myprice)
         thecode = self.duobaoClass.sendPrice(goodsid, myprice)
         if thecode['code'] != 200:
-            # print(thecode)
+            print(thecode)
             return thecode['code']
         else:
-            # print("出价成功")
+            print("出价成功")
             return 200
 
     def dinghis(self):
