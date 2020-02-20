@@ -80,10 +80,10 @@ class offer(object):
                         continue
                     elif bb == 305:
                         # 时间已经结束
-                        result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
+                        result = {'code': 305, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
                         break
                     else:
-                        result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": 1}
+                        result = {'code': 304, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": 1}
 
                 elif thestatus[0] == 500 :
                     continue
