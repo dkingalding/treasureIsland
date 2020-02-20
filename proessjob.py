@@ -14,17 +14,22 @@ redisPool = redis.ConnectionPool(host= myredis['host'], port= myredis['port'], m
 
 # loginClass = loginCook()
 
-
-
-
-def paimairenwu(goodsid, sqlNo , endScore):
+def paimairenwu(goodsid, sqlNo , endScore,usedno ):
     # 任务的队列生产者
     # 循环取出redis 有序集合trealist中当前时间的mapping
     # 查看相依的商品redis 的list中是否有待拍卖的
     # 有带拍卖的就将其计入到任务队列中
-    print('开始抢购')
+
     tt = offer(redisPool)
-    tt.paimai(goodsid, sqlNo, endScore)
+    tt.paimai(goodsid, sqlNo, endScore, usedno)
+
+def paimaibaozhen(goodsid, sqlNo , endScore,usedno ):
+    # 拍卖保证
+    tt = offer(redisPool)
+    tt.paimaibaozhen(goodsid, sqlNo, endScore, usedno)
+
+
+
 
 def caijirenwu(redislink, groupid):
     #控制采集
@@ -104,20 +109,16 @@ if __name__ == '__main__':
             print('获取treadlist',goodslist)
             thecode = offer(redisPool)
             for value in goodslist:
-                threads = []
+                # threads = []
                 dd = value.split('*')
                 #传的是usedno 去调后四位新旧的 数据
                 offerno = thecode.surestatus(dd[0])
 
                 if offerno:
                     print('进程开启')
-                    pool.apply_async(paimairenwu,(dd[1], offerno, endScore))
+                    pool.apply_async(paimairenwu,(dd[1], offerno, endScore, dd[0]))
+                    pool.apply_async(paimaibaozhen,(dd[1], offerno, endScore, dd[0]))
                     # threads.append(threading.Thread(target=paimairenwu, name=offerno, args=(dd[1], offerno, endScore)))
-            # for t in threads:
-            #     t.start()
-            # for t in threads:
-            #     t.join(5.0)
-            # pool.starmap_async()
             del(thecode)
         #删除已经过时的记录
         conn.zremrangebyscore('treadlist', 0, endScore)
