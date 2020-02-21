@@ -57,7 +57,7 @@ class tongji(object):
         # print(price)
         if price[0] != 500:
 
-            sql = "SELECT price,id FROM theprice WHERE  useedNo = {0}".format(goodslist[0])
+            sql = "SELECT price,id FROM theprice WHERE  useedNo = {0}".format(goodslist[1])
             try:
                 self.cursor.execute(sql)
                 # 执行sql语句
@@ -67,7 +67,7 @@ class tongji(object):
                 results = ()
             if results:
                 vageprice = round(results[0]/2 + price[1]/2)
-                sql ="UPDATE theprice SET price ={0}, vagePrice={1} WHERE usedNo = {2}".format( price[1],vageprice, goodslist[0])
+                sql ="UPDATE theprice SET price ={0}, vagePrice={1} WHERE usedNo = {2}".format( price[1],vageprice, goodslist[1])
                 try:
                     self.cursor.execute(sql)
                     # 执行sql语句
