@@ -112,9 +112,9 @@ class tongji(object):
         #         jsonresulte.pop()
         # else:
         #     jsonresulte = []
-        # jsonresulte.append(str(offset) + '*' + str(pinlv[1]))
+        bb = str(offset) + '*' + str(pinlv[1])
         # jsondata = json.dumps(jsonresulte)
-        sql = "UPDATE theprice SET notes ={0} WHERE usedNo = {1}".format(offset, pinlv[0])
+        sql = "UPDATE theprice SET notes ={0} WHERE usedNo = {1}".format(bb, pinlv[0])
         # print(sql)
         self.cursor.execute(sql)
         # 执行sql语句
