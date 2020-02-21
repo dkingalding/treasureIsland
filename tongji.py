@@ -38,7 +38,7 @@ class tongji(object):
             self.cursor.execute(sql)
             # 执行sql语句
             self.myqllink.commit()
-            results = self.cursor.fetchone()
+            results = self.cursor.fetchall()
         except:
             results = ()
         finally:
