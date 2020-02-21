@@ -99,19 +99,7 @@ class tongji(object):
             return results
 
     def pinlv(self, pinlv, offset):
-        sql = "SELECT  notes FROM theprice where usedNo = {0}".format(pinlv[0])
-        self.cursor.execute(sql)
-        # 执行sql语句
-        self.myqllink.commit()
-        results = self.cursor.fetchone()
-        # print(results)
 
-        # if results:
-        #     jsonresulte = json.loads(results[0])
-        #     if len(jsonresulte) >= 10:
-        #         jsonresulte.pop()
-        # else:
-        #     jsonresulte = []
         bb = str(offset) + '*' + str(pinlv[1])
         # jsondata = json.dumps(jsonresulte)
         sql = "UPDATE theprice SET notes ={0} WHERE usedNo = {1}".format(bb, pinlv[0])
@@ -119,24 +107,7 @@ class tongji(object):
         self.cursor.execute(sql)
         # 执行sql语句
         self.myqllink.commit()
-        # try:
-        #     self.cursor.execute(sql)
-        #     # 执行sql语句
-        #     self.myqllink.commit()
-        #     results = self.cursor.fetchone()
-        #     # print(results)
-        #
-        #     if len(results)>= 10:
-        #         results.pop()
-        #     results.append(offset+'*'+pinlv[1])
-        #
-        #     sql = "UPDATE theprice SET notes ={0} usedNo = {1}".format(results, pinlv[0])
-        #
-        #     self.cursor.execute(sql)
-        #     # 执行sql语句
-        #     self.myqllink.commit()
-        # except:
-        #     pass
+
 
 
 if __name__ == '__main__':
@@ -154,4 +125,4 @@ if __name__ == '__main__':
     for nou in goodsno:
         # print(nou[0])
         jiage.pinlv(nou, yesterday)
-    # print(goodsno)
+
