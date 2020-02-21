@@ -182,7 +182,7 @@ class offer(object):
         currentPrice = int(goodsinfo['data'][str(goodsid)]['currentPrice'])
         if currentPrice > int(theMaxprice):
             #返回通知结束进程，并取消着次竞拍
-            print("已经超过限定价格")
+            # print("已经超过限定价格")
             return [400, currentPrice]
         elif currentPrice > int(myprice):
             #继续出价
