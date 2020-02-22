@@ -99,10 +99,10 @@ class tongji(object):
 
     def pinlv(self, pinlv, offset):
 
-        bb = str(offset) + '*' + str(pinlv[1])
-        # jsondata = json.dumps(jsonresulte)
-        sql = "UPDATE theprice SET notes ={0} WHERE usedNo = {1}".format(bb, pinlv[0])
-        # print(sql)
+        bb = str(str(offset) + '#' + str(pinlv[1]))
+
+        sql = "UPDATE theprice SET notes ='{0}' WHERE usedNo = {1}".format(bb, pinlv[0])
+
         self.cursor.execute(sql)
         # 执行sql语句
         self.myqllink.commit()
@@ -113,15 +113,15 @@ if __name__ == '__main__':
     jiage = tongji()
 
     bb = jiage.getgoodsid()
-    # print(bb)
+
     for goods in bb:
         jiage.getcurrentPrice(goods)
-        # sleep(1)
+
     yesterday = (datetime.date.today() + datetime.timedelta(days = -1)).strftime("%m-%d")
 
     goodsno = jiage.shuliang()
-    # print(goodsno)
+
     for nou in goodsno:
-        # print(nou[0])
+
         jiage.pinlv(nou, yesterday)
 
