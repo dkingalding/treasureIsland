@@ -116,7 +116,7 @@ if __name__ == '__main__':
     # print(bb)
     for goods in bb:
         jiage.getcurrentPrice(goods)
-        sleep(1)
+        # sleep(1)
     yesterday = (datetime.date.today() + datetime.timedelta(days = -1)).strftime("%m-%d")
 
     goodsno = jiage.shuliang()
