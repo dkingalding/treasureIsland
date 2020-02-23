@@ -57,7 +57,7 @@ class tongji(object):
         # print(price)
         if price[0] != 500:
 
-            sql = "SELECT vagePrice, id FROM theprice WHERE  usedNo = {0}".format(goodslist[1])
+            sql = "SELECT vagePrice FROM theprice WHERE  usedNo = {0}".format(goodslist[1])
 
             self.cursor.execute(sql)
             # 执行sql语句
@@ -67,7 +67,7 @@ class tongji(object):
             if results:
                 vageprice = round(int(results[0])/2 + int(price[1])/2)
                 sql ="UPDATE theprice SET price = {0} , vagePrice = {1}  WHERE usedNo = '{2}'".format(str(price[1]), str(vageprice), str(goodslist[1]))
-                print(sql)
+                # print(sql)
                 self.cursor.execute(sql)
                 # 执行sql语句
                 self.myqllink.commit()
