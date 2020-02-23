@@ -66,24 +66,20 @@ class tongji(object):
 
             if results:
                 vageprice = round(int(results[0])/2 + int(price[1])/2)
-                sql ="UPDATE theprice SET price ={0}, vagePrice={1} WHERE usedNo = {2}".format( price[1],vageprice, goodslist[1])
-                try:
-                    self.cursor.execute(sql)
-                    # 执行sql语句
-                    self.myqllink.commit()
-                except:
-                    # print('存入价格错误')
-                    pass
+                sql ="UPDATE theprice SET price = {0} , vagePrice = {1}  WHERE usedNo = '{2}'".format(str(price[1]), str(vageprice), str(goodslist[1]))
+                print(sql)
+                self.cursor.execute(sql)
+                # 执行sql语句
+                self.myqllink.commit()
+
             else:
                 #如果没有就存入数据
                 sql = "INSERT INTO theprice (usedNo, vagePrice, price ) VALUES ({0}, {1},{2})".format(goodslist[1],price[1],price[1])
-                try:
-                    self.cursor.execute(sql)
-                    # 执行sql语句
-                    self.myqllink.commit()
-                except:
-                    # print('存入价格错误')
-                    pass
+
+                self.cursor.execute(sql)
+                # 执行sql语句
+                self.myqllink.commit()
+
 
     def shuliang(self):
         sql = "SELECT  usedNo, COUNT(*) FROM goods GROUP BY usedNo"
@@ -101,7 +97,7 @@ class tongji(object):
 
         bb = str(str(offset) + '#' + str(pinlv[1]))
 
-        sql = "UPDATE theprice SET notes ='{0}' WHERE usedNo = {1}".format(bb, pinlv[0])
+        sql = "UPDATE theprice SET notes = '{0}' WHERE usedNo = {1}".format(bb, pinlv[0])
 
         self.cursor.execute(sql)
         # 执行sql语句
@@ -116,6 +112,7 @@ if __name__ == '__main__':
 
     for goods in bb:
         jiage.getcurrentPrice(goods)
+        sleep(1)
 
     yesterday = (datetime.date.today() + datetime.timedelta(days = -1)).strftime("%m-%d")
 
