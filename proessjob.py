@@ -6,6 +6,7 @@ import redis
 from Getgoods import getgoods
 import os
 import multiprocessing
+from mailtongzhi import dingmail
 
 os.environ['TZ'] = 'Asia/Shanghai'
 redisPool = redis.ConnectionPool(host= myredis['host'], port= myredis['port'], max_connections=10, decode_responses=True)
@@ -61,66 +62,78 @@ if __name__ == '__main__':
     #每次启动程序就登录保证cookies有效
     # thecode = offer(Pool)
     # offerno = thecode.tets()
-    loginClass = loginCook()
-    theclick = int(time.strftime('%H', time.localtime(time.time())))
-
-    # if theclick <=10 :
-    #     loginClass.longduomingdao()
-    #开启进程池
-    pool = multiprocessing.Pool()
-
-    while True:
-        conn = redis.Redis(connection_pool=redisPool)
-        #查看是否需要登录
-        singin = conn.get("singin")
-        if singin == '1':
-            loginClass.longduomingdao()
-            conn.set("singin", 0)
-
-        # 获取采集数据的状态码，是否开启采集线程
-        value = conn.get("getgoods")
-        groupids = conn.smembers("groupgoods")
+    try:
+        loginClass = loginCook()
         theclick = int(time.strftime('%H', time.localtime(time.time())))
-        if value == '1':
-            caijiduilie = []
-            caiji = getgoods(redisPool)
-            conn.getset("getgoods", 2)
-            print(groupids)
-            if groupids:
-                for groupid in groupids:
-                    caijiduilie.append(threading.Thread(target=caijirenwu, name='shuchu', args=(redisPool,groupid)))
 
-                for t in caijiduilie:
-                    t.start()
-            else:
-                t2 = threading.Thread(target=caijirenwu, name='shuchu', args=(redisPool, '1000005'))
-                t2.start()
-            del(caiji)
+        # if theclick <=10 :
+        #     loginClass.longduomingdao()
+        #开启进程池
+        pool = multiprocessing.Pool()
 
-        # #开始获取在一定时间段内的
-        #开始抢购
-        startScore = int(time.time() + 1) * 1000
-        endScore = startScore+ 2000
-        # endScore =2000000000000
-        goodslist = conn.zrangebyscore('treadlist', startScore, endScore)
-        # print(goodslist)
-        # break
-        if goodslist:
-            print('获取treadlist',goodslist)
-            thecode = offer(redisPool)
-            for value in goodslist:
-                # threads = []
-                dd = value.split('*')
-                #传的是usedno 去调后四位新旧的 数据
-                offerno = thecode.surestatus(dd[0])
+        while True:
+            conn = redis.Redis(connection_pool=redisPool)
+            try:
+                conn.ping()
+                singin = conn.get("singin")
+            except:
+                conn = redis.Redis(connection_pool=redisPool)
+                continue
+            #查看是否需要登录
+            singin = conn.get("singin")
 
-                if offerno:
-                    print('进程开启')
-                    pool.apply_async(paimairenwu,(dd[1], offerno, endScore, dd[0]))
-                    pool.apply_async(paimaibaozhen,(dd[1], offerno, endScore, dd[0]))
-                    # threads.append(threading.Thread(target=paimairenwu, name=offerno, args=(dd[1], offerno, endScore)))
-            del(thecode)
-        #删除已经过时的记录
-        conn.zremrangebyscore('treadlist', 0, endScore)
-        del(conn)
+            if singin == '1':
+                loginClass.longduomingdao()
+                conn.set("singin", 0)
 
+            # 获取采集数据的状态码，是否开启采集线程
+            value = conn.get("getgoods")
+            groupids = conn.smembers("groupgoods")
+            theclick = int(time.strftime('%H', time.localtime(time.time())))
+            if value == '1':
+                caijiduilie = []
+                caiji = getgoods(redisPool)
+                conn.getset("getgoods", 2)
+                print(groupids)
+                if groupids:
+                    for groupid in groupids:
+                        caijiduilie.append(threading.Thread(target=caijirenwu, name='shuchu', args=(redisPool,groupid)))
+
+                    for t in caijiduilie:
+                        t.start()
+                else:
+                    t2 = threading.Thread(target=caijirenwu, name='shuchu', args=(redisPool, '1000005'))
+                    t2.start()
+                del(caiji)
+
+            # #开始获取在一定时间段内的
+            #开始抢购
+            startScore = int(time.time() + 1) * 1000
+            endScore = startScore+ 2000
+            # endScore =2000000000000
+            goodslist = conn.zrangebyscore('treadlist', startScore, endScore)
+            # print(goodslist)
+            # break
+            if goodslist:
+                print('获取treadlist',goodslist)
+                thecode = offer(redisPool)
+                for value in goodslist:
+                    # threads = []
+                    dd = value.split('*')
+                    #传的是usedno 去调后四位新旧的 数据
+                    offerno = thecode.surestatus(dd[0])
+
+                    if offerno:
+                        print('进程开启')
+                        pool.apply_async(paimairenwu,(dd[1], offerno, endScore, dd[0]))
+                        pool.apply_async(paimaibaozhen,(dd[1], offerno, endScore, dd[0]))
+                        # threads.append(threading.Thread(target=paimairenwu, name=offerno, args=(dd[1], offerno, endScore)))
+                del(thecode)
+            #删除已经过时的记录
+            conn.zremrangebyscore('treadlist', 0, endScore)
+            del(conn)
+    except:
+        titl = '程序启动错误，请快登录电脑重启'
+        content = '程序启动错误，快速登录电脑重启，可能是redis连接中断'
+        mailclass = dingmail()
+        mailclass.sendmail(titl, content)
