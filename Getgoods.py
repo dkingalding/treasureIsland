@@ -270,9 +270,9 @@ class getgoods(object):
                 if unsedno == '1':
                     condition = "usedNo = {0} OR usedNo = {1}".format(usedno + '0701', usedno + '0801')
                 elif unsedno == '2':
-                    condition = "usedNo = {0} ".format(usedno + '0901')
-                elif unsedno == '3':
-                    condition ="usedNo = {0} OR usedNo = {1}".format(usedno+'3371', usedno + '0951')
+                    condition = "usedNo = {0} OR usedNo = {1} OR usedNo = {2}".format(usedno + '0901',usedno+'3371', usedno + '0951')
+                # elif unsedno == '3':
+                #     condition ="usedNo = {0} OR usedNo = {1}".format(usedno+'3371', usedno + '0951')
                 else:
                     continue
                 sql = "SELECT id, usedNo, endTime FROM goods  WHERE {0} AND endTime >= {1}".format(
