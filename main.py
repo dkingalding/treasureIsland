@@ -64,29 +64,32 @@ def shuru():
 
 
 if __name__ == '__main__':
-    redislink.getset("getgoods", 0)
+    # redislink.getset("getgoods", 0)
+
     # offerlist =9
     # titl = '%s订单拍卖成功，填写地址付钱' % offerlist
     # content = 'http://120.27.22.37/admin/offerlogs/%s/edit' % offerlist
     # mailclass = dingmail()
     # mailclass.sendmail(titl, content)
-    # keys = redislink.keys()
-    # for key in keys:
-    #     # print(key)
-    #     type = redislink.type(key)
-    #     if type == 'string':
-    #         vals = redislink.get(key)
-    #     elif type == 'list':
-    #         vals = redislink.lrange(key, 0, -1)
-    #         print(vals)
-    #     elif type == 'set':
-    #         vals = redislink.smembers(key);
-    #     elif type == 'zset':
-    #         vals = redislink.zrange(key, 0, -1)
-    #     elif type == "hash":
-    #         vals = redislink.hgetall(key)
-    #     else:
-    #         pass
+    keys = redislink.keys()
+    for key in keys:
+        # # print(key)
+        # type = redislink.type(key)
+        # if type == 'string':
+        #     vals = redislink.get(key)
+        # elif type == 'list':
+        #     vals = redislink.lrange(key, 0, -1)
+        #     print(vals)
+        # elif type == 'set':
+        #     vals = redislink.smembers(key);
+        # elif type == 'zset':
+        #     vals = redislink.zrange(key, 0, -1)
+        # elif type == "hash":
+        #     vals = redislink.hgetall(key)
+        # else:
+        #     pass
+        if key != "goodslist"or key != "shop" or key != "usedName" or key != "getgoods"or key !='groupgoods':
+            redislink.delete(key)
 
     while True:
 
