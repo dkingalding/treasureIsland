@@ -1,5 +1,5 @@
 import json
-from time import sleep
+from time import sleep, time
 
 import pymysql
 from offer import offer
@@ -36,7 +36,8 @@ class tongji(object):
         # logging.basicConfig(filename='log.txt', level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
 
     def getgoodsid(self):
-        sql = "SELECT id, usedNo FROM goods"
+        auconttime = int(time.time()) * 1000
+        sql = "SELECT id, usedNo FROM goods AND endTime >= {0}".format(auconttime)
 
         try:
             self.cursor.execute(sql)

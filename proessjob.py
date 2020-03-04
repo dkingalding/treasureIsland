@@ -7,6 +7,7 @@ from Getgoods import getgoods
 import os
 import multiprocessing
 from mailtongzhi import dingmail
+from huodan import huodan
 
 os.environ['TZ'] = 'Asia/Shanghai'
 redisPool = redis.ConnectionPool(host= myredis['host'], port= myredis['port'], max_connections=10, decode_responses=True)
@@ -44,13 +45,14 @@ def caijirenwu(redislink, groupid):
     #早上10点和下午两点之间采集数据时视为补充数据，不需要清楚历史数据
     caijigoods = getgoods(redislink)
     # allgoods.clearRedis()
-
+    xianyu = huodan()
     #开始采集数据并返回采集结果
     theresult = caijigoods.getAllGoods(groupid)
 
     #如果采集结果返回为200 就将数据状态码改会0
     if theresult == 200:
         caijigoods.reorder()
+        xianyu.shengchengliebieo()
         del(caijigoods)
 
 
