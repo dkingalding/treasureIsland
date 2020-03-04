@@ -181,7 +181,7 @@ class getgoods(object):
 
             #获取只收集备件库产品还是所有的产品都收集。如果只采集京东，当 usedNo 不等于0的时候返回
 
-            if onlyjindong :
+            if onlyjindong == 1:
                 # print('只采集京东')
                 if data['shopId']!='0':
                     return 0
