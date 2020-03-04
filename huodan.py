@@ -88,8 +88,11 @@ class huodan(object):
 
         keywordlist = self.getwords()
         # print(keywordlist)
+        self.redispool.sadd('kuchun', 0)
         for keyword in keywordlist:
             self.getlist(keyword[0])
+
+        self.redispool.delete('kuchun')
 
 
 
