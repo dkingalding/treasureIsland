@@ -103,7 +103,7 @@ class offer(object):
 
             self.saveorder( myprice, goodsid, offerlist, usedno)
         else:
-            print("本次拍卖失败", result)
+            print("正常拍卖失败", result)
 
 
 

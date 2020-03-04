@@ -269,14 +269,18 @@ class getgoods(object):
                 mapping = {}
                 usedno = key[0:-1]
                 unsedno = key[-1]
-                if unsedno == '1':
+
+                #套餐如果需要修改只需要修改这里
+
+                if unsedno == 'a':
                     condition = "usedNo = {0} OR usedNo = {1}".format(usedno + '0701', usedno + '0801')
-                elif unsedno == '2':
+                elif unsedno == 'b':
                     condition = "usedNo = {0}".format(usedno + '0901')
-                elif unsedno == '3':
+                elif unsedno == 'c':
                     condition ="usedNo = {0} OR usedNo = {1} OR usedNo = {2}".format(usedno+'3371', usedno + '0951', usedno + '0991')
                 else:
-                    continue
+                    condition = "usedNo = {0}".format(key)
+
                 sql = "SELECT id, usedNo, endTime FROM goods  WHERE {0} AND endTime >= {1}".format(
                     condition, auconttime)
                 try:
