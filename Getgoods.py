@@ -63,6 +63,7 @@ class getgoods(object):
         pageNo = 0
         bb = True
         onlyjindong = self.redislink.get("onlyjindong")
+        # print(onlyjindong)
         while bb:
             print(pageNo)
             pageNo = pageNo + 1
@@ -181,9 +182,10 @@ class getgoods(object):
 
             #获取只收集备件库产品还是所有的产品都收集。如果只采集京东，当 usedNo 不等于0的时候返回
 
-            if onlyjindong == 1:
+            if onlyjindong == '1':
                 # print('只采集京东')
                 if data['shopId']!='0' or data['shopId']!='1000000127':
+                    # print(data['shopId'])
                     return 0
 
             if self.redislink.sismember('usedName', data['usedNo']) == False:
