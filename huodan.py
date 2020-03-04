@@ -87,18 +87,21 @@ class huodan(object):
             keywordlist = self.getwords()
             # print(keywordlist)
             mailcontent = ''
+            self.redislink.delete('kuchun')
             self.redislink.sadd('kuchun', 0)
             for keyword in keywordlist:
                 onecontent = self.getlist(keyword[0])
-                mailcontent = mailcontent+ "\r\n" + keyword[0] + "库存列表" + "\r\n" + onecontent
+                # print(onecontent)
+                mailcontent = mailcontent+ "\r\n" + keyword[0] + "===库存列表" + "\r\n" + onecontent
 
             titl = '库存清单'
 
             mailclass = dingmail()
             mailclass.sendmail(titl, mailcontent)
 
-
             self.redislink.delete('kuchun')
+
+
         except:
             print('chucuo')
 
