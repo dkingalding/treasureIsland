@@ -17,7 +17,7 @@ class huodan(object):
                                         db=mymysql['db'])
         self.cursor = self.myqllink.cursor()
         self.redislink = redis.Redis(connection_pool = conredis)
-        self.redispool = conredis
+        # self.redispool = conredis
     #
 
     def getwords(self):
@@ -88,11 +88,11 @@ class huodan(object):
 
         keywordlist = self.getwords()
         # print(keywordlist)
-        self.redispool.sadd('kuchun', 0)
+        self.redislink.sadd('kuchun', 0)
         for keyword in keywordlist:
             self.getlist(keyword[0])
 
-        self.redispool.delete('kuchun')
+        self.redislink.delete('kuchun')
 
 
 
