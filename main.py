@@ -68,7 +68,8 @@ if __name__ == '__main__':
                                      decode_responses=True)
 
     caijigoods = getgoods(redisPool)
-    caijigoods.reorder()
+    caijigoods.clearRedis()
+    # caijigoods.reorder()
     # redislink.getset("getgoods", 0)
 
     # offerlist =9
