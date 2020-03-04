@@ -61,7 +61,7 @@ class huodan(object):
         content = ''
         for goods in results:
             #如果有价格记录
-            if self.redispool.sismember('kuchun', goods[0]) == False:
+            if self.redislink.sismember('kuchun', goods[0]) == False:
                 if goods[4]:
                     myprice = round(int(goods[4]) * 1.1)
                     ableprice = round(int(goods[2]) * 0.85)
@@ -75,7 +75,7 @@ class huodan(object):
                         goods[2]) + '----包邮价' + str(myprice)+ "\r\n"
                 else:
                     print(goods, ableprice, myprice)
-                self.redispool.sadd('kuchun', goods[0])
+                self.redislink.sadd('kuchun', goods[0])
 
         # print(content)
         if content:

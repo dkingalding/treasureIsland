@@ -17,6 +17,7 @@ from huodan import huodan
 #redislink = redis.Redis(host = '120.27.22.37', port = 6347, decode_responses=True)
 redislink = redis.Redis(host=myredis['host'], port=myredis['port'], decode_responses=True)
 myqllink = pymysql.connect(host= mymysql['host'], user = mymysql['user'], passwd = mymysql['passwd'], db = mymysql['db'])
+redisPool = redis.ConnectionPool(host= myredis['host'], port= myredis['port'], max_connections=10, decode_responses=True)
 
 
 
@@ -79,31 +80,32 @@ if __name__ == '__main__':
     # content = 'http://120.27.22.37/admin/offerlogs/%s/edit' % offerlist
     # mailclass = dingmail()
     # mailclass.sendmail(titl, content)
-    keys = redislink.keys()
-    for key in keys:
-        # print(key)
-        # type = redislink.type(key)
-        if type == 'string':
-            pass
-        #     vals = redislink.get(key)
-        # elif type == 'list':
-        #     vals = redislink.lrange(key, 0, -1)
-        #     print(vals)
-        elif type == 'set':
-            vals = redislink.smembers(key);
-            print(vals)
-        # elif type == 'zset':
-        #     vals = redislink.zrange(key, 0, -1)
-        # elif type == "hash":
-        #     vals = redislink.hgetall(key)
-        else:
-            pass
-    #     if key != "goodslist"or key != "shop" or key != "usedName" or key != "getgoods"or key !='groupgoods':
-    #         redislink.delete(key)
+    # keys = redislink.keys()
+    # for key in keys:
+    #     # print(key)
+    #     # type = redislink.type(key)
+    #     if type == 'string':
+    #         pass
+    #     #     vals = redislink.get(key)
+    #     # elif type == 'list':
+    #     #     vals = redislink.lrange(key, 0, -1)
+    #     #     print(vals)
+    #     elif type == 'set':
+    #         vals = redislink.smembers(key);
+    #         print(vals)
+    #     # elif type == 'zset':
+    #     #     vals = redislink.zrange(key, 0, -1)
+    #     # elif type == "hash":
+    #     #     vals = redislink.hgetall(key)
+    #     else:
+    #         pass
+    # #     if key != "goodslist"or key != "shop" or key != "usedName" or key != "getgoods"or key !='groupgoods':
+    # #         redislink.delete(key)
+    #
+    # while True:
+    #
+    #     shuru()
 
-    while True:
-
-        shuru()
-
-
+    xianyu = huodan(redisPool)
+    xianyu.shengchengliebieo()
 
