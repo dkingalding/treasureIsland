@@ -78,22 +78,29 @@ class huodan(object):
                 self.redislink.sadd('kuchun', goods[0])
 
         # print(content)
-        if content:
-            titl = keyword+'清单'
+        return content
+        # if content:
 
-            mailclass = dingmail()
-            mailclass.sendmail(titl, content)
 
     def shengchengliebieo(self):
+        try:
+            keywordlist = self.getwords()
+            # print(keywordlist)
+            mailcontent = ''
+            self.redislink.sadd('kuchun', 0)
+            for keyword in keywordlist:
+                onecontent = self.getlist(keyword[0])
+                mailcontent = mailcontent+ "\r\n" + keyword[0] + "库存列表" + "\r\n" + onecontent
 
-        keywordlist = self.getwords()
-        # print(keywordlist)
-        self.redislink.sadd('kuchun', 0)
-        for keyword in keywordlist:
-            self.getlist(keyword[0])
+            titl = '库存清单'
 
-        self.redislink.delete('kuchun')
+            mailclass = dingmail()
+            mailclass.sendmail(titl, mailcontent)
 
+
+            self.redislink.delete('kuchun')
+        except:
+            print('chucuo')
 
 
 
