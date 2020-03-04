@@ -184,8 +184,8 @@ class getgoods(object):
 
             if onlyjindong == '1':
                 # print('只采集京东')
-                if data['shopId']!='0' or data['shopId']!='1000000127':
-                    # print(data['shopId'])
+                if data['shopId']!='0' and data['shopId']!='1000000127':
+                    print(data['shopId'])
                     return 0
 
             if self.redislink.sismember('usedName', data['usedNo']) == False:
