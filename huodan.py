@@ -12,11 +12,12 @@ from mailtongzhi import dingmail
 
 class huodan(object):
 
-    def __init__(self):
+    def __init__(self, conredis):
         self.myqllink = pymysql.connect(host=mymysql['host'], user=mymysql['user'], passwd=mymysql['passwd'],
                                         db=mymysql['db'])
         self.cursor = self.myqllink.cursor()
-
+        self.redislink = redis.Redis(connection_pool = conredis)
+        self.redispool = conredis
     #
 
     def getwords(self):
@@ -42,11 +43,9 @@ class huodan(object):
         #     第三、根据关键字，商品种类发送邮件。 邮件中显示商品名、价格、新旧程度
         #     第四、至采集9新以上的商品
 
-        # keyword = '罗技'
-
         auconttime = int(time.time()) * 1000
 
-        condition = "(a.quality = '9成新' OR a.quality = '95成新' OR a.quality = '准新品')"
+        condition = "(a.quality = '9成新' OR a.quality = '95成新' OR a.quality = '准新品' OR a.quality = '99成新' OR a.quality = '全新')"
         cond = "b.productName LIKE '%{0}%'".format(keyword)
 
         # sql = "SELECT  a.usedNo, a.quality, a.cappedPrice, b.productName ,c.vagePrice FROM goods as a JOIN usedName as b ON b.usedNo = a.usedNo" \
@@ -59,27 +58,24 @@ class huodan(object):
 
         self.myqllink.commit()
         results = self.cursor.fetchall()
-
-        # print(results)
-        # print(len(results))
         content = ''
         for goods in results:
             #如果有价格记录
-            if goods[4]:
-                myprice = round(int(goods[4]) * 1.1)
-                ableprice = round( int(goods[2]) * 0.85)
-                #如果价格没有
-                if myprice< 99:
-                    myprice = myprice+7
-
-            else:
-                myprice = goods[2] *0.85
-
-            if myprice < ableprice:
-                content = content + "\r\n" + goods[3] + '----' + goods[1] + '----原价' + str(
-                    goods[2]) + '----包邮价' + str(myprice)+ "\r\n"
-            else:
-                print(goods, ableprice, myprice)
+            if self.redispool.sismember('kuchun', goods[0]) == False:
+                if goods[4]:
+                    myprice = round(int(goods[4]) * 1.1)
+                    ableprice = round(int(goods[2]) * 0.85)
+                    #如果价格没有
+                    if myprice< 99:
+                        myprice = myprice+7
+                else:
+                    myprice = goods[2] *0.85
+                if myprice < ableprice:
+                    content = content + "\r\n" + goods[3] + '----' + goods[1] + '----原价' + str(
+                        goods[2]) + '----包邮价' + str(myprice)+ "\r\n"
+                else:
+                    print(goods, ableprice, myprice)
+                self.redispool.sadd('kuchun', goods[0])
 
         # print(content)
         if content:

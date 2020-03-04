@@ -45,7 +45,7 @@ def caijirenwu(redislink, groupid):
     #早上10点和下午两点之间采集数据时视为补充数据，不需要清楚历史数据
     caijigoods = getgoods(redislink)
     # allgoods.clearRedis()
-    xianyu = huodan()
+    xianyu = huodan(redislink)
     #开始采集数据并返回采集结果
     theresult = caijigoods.getAllGoods(groupid)
 
