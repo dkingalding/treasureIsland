@@ -63,10 +63,12 @@ class huodan(object):
             #如果有价格记录
             if self.redislink.sismember('kuchun', goods[0]) == False:
                 ableprice = round(int(goods[2]) * 0.9)
+
                 if goods[4]:
-                    if goods[4]< 99:
-                        goods[4] = goods[4]+7
-                    myprice = round(int(goods[4]) * 1.1)
+                    bb = int(goods[4])
+                    if bb < 99:
+                        bb = bb +7
+                    myprice = round(int(bb) * 1.1)
 
                     #如果价格没有
 
@@ -97,7 +99,6 @@ class huodan(object):
                 mailcontent = mailcontent+ "\r\n" + keyword[0] + "===库存列表" + "\r\n" + onecontent
 
             titl = '库存清单'
-
             mailclass = dingmail()
             mailclass.sendmail(titl, mailcontent)
 
