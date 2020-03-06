@@ -1,5 +1,5 @@
 import json
-from time import sleep, time
+import time
 
 import pymysql
 from offer import offer
@@ -36,8 +36,8 @@ class tongji(object):
         # logging.basicConfig(filename='log.txt', level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
 
     def getgoodsid(self):
-        auconttime = int(time.time()) * 1000
-        sql = "SELECT id, usedNo FROM goods AND endTime >= {0}".format(auconttime)
+        auconttime = int(time.time() ) * 1000
+        sql = "SELECT id, usedNo FROM goods AND endTime <= {0}".format(auconttime)
 
         try:
             self.cursor.execute(sql)
@@ -113,7 +113,7 @@ if __name__ == '__main__':
 
     for goods in bb:
         jiage.getcurrentPrice(goods)
-        sleep(1)
+        time.sleep(1)
 
     yesterday = (datetime.date.today() + datetime.timedelta(days = -1)).strftime("%m-%d")
 
