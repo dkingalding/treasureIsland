@@ -63,7 +63,7 @@ class huodan(object):
             #如果有价格记录
             if self.redislink.sismember('kuchun', goods[0]) == False:
                 if goods[4]:
-                    myprice = round(int(goods[4]) * 1.1)
+                    myprice = round(int(goods[4]) * 1.08)
                     ableprice = round(int(goods[2]) * 0.85)
                     #如果价格没有
                     if myprice< 99:
