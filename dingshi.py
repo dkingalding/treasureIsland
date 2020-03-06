@@ -5,6 +5,7 @@ from config import myredis
 import redis
 from Getgoods import getgoods
 import os
+from huodan import huodan
 
 os.environ['TZ'] = 'Asia/Shanghai'
 Pool = redis.ConnectionPool(host= myredis['host'], port= myredis['port'], max_connections=10, decode_responses=True)
@@ -33,10 +34,12 @@ def caijirenwu(redislink, groupid):
 
     #开始采集数据并返回采集结果
     theresult = caijigoods.getAllGoods(groupid)
+    xianyu = huodan(redislink)
 
     #如果采集结果返回为200 就将数据状态码改会0
     if theresult == 200:
         caijigoods.reorder()
+        xianyu.shengchengliebieo()
         del(caijigoods)
 
 
