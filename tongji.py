@@ -66,7 +66,7 @@ class tongji(object):
             results = self.cursor.fetchone()
 
             if results:
-                vageprice = round((int(results[0])*9 + int(price[1])*1)/10)
+                vageprice = round((int(results[0])*7 + int(price[1])*3)/10)
                 sql ="UPDATE theprice SET price = {0} , vagePrice = {1}  WHERE usedNo = '{2}'".format(str(price[1]), str(vageprice), str(goodslist[1]))
                 # print(sql)
                 self.cursor.execute(sql)
