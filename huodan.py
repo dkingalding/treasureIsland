@@ -70,7 +70,7 @@ class huodan(object):
                         myprice = myprice+7
                 else:
                     myprice = round(goods[2] *0.84)
-                if myprice < ableprice:
+                if myprice <= ableprice:
                     content = content + "\r\n" + goods[3] + '----' + goods[1] + '----原价' + str(
                         goods[2]) + '----包邮价' + str(myprice)+ "\r\n"
                 else:
