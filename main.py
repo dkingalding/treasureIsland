@@ -23,7 +23,6 @@ redisPool = redis.ConnectionPool(host= myredis['host'], port= myredis['port'], m
 
 #实例化采集类
 # allgoods = getgoods()
-
 seachgoods = seachgoods()
 
 

@@ -96,16 +96,23 @@ if __name__ == '__main__':
                 caijiduilie = []
                 caiji = getgoods(redisPool)
                 conn.getset("getgoods", 2)
-                print(groupids)
-                if groupids:
-                    for groupid in groupids:
-                        caijiduilie.append(threading.Thread(target=caijirenwu, name='shuchu', args=(redisPool,groupid)))
-
-                    for t in caijiduilie:
-                        t.start()
-                else:
-                    t2 = threading.Thread(target=caijirenwu, name='shuchu', args=(redisPool, '1000005'))
+                if 'all' in  groupids:
+                    t2 = threading.Thread(target=caijirenwu, name='shuchu', args=(redisPool, ''))
                     t2.start()
+
+                else:
+
+                    print(groupids)
+                    if groupids:
+                        for groupid in groupids:
+                            caijiduilie.append(threading.Thread(target=caijirenwu, name='shuchu', args=(redisPool,groupid)))
+
+                        for t in caijiduilie:
+                            t.start()
+                    else:
+                        t2 = threading.Thread(target=caijirenwu, name='shuchu', args=(redisPool, '1000005'))
+                        t2.start()
+
                 del(caiji)
 
             # #开始获取在一定时间段内的
