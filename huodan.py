@@ -46,13 +46,13 @@ class huodan(object):
         auconttime = int(time.time()) * 1000
 
         condition = "(a.quality = '9成新' OR a.quality = '95成新' OR a.quality = '准新品' OR a.quality = '99成新' OR a.quality = '全新')"
-        cond = "b.productName LIKE '%{0}%'".format(keyword)
+        cond = "b.productName LIKE '%{0}%'".format('')
 
         # sql = "SELECT  a.usedNo, a.quality, a.cappedPrice, b.productName ,c.vagePrice FROM goods as a JOIN usedName as b ON b.usedNo = a.usedNo" \
         #       " JOIN theprice as c ON c.usedNo = a.usedNo WHERE  {1} AND a.endTime >= {2} AND {0}  GROUP BY a.usedNo".format(condition, cond, auconttime)
 
-        sql = "SELECT  a.usedNo, a.quality, a.cappedPrice, b.productName ,c.vagePrice FROM goods as a JOIN usedName as b ON b.usedNo = a.usedNo" \
-              " JOIN theprice as c ON c.usedNo = a.usedNo WHERE  {1} AND a.endTime >= {2} AND {0}  GROUP BY a.usedNo  ORDER BY  b.productName ".format(condition, cond, auconttime)
+        sql = "SELECT  a.usedNo, a.quality, a.cappedPrice, b.productName ,c.vagePrice , c.notes FROM goods as a JOIN usedName as b ON b.usedNo = a.usedNo" \
+              " JOIN theprice as c ON c.usedNo = a.usedNo WHERE  {1}  AND {0}  GROUP BY a.usedNo  ORDER BY  b.productName ".format(condition, cond, auconttime)
 
         self.cursor.execute(sql)
 
@@ -76,7 +76,7 @@ class huodan(object):
                     myprice = round(goods[2] *0.85)
                 if myprice <= ableprice:
                     content = content + "\r\n" + goods[3] + '----' + goods[1] + '----原价' + str(
-                        goods[2]) + '----包邮价' + str(myprice)+ "\r\n"
+                        goods[2]) + '----包邮价' + str(myprice)+ '----'+goods[5]+"\r\n"
                 else:
                     print(goods, ableprice, myprice)
                 self.redislink.sadd('kuchun', goods[0])
