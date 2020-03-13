@@ -63,9 +63,23 @@ class huodan(object):
             #如果有价格记录
             if self.redislink.sismember('kuchun', goods[0]) == False:
                 ableprice = round(int(goods[2]) * 0.85)
+                if not goods[2] :
+                    cappedPrice = 0
+                else:
+                    cappedPrice = goods[2]
 
-                if goods[4]:
-                    bb = int(goods[4])
+                if not goods[4] :
+                    vagePrice = 0
+                else:
+                    vagePrice = goods[4]
+
+                if not goods[5] :
+                    notes = '#'
+                else:
+                    notes = goods[5]
+
+                if vagePrice:
+                    bb = int(vagePrice)
                     if bb < 99:
                         bb = bb +7
                     myprice = round(int(bb) * 1.1)
@@ -73,10 +87,12 @@ class huodan(object):
                     #如果价格没有
 
                 else:
-                    myprice = round(goods[2] *0.85)
+                    myprice = round(cappedPrice *0.85)
                 if myprice <= ableprice:
-                    content = content + "\r\n" + goods[3] + '----' + goods[1] + '----原价' + str(
-                        goods[2]) + '----包邮价' + str(myprice)+ '----' + goods[5] +"\r\n"
+                    print(goods[3] ,goods[1],cappedPrice,myprice,goods[5])
+                    # print("\r\n" + goods[3] + '----' + goods[1] + '----原价' + str(cappedPrice) + '----包邮价' + str(myprice) + '----' + goods[5] + "\r\n")
+                    content = content + "\r\n" + goods[3] + '----' + goods[1] + '----原价' + str(cappedPrice) + '----包邮价' + str(myprice) + '----' + notes +"\r\n"
+
                 else:
                     print(goods, ableprice, myprice)
                 self.redislink.sadd('kuchun', goods[0])
@@ -87,6 +103,7 @@ class huodan(object):
 
 
     def shengchengliebieo(self):
+
         try:
             keywordlist = self.getwords()
             # print(keywordlist)
