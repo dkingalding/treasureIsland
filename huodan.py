@@ -89,7 +89,7 @@ class huodan(object):
                 else:
                     myprice = round(cappedPrice *0.85)
                 if myprice <= ableprice:
-                    print(goods[3] ,goods[1],cappedPrice,myprice,goods[5])
+                    # print(goods[3] ,goods[1],cappedPrice,myprice,goods[5])
                     # print("\r\n" + goods[3] + '----' + goods[1] + '----原价' + str(cappedPrice) + '----包邮价' + str(myprice) + '----' + goods[5] + "\r\n")
                     content = content + "\r\n" + goods[3] + '----' + goods[1] + '----原价' + str(cappedPrice) + '----包邮价' + str(myprice) + '----' + notes +"\r\n"
 
