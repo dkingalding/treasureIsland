@@ -118,7 +118,7 @@ if __name__ == '__main__':
             # #开始获取在一定时间段内的
             #开始抢购
             startScore = int(time.time() + 1) * 1000
-            endScore = startScore+ 2000
+            endScore = startScore+ 4000
             # endScore =2000000000000
             goodslist = conn.zrangebyscore('treadlist', startScore, endScore)
             # print(goodslist)
