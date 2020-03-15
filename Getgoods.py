@@ -277,7 +277,7 @@ class getgoods(object):
                 elif unsedno == 'b':
                     condition = "usedNo = {0}".format(usedno + '0901')
                 elif unsedno == 'c':
-                    condition ="usedNo = {0} OR usedNo = {1} OR usedNo = {2}".format(usedno+'3371', usedno + '0951', usedno + '0991')
+                    condition ="usedNo = {0} OR usedNo = {1} OR usedNo = {2} OR usedNo = {3}".format(usedno+'3371', usedno + '0951', usedno + '0991', usedno + '0901')
                 else:
                     condition = "usedNo = {0}".format(key)
 
