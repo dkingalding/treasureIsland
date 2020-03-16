@@ -99,6 +99,7 @@ if __name__ == '__main__':
         # #     vals = redislink.hgetall(key)
         # else:
         #     pass
+
     #     if key != "goodslist"or key != "shop" or key != "usedName" or key != "getgoods"or key !='groupgoods':
     #         redislink.delete(key)
     #
