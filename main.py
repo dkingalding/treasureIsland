@@ -65,8 +65,8 @@ def shuru():
 
 
 if __name__ == '__main__':
-    # redisPool = redis.ConnectionPool(host=myredis['host'], port=myredis['port'], max_connections=10,
-    #                                  decode_responses=True)
+    redisPool = redis.ConnectionPool(host=myredis['host'], port=myredis['port'], max_connections=10,
+                                     decode_responses=True)
     #
     # caijigoods = getgoods(redisPool)
     # caijigoods.clearRedis()
@@ -81,25 +81,26 @@ if __name__ == '__main__':
     # mailclass.sendmail(titl, content)
     # keys = redislink.keys()
     # for key in keys:
-    #     # print(key)
-    #     # type = redislink.type(key)
-    #     if type == 'string':
-    #         pass
-    #     #     vals = redislink.get(key)
-    #     # elif type == 'list':
-    #     #     vals = redislink.lrange(key, 0, -1)
-    #     #     print(vals)
-    #     elif type == 'set':
-    #         vals = redislink.smembers(key);
-    #         print(vals)
-    #     # elif type == 'zset':
-    #     #     vals = redislink.zrange(key, 0, -1)
-    #     # elif type == "hash":
-    #     #     vals = redislink.hgetall(key)
-    #     else:
-    #         pass
-    # #     if key != "goodslist"or key != "shop" or key != "usedName" or key != "getgoods"or key !='groupgoods':
-    # #         redislink.delete(key)
+    #     redislink.delete(key)
+        # # print(key)
+        # # type = redislink.type(key)
+        # if type == 'string':
+        #     pass
+        # #     vals = redislink.get(key)
+        # # elif type == 'list':
+        # #     vals = redislink.lrange(key, 0, -1)
+        # #     print(vals)
+        # elif type == 'set':
+        #     vals = redislink.smembers(key);
+        #     print(vals)
+        # # elif type == 'zset':
+        # #     vals = redislink.zrange(key, 0, -1)
+        # # elif type == "hash":
+        # #     vals = redislink.hgetall(key)
+        # else:
+        #     pass
+    #     if key != "goodslist"or key != "shop" or key != "usedName" or key != "getgoods"or key !='groupgoods':
+    #         redislink.delete(key)
     #
     # while True:
     #
