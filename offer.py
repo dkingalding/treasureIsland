@@ -50,7 +50,7 @@ class offer(object):
         while True:
             firsttime = int(endtime) - round(time.time() * 1000) + 100
             # 获取数列使用
-            if firsttime <= 1000:
+            if firsttime <= 600:
                 # 获取此时的出价
 
                 thestatus = self.biPrice(goodsid, myprice, theMaxprice)
