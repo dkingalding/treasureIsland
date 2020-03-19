@@ -33,7 +33,7 @@ class huodan(object):
 
 
 
-    def getlist(self, keyword):
+    def getlist(self, keyword = ''):
 
         # 根据每天采集到的货物根据种类生成邮件发送到邮箱里
         # 货物的栓选条件：
@@ -46,7 +46,7 @@ class huodan(object):
         auconttime = int(time.time()) * 1000 + 21600000
 
         condition = "(a.quality = '9成新' OR a.quality = '95成新' OR a.quality = '准新品' OR a.quality = '99成新' OR a.quality = '全新')"
-        cond = "b.productName LIKE '%{0}%'".format('')
+        cond = "b.productName LIKE '%{0}%'".format(keyword)
 
         # sql = "SELECT  a.usedNo, a.quality, a.cappedPrice, b.productName ,c.vagePrice FROM goods as a JOIN usedName as b ON b.usedNo = a.usedNo" \
         #       " JOIN theprice as c ON c.usedNo = a.usedNo WHERE  {1} AND a.endTime >= {2} AND {0}  GROUP BY a.usedNo".format(condition, cond, auconttime)
@@ -106,14 +106,14 @@ class huodan(object):
 
         try:
             keywordlist = self.getwords()
-            # exit(print(keywordlist))
+            # print(keywordlist)
             mailcontent = ''
             self.redislink.delete('kuchun')
             self.redislink.sadd('kuchun', 0)
-            # for keyword in keywordlist:
-            onecontent = self.getlist('')
+            for keyword in keywordlist:
+                onecontent = self.getlist(keyword[0])
             #     # print(onecontent)
-            mailcontent = mailcontent+ "\r\n" + "===库存列表" + "\r\n" + onecontent
+                mailcontent = mailcontent+ "\r\n" + str(keyword[0]) + "===库存列表" + "\r\n" + onecontent
     
             titl = '库存清单'
             mailclass = dingmail()
