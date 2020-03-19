@@ -43,7 +43,7 @@ class huodan(object):
         #     第三、根据关键字，商品种类发送邮件。 邮件中显示商品名、价格、新旧程度
         #     第四、至采集9新以上的商品
 
-        auconttime = int(time.time()) * 1000
+        auconttime = int(time.time()) * 1000 + 21600000
 
         condition = "(a.quality = '9成新' OR a.quality = '95成新' OR a.quality = '准新品' OR a.quality = '99成新' OR a.quality = '全新')"
         cond = "b.productName LIKE '%{0}%'".format('')

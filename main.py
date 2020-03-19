@@ -67,7 +67,36 @@ def shuru():
 if __name__ == '__main__':
     redisPool = redis.ConnectionPool(host=myredis['host'], port=myredis['port'], max_connections=10,
                                      decode_responses=True)
+
+    myqllink = pymysql.connect(host=mymysql['host'], user=mymysql['user'], passwd=mymysql['passwd'],
+                                    db=mymysql['db'])
+    cursor = myqllink.cursor()
+    sql ="SELECT usedNo FROM usedName  GROUP BY usedNo HAVING count(usedNo)>1"
+
+
+    # sql ="DELETE FROM usedName WHERE id IN (select id from (select id from usedName where usedNo in (SELECT usedNo FROM usedName GROUP BY usedNo HAVING count(usedNo)>1) AND" \
+    #      " id NOT IN (SELECT min(id) FROM usedName  GROUP BY usedNo HAVING count(usedNo)>1))as bb)"
+    # # cursor.execute(sql)
+    # # 执行sql语句
+    # myqllink.commit()
+    # results = cursor.fetchall()
     #
+    # sql ="SELECT id FROM usedName where usedNo IN {0}".format(results)
+    #
+    # cursor.execute(sql)
+    # # 执行sql语句
+    # myqllink.commit()
+    # results1 = cursor.fetchall()
+    #
+    # sql = "SELECT min(id) FROM usedName  GROUP BY usedNo HAVING count(usedNo)>1"
+    # cursor.execute(sql)
+    # # 执行sql语句
+    # myqllink.commit()
+    # results2 = cursor.fetchall()
+    #
+    #
+    # exit(print(results2))
+    #y
     # caijigoods = getgoods(redisPool)
     # caijigoods.clearRedis()
 
