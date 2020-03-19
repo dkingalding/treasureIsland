@@ -24,7 +24,7 @@ class huodan(object):
         #商品的关键词表  可以存入数据库， 也可以存入redis中
         #后台可以管理这些关键词， 一个关键词 生成一份货物清单
 
-        sql = "SELECT keywords FROM qingdan"
+        sql = "SELECT keywords FROM qingdan ORDER BY id DESC"
         self.cursor.execute(sql)
         # 执行sql语句
         self.myqllink.commit()
@@ -106,7 +106,7 @@ class huodan(object):
 
         try:
             keywordlist = self.getwords()
-            # print(keywordlist)
+            # exit(print(keywordlist))
             mailcontent = ''
             self.redislink.delete('kuchun')
             self.redislink.sadd('kuchun', 0)
