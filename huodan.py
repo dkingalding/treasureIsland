@@ -110,8 +110,14 @@ class huodan(object):
             mailcontent = ''
             self.redislink.delete('kuchun')
             self.redislink.sadd('kuchun', 0)
+            # onecontent = self.getlist('')
+            # print(onecontent)
             for keyword in keywordlist:
-                onecontent = self.getlist(keyword[0])
+                if not keyword[0]:
+                    bb = ''
+                else:
+                    bb = keyword[0]
+                onecontent = self.getlist(bb)
             #     # print(onecontent)
                 mailcontent = mailcontent+ "\r\n" + str(keyword[0]) + "===库存列表" + "\r\n" + onecontent
     

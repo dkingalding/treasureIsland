@@ -79,23 +79,14 @@ if __name__ == '__main__':
     # # cursor.execute(sql)
     # # 执行sql语句
     # myqllink.commit()
-    # results = cursor.fetchall()
-    #
-    # sql ="SELECT id FROM usedName where usedNo IN {0}".format(results)
-    #
-    # cursor.execute(sql)
-    # # 执行sql语句
-    # myqllink.commit()
-    # results1 = cursor.fetchall()
-    #
-    # sql = "SELECT min(id) FROM usedName  GROUP BY usedNo HAVING count(usedNo)>1"
-    # cursor.execute(sql)
-    # # 执行sql语句
-    # myqllink.commit()
-    # results2 = cursor.fetchall()
+
+    cursor.execute(sql)
+    # 执行sql语句
+    myqllink.commit()
+    results2 = cursor.fetchall()
     #
     #
-    # exit(print(results2))
+    exit(print(results2))
     #y
     # caijigoods = getgoods(redisPool)
     # caijigoods.clearRedis()
