@@ -156,8 +156,7 @@ if __name__ == '__main__':
     caijiduilie.append(threading.Thread(target=jigetongji, name='four', args=(bb4)))
     for t in caijiduilie:
         t.start()
-    for t in caijiduilie:
-        t.join()
+
 
 
 

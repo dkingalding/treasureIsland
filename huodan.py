@@ -18,7 +18,18 @@ class huodan(object):
         self.cursor = self.myqllink.cursor()
         self.redislink = redis.Redis(connection_pool = conredis)
         # self.redispool = conredis
-    #
+        try:
+            sql ="DELETE FROM usedName WHERE id IN (select id from (select id from usedName where usedNo in (SELECT usedNo FROM usedName GROUP BY usedNo HAVING count(usedNo)>1) AND" \
+                 " id NOT IN (SELECT min(id) FROM usedName  GROUP BY usedNo HAVING count(usedNo)>1))as bb)"
+            # # cursor.execute(sql)
+            # # 执行sql语句
+            # myqllink.commit()
+
+            self.cursor.execute(sql)
+            # 执行sql语句
+            self.myqllink.commit()
+        except:
+            pass
 
     def getwords(self):
         #商品的关键词表  可以存入数据库， 也可以存入redis中
