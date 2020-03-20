@@ -1,6 +1,6 @@
 import json
 import time
-
+import threading
 import pymysql
 from offer import offer
 from random import randint
@@ -37,7 +37,7 @@ class tongji(object):
 
     def getgoodsid(self):
         auconttime = int(time.time() ) * 1000
-        sql = "SELECT id, usedNo FROM goods AND endTime <= {0}".format(auconttime)
+        sql = "SELECT id, usedNo FROM goods WHERE endTime <= {0} ".format(auconttime)
 
         try:
             self.cursor.execute(sql)
@@ -96,30 +96,74 @@ class tongji(object):
 
     def pinlv(self, pinlv, offset):
 
-        bb = str(str(offset) + '#' + str(pinlv[1]))
-
+        bb = int(offset)*1000 + int(pinlv[1])
+        # exit(print(bb))
         sql = "UPDATE theprice SET notes = '{0}' WHERE usedNo = {1}".format(bb, pinlv[0])
 
         self.cursor.execute(sql)
         # 执行sql语句
         self.myqllink.commit()
 
+    def countofgood(self):
+        #获取有多少数据，将数据分配到几个进程中采集
+        auconttime = int(time.time()) * 1000
+        sql = "SELECT COUNT(id) FROM  goods WHERE endTime <= {0}".format(auconttime)
+        self.cursor.execute(sql)
+        # 执行sql语句
+        self.myqllink.commit()
+        results = self.cursor.fetchall()
+        return results
+
+
+def jigetongji(*bb):
+    giugiu = tongji()
+    for goods in bb:
+        giugiu.getcurrentPrice(goods)
+        time.sleep(0.5)
 
 
 if __name__ == '__main__':
     jiage = tongji()
 
-    bb = jiage.getgoodsid()
-
-    for goods in bb:
-        jiage.getcurrentPrice(goods)
-        time.sleep(1)
-
-    yesterday = (datetime.date.today() + datetime.timedelta(days = -1)).strftime("%m-%d")
-
+    yesterday = (datetime.date.today() + datetime.timedelta(days = -1)).strftime("%y%m%d")
+    # exit(yesterday)
     goodsno = jiage.shuliang()
 
     for nou in goodsno:
-
         jiage.pinlv(nou, yesterday)
+
+
+    zongshu = jiage.countofgood()
+    #获取商品总数，并平均分配给4个线程进行价格采集
+
+    oneNo = round(zongshu[0][0]/4)
+
+    #每个线程安排的商品数量
+
+    #开启四个线程采集价格信息
+    # exit(print(oneNo))
+    bb = jiage.getgoodsid()
+    bb1 = bb[0:oneNo]
+    bb2 = bb[oneNo:oneNo*2]
+    bb3 = bb[oneNo*2:oneNo*3]
+    bb4 = bb[oneNo*3:oneNo*4]
+    # thereNo = oneNo*1
+    # print(bb1)
+    # print(bb2)
+    # print(bb3)
+    # exit(print(bb4))
+    caijiduilie = []
+
+    caijiduilie.append(threading.Thread(target=jigetongji, name='one', args=(bb1)))
+    caijiduilie.append(threading.Thread(target=jigetongji, name='two', args=(bb2)))
+    caijiduilie.append(threading.Thread(target=jigetongji, name='three', args=(bb3)))
+    caijiduilie.append(threading.Thread(target=jigetongji, name='four', args=(bb4)))
+    for t in caijiduilie:
+        t.start()
+    for t in caijiduilie:
+        t.join()
+    # exit(print(bb))
+
+
+
 
