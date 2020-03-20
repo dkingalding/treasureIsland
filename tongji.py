@@ -147,11 +147,7 @@ if __name__ == '__main__':
     bb2 = bb[oneNo:oneNo*2]
     bb3 = bb[oneNo*2:oneNo*3]
     bb4 = bb[oneNo*3:oneNo*4]
-    # thereNo = oneNo*1
-    # print(bb1)
-    # print(bb2)
-    # print(bb3)
-    # exit(print(bb4))
+
     caijiduilie = []
 
     caijiduilie.append(threading.Thread(target=jigetongji, name='one', args=(bb1)))
@@ -162,7 +158,7 @@ if __name__ == '__main__':
         t.start()
     for t in caijiduilie:
         t.join()
-    # exit(print(bb))
+
 
 
 
