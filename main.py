@@ -71,11 +71,11 @@ if __name__ == '__main__':
     myqllink = pymysql.connect(host=mymysql['host'], user=mymysql['user'], passwd=mymysql['passwd'],
                                     db=mymysql['db'])
     cursor = myqllink.cursor()
-    sql ="SELECT usedNo FROM usedName  GROUP BY usedNo HAVING count(usedNo)>1"
+    # sql ="SELECT usedNo FROM usedName  GROUP BY usedNo HAVING count(usedNo)>1"
 
 
-    # sql ="DELETE FROM usedName WHERE id IN (select id from (select id from usedName where usedNo in (SELECT usedNo FROM usedName GROUP BY usedNo HAVING count(usedNo)>1) AND" \
-    #      " id NOT IN (SELECT min(id) FROM usedName  GROUP BY usedNo HAVING count(usedNo)>1))as bb)"
+    sql ="DELETE FROM usedName WHERE id IN (select id from (select id from usedName where usedNo in (SELECT usedNo FROM usedName GROUP BY usedNo HAVING count(usedNo)>1) AND" \
+         " id NOT IN (SELECT min(id) FROM usedName  GROUP BY usedNo HAVING count(usedNo)>1))as bb)"
     # # cursor.execute(sql)
     # # 执行sql语句
     # myqllink.commit()
@@ -83,10 +83,10 @@ if __name__ == '__main__':
     cursor.execute(sql)
     # 执行sql语句
     myqllink.commit()
-    results2 = cursor.fetchall()
-    #
-    #
-    exit(print(results2))
+    # results2 = cursor.fetchall()
+    # #
+    # #
+    # exit(print(results2))
     #y
     # caijigoods = getgoods(redisPool)
     # caijigoods.clearRedis()
