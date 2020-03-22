@@ -130,7 +130,11 @@ class huodan(object):
                     bb = keyword[0]
                 onecontent = self.getlist(bb)
             #     # print(onecontent)
-                mailcontent = mailcontent+ "\r\n" + str(keyword[0]) + "===库存列表" + "\r\n" + onecontent
+                if keyword[0]:
+                    kucuntitl = keyword[0]
+                else:
+                    kucuntitl ="其他"
+                mailcontent = mailcontent+ "\r\n" + str(kucuntitl) + "===库存列表" + "\r\n" + onecontent
     
             titl = '库存清单'
             mailclass = dingmail()
