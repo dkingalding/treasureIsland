@@ -65,12 +65,15 @@ if __name__ == '__main__':
 
         for t in caijiduilie:
             t.start()
+        for t in caijiduilie:
+            t.join()
     else:
         t2 = threading.Thread(target=caijirenwu, name='shuchu', args=(Pool, '1000005'))
         t2.start()
+        t2.join()
     del(caiji)
-
-    del(conn)
-    xianyu = huodan(conn)
+    xianyu = huodan(Pool)
     xianyu.shengchengliebieo()
+    del(conn)
+
 
