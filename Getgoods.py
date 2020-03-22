@@ -187,7 +187,7 @@ class getgoods(object):
                 # if data['shopId']!='0' and data['shopId']!='1000000127':
                     # print(data['shopId'])
                 if data['shopId'] != '0':
-                    temp = data['shopName'].text.encode('utf-8').decode('utf8')
+                    temp = data['shopName'].encode('utf-8').decode('utf8')
                     find1 = u"(自营+)"
                     pattern = re.compile(find1)
                     results = pattern.findall(temp)
