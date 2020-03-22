@@ -184,10 +184,15 @@ class getgoods(object):
 
             if onlyjindong == '1':
                 # print('只采集京东')
-                if data['shopId']!='0' and data['shopId']!='1000000127':
+                # if data['shopId']!='0' and data['shopId']!='1000000127':
                     # print(data['shopId'])
-                    return 0
-
+                if data['shopId'] != '0':
+                    temp = data['shopname'].text.encode('utf-8').decode('utf8')
+                    find1 = u"(自营+)"
+                    pattern = re.compile(find1)
+                    results = pattern.findall(temp)
+                    if not results:
+                        return 0
             if self.redislink.sismember('usedName', data['usedNo']) == False:
                 keydata = 'usedNo, productName, primaryPic, quality, shopId, size, brandId, shortProductName'
                 valuedata = ("'{0}'" +","+"'{1}'" +","+"'{2}'" +","+"'{3}'" +","+"'{4}'" +","+"'{5}'" +","+"'{6}'" +","+"'{7}'" )\
