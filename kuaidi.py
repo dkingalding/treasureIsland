@@ -93,14 +93,16 @@ if __name__ == '__main__':
     # 执行sql语句
     myqllink.commit()
     results = cursor.fetchall()
-    emailcontent = set()
+    emailcontent = ''
     for offer in results:
         print(offer)
         if offer[1]:
             bb = kuai.getkuaidi(offer[1])
             kuai.genxin(offer[0], bb)
             if bb == 2:
-                emailcontent.add(offer)
+                emailcontent = emailcontent+offer
                 #将信息填入表格,发邮件用
+
+
     kuai.sendemail(emailcontent)
     # print(emailcontent)
