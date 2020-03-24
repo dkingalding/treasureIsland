@@ -29,7 +29,7 @@ class kuaidi(object):
             'Cookie': youcookie
         }
         resp = requests.post(buy_url, headers=HEADERS, data=data)
-        print(resp.text)
+        print(resp.json())
         temp = resp.text.encode('utf-8').decode('utf8')
         find1 = u"(签收+)"
 
