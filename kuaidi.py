@@ -18,7 +18,7 @@ class kuaidi(object):
         #出价
         loginClass = loginCook()
         youcookie = loginClass.getCookies()
-
+        print(youcookie)
         buy_url = 'http://www.jdwl.com/waybill/trackWithPin?waybillCodes=%s'%kuaidi
         data = {
 
@@ -94,16 +94,17 @@ if __name__ == '__main__':
     myqllink.commit()
     results = cursor.fetchall()
     emailcontent = ''
-    for offer in results:
-        print(offer)
-        if offer[1]:
-            bb = kuai.getkuaidi(offer[1])
-            # kuai.genxin(offer[0], bb)
-
-            if bb == 2:
-                emailcontent = emailcontent+offer
-                #将信息填入表格,发邮件用
-                print(emailcontent)
-
-    kuai.sendemail(emailcontent)
+    bb = kuai.getkuaidi(results[0][1])
+    # for offer in results:
+    #     print(offer)
+    #     if offer[1]:
+    #         bb = kuai.getkuaidi(offer[1])
+    #         # kuai.genxin(offer[0], bb)
+    #
+    #         if bb == 2:
+    #             emailcontent = emailcontent+offer
+    #             #将信息填入表格,发邮件用
+    #             print(emailcontent)
+    #
+    # kuai.sendemail(emailcontent)
     # print(emailcontent)
