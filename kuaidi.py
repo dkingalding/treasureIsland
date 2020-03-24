@@ -29,7 +29,6 @@ class kuaidi(object):
             'Cookie': youcookie
         }
         resp = requests.post(buy_url, headers=HEADERS, data=data)
-        print(resp.json())
         temp = resp.text.encode('utf-8').decode('utf8')
         find1 = u"(签收+)"
 
@@ -94,6 +93,7 @@ if __name__ == '__main__':
     myqllink.commit()
     results = cursor.fetchall()
     emailcontent = ''
+    print(results[0][1])
     bb = kuai.getkuaidi(results[0][1])
     # for offer in results:
     #     print(offer)
