@@ -29,7 +29,7 @@ class kuaidi(object):
             'Cookie': youcookie
         }
         resp = requests.post(buy_url, headers=HEADERS, data=data)
-
+        print(resp.text)
         temp = resp.text.encode('utf-8').decode('utf8')
         find1 = u"(签收+)"
 
@@ -99,6 +99,7 @@ if __name__ == '__main__':
         if offer[1]:
             bb = kuai.getkuaidi(offer[1])
             # kuai.genxin(offer[0], bb)
+
             if bb == 2:
                 emailcontent = emailcontent+offer
                 #将信息填入表格,发邮件用
