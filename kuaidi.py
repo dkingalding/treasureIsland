@@ -98,11 +98,11 @@ if __name__ == '__main__':
         print(offer)
         if offer[1]:
             bb = kuai.getkuaidi(offer[1])
-            kuai.genxin(offer[0], bb)
+            # kuai.genxin(offer[0], bb)
             if bb == 2:
                 emailcontent = emailcontent+offer
                 #将信息填入表格,发邮件用
-
+                print(emailcontent)
 
     kuai.sendemail(emailcontent)
     # print(emailcontent)
