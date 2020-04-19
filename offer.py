@@ -143,31 +143,46 @@ class offer(object):
         if thestatus[0] == 200:
             self.saveorder( myprice, goodsid, offerlist, usedno)
         else:
-            print("本次拍卖失败")
+            print("保护拍卖失败")
 
 
     def saveorder(self, myprice, goodsid, offerlist, usedno):
         # 将成功的计入到数据库，并消除代拍任务
         # UPDATE Person SET Address = 'Zhongshan 23', City = 'Nanjing' WHERE LastName = 'Wilson'
-        try:
-            if myprice < 99:
-                myprice = myprice + 8
-            sql = "UPDATE  offorlog SET goodsid = '{0}', officePrice = '{1}' , endtime = '{2}',status = 1 \
-           WHERE id ='{3}'".format(goodsid, myprice, time.strftime("%Y-%m-%d", time.localtime()), offerlist[0][0])
-            self.cursor.execute(sql)
-            # 执行sql语句
-            self.myqllink.commit()
-            # usedno = offerlist[0][1]
-            # usedno = usedno[:-4]
-            print(usedno)
-            self.redislink.lpop(usedno)
-            titl = '%s订单拍卖成功，填写地址付钱' % offerlist[0][0]
-            content = 'http://120.27.22.37/admin/offerlogs/%s/edit' % offerlist[0][0]
-            mailclass = dingmail()
-            mailclass.sendmail(titl, content)
-        except:
-            print("拍卖存入失误")
-            self.myqllink.rollback()
+        if myprice < 99:
+            myprice = myprice + 8
+        sql = "UPDATE  offorlog SET goodsid = '{0}', officePrice = '{1}' , endtime = '{2}',status = 1 \
+        WHERE id ='{3}'".format(goodsid, myprice, time.strftime("%Y-%m-%d", time.localtime()), offerlist[0][0])
+        self.cursor.execute(sql)
+        # 执行sql语句
+        self.myqllink.commit()
+        # usedno = offerlist[0][1]
+        # usedno = usedno[:-4]
+        self.redislink.lpop(usedno)
+        titl = '%s订单拍卖成功，填写地址付钱' % offerlist[0][0]
+        content = 'http://120.27.22.37/admin/offerlogs/%s/edit' % offerlist[0][0]
+        mailclass = dingmail()
+        mailclass.sendmail(titl, content)
+
+        # try:
+        #     if myprice < 99:
+        #         myprice = myprice + 8
+        #     sql = "UPDATE  offorlog SET goodsid = '{0}', officePrice = '{1}' , endtime = '{2}',status = 1 \
+        #    WHERE id ='{3}'".format(goodsid, myprice, time.strftime("%Y-%m-%d", time.localtime()), offerlist[0][0])
+        #     self.cursor.execute(sql)
+        #     # 执行sql语句
+        #     self.myqllink.commit()
+        #     # usedno = offerlist[0][1]
+        #     # usedno = usedno[:-4]
+        #     print(usedno)
+        #     self.redislink.lpop(usedno)
+        #     titl = '%s订单拍卖成功，填写地址付钱' % offerlist[0][0]
+        #     content = 'http://120.27.22.37/admin/offerlogs/%s/edit' % offerlist[0][0]
+        #     mailclass = dingmail()
+        #     mailclass.sendmail(titl, content)
+        # except:
+        #     print("拍卖存入失误")
+        #     self.myqllink.rollback()
         print("拍卖成功")
     
 
