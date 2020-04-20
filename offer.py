@@ -118,7 +118,7 @@ class offer(object):
         while True:
             #计算时间
             firsttime = int(endtime) - round(time.time() * 1000)+100
-            if firsttime <=400:
+            if firsttime <=500:
                 #在这里开始出价
                 bb = self.chujia(goodsid, theMaxprice)
                 if bb == 200:
