@@ -63,7 +63,7 @@ class huodan(object):
         #       " JOIN theprice as c ON c.usedNo = a.usedNo WHERE  {1} AND a.endTime >= {2} AND {0}  GROUP BY a.usedNo".format(condition, cond, auconttime)
 
         sql = "SELECT  a.usedNo, a.quality, a.cappedPrice, b.productName ,c.vagePrice, c.notes FROM goods as a LEFT JOIN usedName as b ON b.usedNo = a.usedNo" \
-              " LEFT JOIN theprice as c ON c.usedNo = a.usedNo WHERE  {1} AND a.endTime >= {2} AND a.cappedPrice > 100  GROUP BY a.usedNo  ORDER BY  a.endTime DESC ".format(condition, cond, auconttime)
+              " LEFT JOIN theprice as c ON c.usedNo = a.usedNo WHERE  {1} AND {0} AND a.endTime >= {2} AND a.cappedPrice > 100  GROUP BY a.usedNo  ORDER BY  a.endTime DESC ".format(condition, cond, auconttime)
 
         self.cursor.execute(sql)
 
