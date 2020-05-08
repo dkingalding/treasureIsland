@@ -108,110 +108,43 @@ class offer(object):
 
 
 
-    # def paimaibaozhen(self, goodsid,offerlist , endtime, usedno):
-    #     #最高价出价
-    #     #防止漏拍
-    #     #开主线程中为一个拍卖开启两个进程，一个正常拍卖，一个在最后提供最高价，防止漏拍
-    #     theMaxprice = round(float(offerlist[0][2]))
-    #     # result = {'code': 400, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": 0}
-    #     myprice = 0
-    #     while True:
-    #         #计算时间
-    #         firsttime = int(endtime) - round(time.time() * 1000)+100
-    #         if firsttime <=500:
-    #             #在这里开始出价
-    #             bb = self.chujia(goodsid, theMaxprice)
-    #             if bb == 200:
-    #                 # result = {'code': 200, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": theMaxprice}
-    #                 myprice = theMaxprice
-    #                 break
-    #             elif bb == 304:
-    #                 #出价过低
-    #                 # result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": theMaxprice}
-    #                 break
-    #             elif bb == 305:
-    #                 # 时间已经结束
-    #                 # result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": theMaxprice}
-    #                 break
-    #             else:
-    #                 #其他状态不改变状态
-    #                 pass
-    #             if firsttime < 50:
-    #                 print('超时', firsttime)
-    #                 break
-    #     thestatus = self.biPrice(goodsid, myprice, theMaxprice)
-    #     if thestatus[0] == 200:
-    #         self.saveorder( myprice, goodsid, offerlist, usedno)
-    #     else:
-    #         print("保护拍卖失败")
     def paimaibaozhen(self, goodsid,offerlist , endtime, usedno):
-        #开始拍卖
-        #拍卖的时候可以需要商品的usedNo 和价格
-        #根据usedNo 获取商品的id 根据结束时间排序
-        #查询最近时间商品的价格，如果高于规定价格就拍卖
-        #查询自己出的价格是否有效，是否超过了自己定的价格
-        #如果没有超过自己的定价就继续出价
-        #拍卖结束后，如果拍到了，待拍数量减一。如果没有拍到，计入下一个时间段的任务
+        #最高价出价
+        #防止漏拍
+        #开主线程中为一个拍卖开启两个进程，一个正常拍卖，一个在最后提供最高价，防止漏拍
         theMaxprice = round(float(offerlist[0][2]))
+        # result = {'code': 400, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": 0}
         myprice = 0
-        result = {'code': 400, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": 0}
         while True:
-            firsttime = int(endtime) - round(time.time() * 1000) + 100
-            # 获取数列使用
-            if firsttime <= 400:
-                # 获取此时的出价
-
-                thestatus = self.biPrice(goodsid, myprice, theMaxprice)
-
-                if thestatus[0] == 400:
-                    # 超过了价格
-                    result = {'code': 400, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": 1}
+            #计算时间
+            firsttime = int(endtime) - round(time.time() * 1000)+100
+            if firsttime <=500:
+                #在这里开始出价
+                bb = self.chujia(goodsid, theMaxprice)
+                if bb == 200:
+                    # result = {'code': 200, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": theMaxprice}
+                    myprice = theMaxprice
                     break
-                elif thestatus[0] == 300:
-                    # 获取现在价格到自己最高价格之间的所有价格，组成列表
-                    startprice = thestatus[1] + 3
-
-                    if startprice >= 93 and startprice <= 99:
-                        startprice = 99
-
-                    if startprice >= theMaxprice:
-                        startprice = theMaxprice
-
-                    bb = self.chujia(goodsid, startprice)
-                    # print(offerlist[0][0],bb, myprice)
-
-                    if bb == 200:
-                        result = {'code': 200, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
-                        myprice = startprice
-                    elif bb == 304:
-                        result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
-                        continue
-                    elif bb == 305:
-                        # 时间已经结束
-                        result = {'code': 305, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
-                        break
-                    else:
-                        result = {'code': 304, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": 1}
-
-                elif thestatus[0] == 500 :
-                    continue
-
+                elif bb == 304:
+                    #出价过低
+                    # result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": theMaxprice}
+                    break
+                elif bb == 305:
+                    # 时间已经结束
+                    # result = {'code': 300, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": theMaxprice}
+                    break
                 else:
-                    # 记录拍卖状态
-                    result = {'code': 200, 'goodsid': goodsid, "usedNo": offerlist[0][1], "price": myprice}
+                    #其他状态不改变状态
+                    pass
                 if firsttime < 50:
-                    print('超时',firsttime)
+                    print('超时', firsttime)
                     break
-            else:
-                continue
-                # print('还没到出价格时机')
-                pass
-
-        if result['code'] == 200:
-
+        thestatus = self.biPrice(goodsid, myprice, theMaxprice)
+        if thestatus[0] == 200:
             self.saveorder( myprice, goodsid, offerlist, usedno)
         else:
-            print("正常拍卖失败", result)
+            print("保护拍卖失败")
+
 
     def saveorder(self, myprice, goodsid, offerlist, usedno):
         # 将成功的计入到数据库，并消除代拍任务
