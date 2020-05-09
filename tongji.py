@@ -66,12 +66,19 @@ class tongji(object):
             results = self.cursor.fetchone()
 
             if results:
-                vageprice = round((int(results[0])*7 + int(price[1])*3)/10)
-                sql ="UPDATE theprice SET price = {0} , vagePrice = {1}  WHERE usedNo = '{2}'".format(str(price[1]), str(vageprice), str(goodslist[1]))
-                # print(sql)
-                self.cursor.execute(sql)
-                # 执行sql语句
-                self.myqllink.commit()
+                minprice = int(results[0] * 0.8)
+                maxprice = int(results[0] * 1.2)
+                if int(price[1]) < minprice:
+                    pass
+                elif int(price[1]) > maxprice:
+                    pass
+                else:
+                    vageprice = round((int(results[0])*7 + int(price[1])*3)/10)
+                    sql ="UPDATE theprice SET price = {0} , vagePrice = {1}  WHERE usedNo = '{2}'".format(str(price[1]), str(vageprice), str(goodslist[1]))
+                    # print(sql)
+                    self.cursor.execute(sql)
+                    # 执行sql语句
+                    self.myqllink.commit()
 
             else:
                 #如果没有就存入数据
