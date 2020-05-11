@@ -66,8 +66,8 @@ class tongji(object):
             results = self.cursor.fetchone()
 
             if results:
-                minprice = int(results[0] * 0.8)
-                maxprice = int(results[0] * 1.2)
+                minprice = round(results[0] * 0.8)
+                maxprice = round(results[0] * 1.2)
                 if int(price[1]) < minprice:
                     pass
                 elif int(price[1]) > maxprice:
