@@ -19,7 +19,7 @@ class dingmail(object):
         #组装发送内容
         dindanurl = content
         message = MIMEText(dindanurl, 'plain', 'utf-8')   #发送的内容
-        message['From'] = Header("alading夺宝岛", 'utf-8')   #发件人
+        message['From'] = Header("alading库存", 'utf-8')   #发件人
         message['To'] = Header("", 'utf-8')   #收件人
         subject = titl
         message['Subject'] = Header(subject, 'utf-8')  #邮件标题

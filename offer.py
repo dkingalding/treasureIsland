@@ -159,10 +159,10 @@ class offer(object):
         # usedno = offerlist[0][1]
         # usedno = usedno[:-4]
         self.redislink.lpop(usedno)
-        titl = '%s订单拍卖成功，填写地址付钱' % offerlist[0][0]
-        content = 'http://120.27.22.37/admin/offerlogs/%s/edit' % offerlist[0][0]
-        mailclass = dingmail()
-        mailclass.sendmail(titl, content)
+        # titl = '%s订单拍卖成功，填写地址付钱' % offerlist[0][0]
+        # content = 'http://120.27.22.37/admin/offerlogs/%s/edit' % offerlist[0][0]
+        # mailclass = dingmail()
+        # mailclass.sendmail(titl, content)
 
         # try:
         #     if myprice < 99:
