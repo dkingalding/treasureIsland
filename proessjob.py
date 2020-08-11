@@ -103,7 +103,6 @@ if __name__ == '__main__':
                         t2.start()
 
                     else:
-
                         print(groupids)
                         if groupids:
                             for groupid in groupids:
@@ -143,8 +142,8 @@ if __name__ == '__main__':
                 #删除已经过时的记录
                 conn.zremrangebyscore('treadlist', 0, endScore)
                 del(conn)
-        except:
+        except (OSError, TypeError) as reason:
             titl = '程序启动错误，请快登录电脑重启'
-            content = '程序启动错误，快速登录电脑重启，可能是redis连接中断'
+            content = '错误的原因是:', str(reason)
             mailclass = dingmail()
             mailclass.sendmail(titl, content)
