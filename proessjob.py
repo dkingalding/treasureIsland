@@ -64,8 +64,10 @@ if __name__ == '__main__':
     #每次启动程序就登录保证cookies有效
     # thecode = offer(Pool)
     # offerno = thecode.tets()
-
+    u = 1
     while True:
+        u = u+1
+        print(u)
         try:
             loginClass = loginCook()
             theclick = int(time.strftime('%H', time.localtime(time.time())))
@@ -147,3 +149,4 @@ if __name__ == '__main__':
             content = '错误的原因是:', str(reason)
             mailclass = dingmail()
             mailclass.sendmail(titl, content)
+            continue
