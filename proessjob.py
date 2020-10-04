@@ -38,7 +38,7 @@ def caijirenwu(redislink, groupid):
 
     #数值2表示正在采集中
     # conn = redis.Redis(connection_pool=redislink)
-    print('有采集任务',groupid)
+    print('需要采集任务',groupid)
 
     #判断现在是否是新的一天，如果是新的一天就清除goodlist（redis）和goods（数据库）
 
