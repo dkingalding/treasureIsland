@@ -38,23 +38,42 @@ def caijirenwu(redislink, groupid):
 
     #数值2表示正在采集中
     # conn = redis.Redis(connection_pool=redislink)
-    print('需要采集任务',groupid)
+    # print('需要采集任务',groupid)
+    #
+    # #判断现在是否是新的一天，如果是新的一天就清除goodlist（redis）和goods（数据库）
+    #
+    # #早上10点和下午两点之间采集数据时视为补充数据，不需要清楚历史数据
+    # caijigoods = getgoods(redislink)
+    # # allgoods.clearRedis()
+    # xianyu = huodan(redislink)
+    # #开始采集数据并返回采集结果
+    # theresult = caijigoods.getAllGoods(groupid)
+    #
+    # #如果采集结果返回为200 就将数据状态码改会0
+    # if theresult == 200:
+    #     caijigoods.reorder()
+    #     xianyu.shengchengliebieo()
+    #     del(caijigoods)
+    # 控制采集
 
-    #判断现在是否是新的一天，如果是新的一天就清除goodlist（redis）和goods（数据库）
+    # 数值2表示正在采集中
+    # conn = redis.Redis(connection_pool=redislink)
+    print('有采集任务', groupid)
 
-    #早上10点和下午两点之间采集数据时视为补充数据，不需要清楚历史数据
+    # 判断现在是否是新的一天，如果是新的一天就清除goodlist（redis）和goods（数据库）
+
+    # 早上10点和下午两点之间采集数据时视为补充数据，不需要清楚历史数据
     caijigoods = getgoods(redislink)
     # allgoods.clearRedis()
-    xianyu = huodan(redislink)
-    #开始采集数据并返回采集结果
+
+    # 开始采集数据并返回采集结果
     theresult = caijigoods.getAllGoods(groupid)
 
-    #如果采集结果返回为200 就将数据状态码改会0
+    # 如果采集结果返回为200 就将数据状态码改会0
     if theresult == 200:
         caijigoods.reorder()
-        xianyu.shengchengliebieo()
-        del(caijigoods)
 
+        del (caijigoods)
 
 
 
@@ -115,7 +134,7 @@ if __name__ == '__main__':
                     t2.join()
                 xianyu = huodan(redisPool)
                 xianyu.shengchengliebieo()
-                del (conn)
+                # del (conn)
                 # caijiduilie = []
                 # caiji = getgoods(redisPool)
                 # conn.getset("getgoods", 2)
