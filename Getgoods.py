@@ -86,7 +86,7 @@ class getgoods(object):
                         self.__setdata(data1, onlyjindong)
                     time.sleep(2)
             time.sleep(1)
-            if pageNo >= 400:
+            if pageNo >= 300:
                 pageNo = 0
                 bb = False
         print(groupId,"采集结束")
