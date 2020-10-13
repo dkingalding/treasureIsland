@@ -33,47 +33,47 @@ def paimaibaozhen(goodsid, sqlNo , endScore,usedno ):
 
 
 
-def caijirenwu(redislink, groupid):
-    #控制采集
-
-    #数值2表示正在采集中
-    # conn = redis.Redis(connection_pool=redislink)
-    # print('需要采集任务',groupid)
-    #
-    # #判断现在是否是新的一天，如果是新的一天就清除goodlist（redis）和goods（数据库）
-    #
-    # #早上10点和下午两点之间采集数据时视为补充数据，不需要清楚历史数据
-    # caijigoods = getgoods(redislink)
-    # # allgoods.clearRedis()
-    # xianyu = huodan(redislink)
-    # #开始采集数据并返回采集结果
-    # theresult = caijigoods.getAllGoods(groupid)
-    #
-    # #如果采集结果返回为200 就将数据状态码改会0
-    # if theresult == 200:
-    #     caijigoods.reorder()
-    #     xianyu.shengchengliebieo()
-    #     del(caijigoods)
-    # 控制采集
-
-    # 数值2表示正在采集中
-    # conn = redis.Redis(connection_pool=redislink)
-    print('有采集任务', groupid)
-
-    # 判断现在是否是新的一天，如果是新的一天就清除goodlist（redis）和goods（数据库）
-
-    # 早上10点和下午两点之间采集数据时视为补充数据，不需要清楚历史数据
-    caijigoods = getgoods(redislink)
-    # allgoods.clearRedis()
-
-    # 开始采集数据并返回采集结果
-    theresult = caijigoods.getAllGoods(groupid)
-
-    # 如果采集结果返回为200 就将数据状态码改会0
-    if theresult == 200:
-        caijigoods.reorder()
-
-        del (caijigoods)
+# def caijirenwu(redislink, groupid):
+#     #控制采集
+#     #现以取消，不在人工设置采集任务，改为定时开始采集任务。5点、12点、18点采集
+#     #数值2表示正在采集中
+#     # conn = redis.Redis(connection_pool=redislink)
+#     # print('需要采集任务',groupid)
+#     #
+#     # #判断现在是否是新的一天，如果是新的一天就清除goodlist（redis）和goods（数据库）
+#     #
+#     # #早上10点和下午两点之间采集数据时视为补充数据，不需要清楚历史数据
+#     # caijigoods = getgoods(redislink)
+#     # # allgoods.clearRedis()
+#     # xianyu = huodan(redislink)
+#     # #开始采集数据并返回采集结果
+#     # theresult = caijigoods.getAllGoods(groupid)
+#     #
+#     # #如果采集结果返回为200 就将数据状态码改会0
+#     # if theresult == 200:
+#     #     caijigoods.reorder()
+#     #     xianyu.shengchengliebieo()
+#     #     del(caijigoods)
+#     # 控制采集
+#
+#     # 数值2表示正在采集中
+#     # conn = redis.Redis(connection_pool=redislink)
+#     print('有采集任务', groupid)
+#
+#     # 判断现在是否是新的一天，如果是新的一天就清除goodlist（redis）和goods（数据库）
+#
+#     # 早上10点和下午两点之间采集数据时视为补充数据，不需要清楚历史数据
+#     caijigoods = getgoods(redislink)
+#     # allgoods.clearRedis()
+#
+#     # 开始采集数据并返回采集结果
+#     theresult = caijigoods.getAllGoods(groupid)
+#
+#     # 如果采集结果返回为200 就将数据状态码改会0
+#     if theresult == 200:
+#         caijigoods.reorder()
+#
+#         del (caijigoods)
 
 
 
@@ -109,31 +109,31 @@ if __name__ == '__main__':
                 conn.set("singin", 0)
 
             # 获取采集数据的状态码，是否开启采集线程
-            value = conn.get("getgoods")
-            groupids = conn.smembers("groupgoods")
-            theclick = int(time.strftime('%H', time.localtime(time.time())))
-            if value == '1':
-                # groupids = [1000005,1999999]
-                groupids = conn.smembers("groupgoods")
-                caijiduilie = []
-
-                conn.getset("getgoods", 2)
-
-                print(groupids)
-                if groupids:
-                    for groupid in groupids:
-                        caijiduilie.append(threading.Thread(target=caijirenwu, name='shuchu', args=(redisPool, groupid)))
-
-                    for t in caijiduilie:
-                        t.start()
-                    for t in caijiduilie:
-                        t.join()
-                else:
-                    t2 = threading.Thread(target=caijirenwu, name='shuchu', args=(redisPool, '1000005'))
-                    t2.start()
-                    t2.join()
-                xianyu = huodan(redisPool)
-                xianyu.shengchengliebieo()
+            # value = conn.get("getgoods")
+            # groupids = conn.smembers("groupgoods")
+            # theclick = int(time.strftime('%H', time.localtime(time.time())))
+            # if value == '1':
+            #     # groupids = [1000005,1999999]
+            #     groupids = conn.smembers("groupgoods")
+            #     caijiduilie = []
+            #
+            #     conn.getset("getgoods", 2)
+            #
+            #     print(groupids)
+            #     if groupids:
+            #         for groupid in groupids:
+            #             caijiduilie.append(threading.Thread(target=caijirenwu, name='shuchu', args=(redisPool, groupid)))
+            #
+            #         for t in caijiduilie:
+            #             t.start()
+            #         for t in caijiduilie:
+            #             t.join()
+            #     else:
+            #         t2 = threading.Thread(target=caijirenwu, name='shuchu', args=(redisPool, '1000005'))
+            #         t2.start()
+            #         t2.join()
+            #     xianyu = huodan(redisPool)
+            #     xianyu.shengchengliebieo()
                 # del (conn)
                 # caijiduilie = []
                 # caiji = getgoods(redisPool)
