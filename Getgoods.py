@@ -67,7 +67,7 @@ class getgoods(object):
         while bb:
             print(pageNo)
             pageNo = pageNo + 1
-            url = "https://used-api.paipai.com/auction/list?pageNo=%d&pageSize=50&category1=&status=1&orderDirection=1&auctionType=1&orderType=1&groupId=%s&callback=__jp35" % (
+            url = "https://used-api.paipai.com/auction/list?pageNo=%d&pageSize=50&fieldNo=30102&groupId=%s" % (
             pageNo, groupId)
             thedata = self.__getGoods(url)
             # print(groupId, pageNo)

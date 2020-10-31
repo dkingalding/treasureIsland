@@ -1,0 +1,856 @@
+2020-10-31 20:07:46,170 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 157, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\connection.py", line 61, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 334, in connect
+    conn = self._new_conn()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x04871C70>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='paipai.m.jd.com%20', port=443): Max retries exceeded with url: /%20ppdbd%20/%20pages%20/%20special%20/%20list%20/%20list?id%20=%2030102 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x04871C70>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 135, in __getGoods
+    r = requests.get(url,headers = self.headers)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='paipai.m.jd.com%20', port=443): Max retries exceeded with url: /%20ppdbd%20/%20pages%20/%20special%20/%20list%20/%20list?id%20=%2030102 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x04871C70>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+2020-10-31 20:07:46,173 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 157, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\connection.py", line 61, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 334, in connect
+    conn = self._new_conn()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x04993530>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='paipai.m.jd.com%20', port=443): Max retries exceeded with url: /%20ppdbd%20/%20pages%20/%20special%20/%20list%20/%20list?id%20=%2030102 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x04993530>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 135, in __getGoods
+    r = requests.get(url,headers = self.headers)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='paipai.m.jd.com%20', port=443): Max retries exceeded with url: /%20ppdbd%20/%20pages%20/%20special%20/%20list%20/%20list?id%20=%2030102 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x04993530>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+2020-10-31 20:07:46,173 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 157, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\connection.py", line 61, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 334, in connect
+    conn = self._new_conn()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x04993070>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='paipai.m.jd.com%20', port=443): Max retries exceeded with url: /%20ppdbd%20/%20pages%20/%20special%20/%20list%20/%20list?id%20=%2030102 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x04993070>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 135, in __getGoods
+    r = requests.get(url,headers = self.headers)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='paipai.m.jd.com%20', port=443): Max retries exceeded with url: /%20ppdbd%20/%20pages%20/%20special%20/%20list%20/%20list?id%20=%2030102 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x04993070>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+2020-10-31 20:07:46,174 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 157, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\connection.py", line 61, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 334, in connect
+    conn = self._new_conn()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x04993630>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='paipai.m.jd.com%20', port=443): Max retries exceeded with url: /%20ppdbd%20/%20pages%20/%20special%20/%20list%20/%20list?id%20=%2030102 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x04993630>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 135, in __getGoods
+    r = requests.get(url,headers = self.headers)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='paipai.m.jd.com%20', port=443): Max retries exceeded with url: /%20ppdbd%20/%20pages%20/%20special%20/%20list%20/%20list?id%20=%2030102 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x04993630>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+2020-10-31 20:07:46,175 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 157, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\connection.py", line 61, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 334, in connect
+    conn = self._new_conn()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x04854030>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='paipai.m.jd.com%20', port=443): Max retries exceeded with url: /%20ppdbd%20/%20pages%20/%20special%20/%20list%20/%20list?id%20=%2030102 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x04854030>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 135, in __getGoods
+    r = requests.get(url,headers = self.headers)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='paipai.m.jd.com%20', port=443): Max retries exceeded with url: /%20ppdbd%20/%20pages%20/%20special%20/%20list%20/%20list?id%20=%2030102 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x04854030>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+2020-10-31 20:07:46,176 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 157, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\connection.py", line 61, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 334, in connect
+    conn = self._new_conn()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x04854550>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='paipai.m.jd.com%20', port=443): Max retries exceeded with url: /%20ppdbd%20/%20pages%20/%20special%20/%20list%20/%20list?id%20=%2030102 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x04854550>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 135, in __getGoods
+    r = requests.get(url,headers = self.headers)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='paipai.m.jd.com%20', port=443): Max retries exceeded with url: /%20ppdbd%20/%20pages%20/%20special%20/%20list%20/%20list?id%20=%2030102 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x04854550>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+2020-10-31 20:07:46,176 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 157, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\connection.py", line 61, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 334, in connect
+    conn = self._new_conn()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x04993290>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='paipai.m.jd.com%20', port=443): Max retries exceeded with url: /%20ppdbd%20/%20pages%20/%20special%20/%20list%20/%20list?id%20=%2030102 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x04993290>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 135, in __getGoods
+    r = requests.get(url,headers = self.headers)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='paipai.m.jd.com%20', port=443): Max retries exceeded with url: /%20ppdbd%20/%20pages%20/%20special%20/%20list%20/%20list?id%20=%2030102 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x04993290>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+2020-10-31 20:07:46,176 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 157, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\connection.py", line 61, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 672, in urlopen
+    chunked=chunked,
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 994, in _validate_conn
+    conn.connect()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 334, in connect
+    conn = self._new_conn()
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x04871BD0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "F:\python\duobaodao\lib\site-packages\urllib3\connectionpool.py", line 720, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "F:\python\duobaodao\lib\site-packages\urllib3\util\retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='paipai.m.jd.com%20', port=443): Max retries exceeded with url: /%20ppdbd%20/%20pages%20/%20special%20/%20list%20/%20list?id%20=%2030102 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x04871BD0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 135, in __getGoods
+    r = requests.get(url,headers = self.headers)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "F:\python\duobaodao\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='paipai.m.jd.com%20', port=443): Max retries exceeded with url: /%20ppdbd%20/%20pages%20/%20special%20/%20list%20/%20list?id%20=%2030102 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x04871BD0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+2020-10-31 20:08:34,321 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 137, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:08:34,322 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 137, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:08:34,323 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 137, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:08:34,324 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 137, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:08:34,324 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 137, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:08:34,324 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 137, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:08:34,334 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 137, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:08:34,334 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 137, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:09:16,522 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 138, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:09:16,522 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 138, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:09:16,533 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 138, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:09:16,545 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 138, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:09:16,552 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 138, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:09:16,558 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 138, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:09:16,562 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 138, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:09:16,570 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 138, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:10:14,309 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 138, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:10:14,311 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 138, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:10:14,322 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 138, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:10:14,339 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 138, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:10:14,347 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 138, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:10:14,364 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 138, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:10:14,369 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 138, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:10:14,381 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 138, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:11:02,185 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 139, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:11:02,192 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 139, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:11:02,192 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 139, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:11:02,196 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 139, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:11:02,201 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 139, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:11:02,217 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 139, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:11:02,223 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 139, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:11:02,236 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 139, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:11:29,103 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 139, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:11:29,122 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 139, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:11:29,137 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 139, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:11:29,157 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 139, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:11:29,159 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 139, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:11:29,163 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 139, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:11:29,167 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 139, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+2020-10-31 20:11:29,188 - ERROR - Traceback (most recent call last):
+  File "F:\python\duobaodao\Getgoods.py", line 139, in __getGoods
+    result_dict = json.loads(result_json.group())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\alading\AppData\Local\Programs\Python\Python37-32\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
