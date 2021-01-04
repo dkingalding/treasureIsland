@@ -76,6 +76,7 @@ if __name__ == '__main__':
             conn = redis.Redis(connection_pool= redisPool)
             continue
         if singin == '1':
+
             loginClass.longduomingdao()
             conn.set("singin", 0)
         value = conn.get("getgoods")

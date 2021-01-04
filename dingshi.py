@@ -14,11 +14,6 @@ Pool = redis.ConnectionPool(host= myredis['host'], port= myredis['port'], max_co
 
 # loginClass = loginCook()
 
-
-
-
-
-
 def caijirenwu(redislink, groupid):
     #控制采集
 
