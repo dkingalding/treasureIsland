@@ -30,7 +30,7 @@ class getgoods(object):
         #其它分类 groupId=1999999
 
         # self.list = (1000005,1000442,1000009,1000004,1000003,1000011,1000010,1000002,1000404,1000007,1000008,1000006,1999999)
-        # self.list = (1000005,)
+        self.list = (1000005,)
         # self.url = "https://used-api.jd.com/auction/list?pageNo=1&pageSize=50&category1=&status=&orderDirection=1&auctionType=1&orderType=2&callback=__jp116"
         self.headers = {
             # "Host": "used-api.jd.com",
