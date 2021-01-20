@@ -67,8 +67,10 @@ class getgoods(object):
         while bb:
             print(pageNo)
             pageNo = pageNo + 1
-            url = "https://used-api.paipai.com/auction/list?pageNo=%d&pageSize=50&fieldNo=30102&groupId=%s" % (
-            pageNo, groupId)
+            # url = "https://used-api.paipai.com/auction/list?pageNo=%d&pageSize=50&fieldNo=30102&groupId=%s" % (
+            # pageNo, groupId)
+            url = "https://used-api.paipai.com/auction/list?pageNo=%d&pageSize=50&fieldNo=30102" % (
+            pageNo)
             thedata = self.__getGoods(url)
             # print(groupId, pageNo)
             if thedata[0] == 444:
@@ -86,7 +88,7 @@ class getgoods(object):
                         self.__setdata(data1, onlyjindong)
                     time.sleep(2)
             time.sleep(1)
-            if pageNo >= 300:
+            if pageNo >= 4000:
                 pageNo = 0
                 bb = False
         print(groupId,"采集结束")
